@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    width: 50%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.card-title {
+    margin: 0.9rem;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.input-group{
+    display: flex;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 0.2rem;
+    border: 0.01rem solid #c3b6b6;
+    display: block;
+    line-height: 0.1rem;
+    width: 90%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-primary{
+    color: #0d6efd;
+}
+
+
+.btn-container {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 1rem; /* Add some top margin for spacing */
+}
+
+.btn {
+    border-radius: 0.3rem;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    height: 2rem;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center; 
+}
+.cause{
+    display: none;
+    color: red;
+}
