@@ -4,51 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="js/signup.js"></script>
 </head>
 <body class="bg-light">
     <div class="container mt-5">
-        <div class="card mx-auto" style="max-width: 400px;">
+        <div class="card">
+            <h3 class="card-title">Signup</h3>
             <div class="card-body">
-                <h3 class="card-title text-center">Signup</h3>
-                <form>
+                <form onsubmit="return signupValidity(event)">      
                     <div class="mb-3">
-                        <label for="uemail" class="form-label">Enter Gmail</label>
-                        <input type="email" name="email" id="uemail" class="form-control" placeholder="abc@gmail.com" required>
+                        <label for="uemail" class="form-label">Username</label>
+                        <input type="text" name="email" id="uemail" class="form-control" placeholder="abc2002" required>
+                        <p id="emailAlert">Username should be max 4 letter</p>
                     </div>
-                    <!-- <div class="mb-3">
-                        <label for="uname" class="form-label">Enter Full Name</label>
+                    <div class="mb-3">
+                        <label for="uname" class="form-label">Full Name</label>
                         <input type="text" name="name" id="uname" class="form-control" placeholder="Rushikesh Swami" required>
                     </div>
                     <div class="mb-3">
-                        <label for="utel" class="form-label">Enter Phone Number</label>
+                        <label for="utel" class="form-label">Phone Number</label>
                         <input type="tel" name="tel" id="utel" class="form-control" placeholder="91254*****" required>
-                    </div> -->
+                    </div>
                     <div class="mb-3">
-                        <label for="upassword" class="form-label">Enter Password</label>
+                        <label for="upassword" class="form-label">Password</label>
                         <input type="password" name="password" id="upassword" class="form-control" placeholder="********" required>
                     </div>
                     <div class="mb-3">
-                        <label for="ucpassword" class="form-label">Re-Enter Password</label>
+                        <label for="ucpassword" class="form-label">Confirm Password</label>
                         <input type="password" name="password" id="ucpassword" class="form-control" placeholder="********" required>
+                    </div>
+                    <div class="mb-3 cause">
+                        <label for="suggest" class="form-label reason" id="validUppercase"><i class="fa-solid fa-circle-xmark"></i> Password must contain uppercase character</label>
+                        <label for="suggest" class="form-label reason" id="validLowercase"><i class="fa-solid fa-circle-xmark"></i> Password must contain lowercase character</label>
+                        <label for="suggest" class="form-label reason" id="validNumeric"><i class="fa-solid fa-circle-xmark"></i> Password must contain numeric character</label>
+                        <label for="suggest" class="form-label reason" id="validSymbol"><i class="fa-solid fa-circle-xmark"></i> Password must contain symbol character</label>
+                    </div>
+                    <div class="mb-3 d-grid gap-2 btn-container">
+                        <button class="btn btn-primary" type="submit">Create Account</button>
                     </div>
                     <div class="mb-3 text-center">
                         <span id="text">Already have an account? <span id="login" class="text-primary" onclick="login()">login</span></span>
-                    </div>
-                        <div class="mb-3 cause">
-                            <label for="suggest" class="form-label reason" id="validUppercase"><i class="fa-solid fa-circle-xmark"></i> Password must contain uppercase character</label>
-                            <label for="suggest" class="form-label reason" id="validLowercase"><i class="fa-solid fa-circle-xmark"></i> Password must contain lowercase character</label>
-                            <label for="suggest" class="form-label reason" id="validNumeric"><i class="fa-solid fa-circle-xmark"></i> Password must contain numeric character</label>
-                            <label for="suggest" class="form-label reason" id="validSymbol"><i class="fa-solid fa-circle-xmark"></i> Password must contain sybmol character</label>
-                        </div>
-                        <div class="d-grid gap-2 btn-container">
-                        <button onclick=signupValidity(event) class="btn btn-primary">Create Account</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script src="js/signup.js"></script>
 </body>
 </html>

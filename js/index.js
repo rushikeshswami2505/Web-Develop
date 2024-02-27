@@ -2,17 +2,69 @@ function create() {
     window.location.href = "signup.html";
 }
 
+const user = JSON.parse(localStorage.getItem("user"));
+
+let storedEmail = user.userId;
+let storedPassword = user.userPassword;
+
 let userEmail = document.getElementById("uemail");
 let userPassword = document.getElementById("upassword");
+let emailAlert = document.getElementById("emailAlert");
+let passwordAlert = document.getElementById("passwordAlert");
 
-let storedEmail = localStorage.getItem("id");
-let storedPassword = localStorage.getItem("password");
+let loginbtn = document.getElementById("btnSignIn");
+loginbtn.disabled = true;
 
-function login(){
-    console.log("called");
+userEmail.addEventListener('input', function(){
+    loginbtn.disabled = userEmail.value.length === 0 || userPassword.value.length === 0;
+    console.log(userEmail.value.length+" "+userPassword.value.length);
+});
+
+userPassword.addEventListener('input', function(){
+    loginbtn.disabled = userEmail.value.length === 0 || userPassword.value.length ===0;
+    console.log(userEmail.value.length+" "+userPassword.value.length);
+});
+
+function login(event){
+    event.preventDefault();
+    console.log("called"+userPassword.value+" "+storedPassword);
+    if(userEmail.value.length<4) {
+        emailAlert.innerText = "Please enter valid username";
+        emailAlert.style.display = 'block';
+        return;
+    }
+    else{
+        emailAlert.style.display = 'none';
+    }
+    if(userPassword.value.length<4){
+        passwordAlert.innerText = "Please enter valid password";
+        passwordAlert.style.display = 'block';
+        return;
+    }else{
+        passwordAlert.style.display = 'none';
+    }
+
+    if(userEmail.value!=storedEmail){
+        emailAlert.innerText = "Couldn't find your Account";
+        emailAlert.style.display = 'block'; 
+        return;
+    }
+    else{
+        emailAlert.style.display = 'none';
+    }
+    if(userPassword.value!=storedPassword){
+        passwordAlert.innerText = "Wrong password. Please try again.";
+        passwordAlert.style.display = 'block'; 
+        return;
+    }
+    else{
+        passwordAlert.style.display = 'none';
+    }
+
+    window.location.href = "home.html";
     if(userEmail.value === storedEmail && userPassword.value === storedPassword){
-        window.location.href = "home.html";
+
     } else {
-        alert("Incorrect email or password");
+        // alert("Incorrect email or password");
     }
 }

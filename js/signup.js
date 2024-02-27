@@ -3,19 +3,30 @@ function login() {
     window.location.href = "index.html";
 }
 
-let uemail = document.getElementById("uemail");
-let uname = document.getElementById("uname");
-let utel = document.getElementById("utel");
-let upassword = document.getElementById("upassword");
-let ucpassword = document.getElementById("ucpassword");
+
 
 function signupValidity(event) {
     event.preventDefault();
-
+    
+    let uemail = document.getElementById("uemail");
+    let uname = document.getElementById("uname");
+    let utel = document.getElementById("utel");
+    let emailAlert = document.getElementById("emailAlert");
     var upassword = document.getElementById("upassword");
     var ucpassword = document.getElementById("ucpassword");
+    
+    
+    let email =  uemail.value;
+    let name = uname.value;
+    let tel = utel.value;
     let pass = upassword.value;
     let repass = ucpassword.value;
+
+    if(email.length<4){
+        emailAlert.innerText = "Please enter valid username";
+        emailAlert.style.display = 'block';
+        return;
+    }
 
     let capital = false, lower = false, number = false, sybmol = false;
     for (let i = 0; i < pass.length; i++) {
@@ -100,15 +111,24 @@ function signupValidity(event) {
     console.log(capital + " " + lower + " " + number + " " + sybmol);
 
     if (capital && lower && number && sybmol) {
+        console.log(email);
         if (pass === repass) {
+            const user = {
+                userId : email,
+                userName : name,
+                userTelephone : tel,
+                userPassword : pass
+            };
+            localStorage.setItem("user",JSON.stringify(user));
             window.location.href = "index.html";
-            localStorage.setItem("password",pass);
-            localStorage.setItem("id",uemail.value);
+            return true;
         } else {
             validUppercase.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Password Doesn\'t Match';
             validUppercase.style.color = 'red';
+            return false;
         }
     }
+    return false;
 }
 
 
