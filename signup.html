@@ -14,14 +14,98 @@
             <div class="card-body">
                 <form onsubmit  ="return signupValidity(event)">
                     <div class="card-data">
-                        <!-- <div class="card-row">
-                            
-                        </div> -->
-                        <div class="card-left-body">
+                        <div class="card-row">
+                            <div class="mb-3 card-item">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="abc@email.com">
+                                <p id="emailalert" class="alert">Enter valid email</p>
+                            </div>
+                            <div class="mb-3 card-item">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="abc2002">
+                                <p id="usernamealert" class="alert">Username should be max 6 letter</p>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <div class="mb-3 card-item">
+                                <label for="firstname" class="form-label">First Name</label>
+                                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Rushikesh">
+                                <p id="firstnamealert" class="alert">Please enter First Name</p>
+                            </div>
+                            <div class="mb-3 card-item">
+                                <label for="lastname" class="form-label">Last Name</label>
+                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Swami">
+                                <p id="lastnamealert" class="alert">Please enter Last Name</p>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <div class="mb-3 card-item">
+                                <label for="tel" class="form-label">Phone Number</label>
+                                <input type="tel" name="tel" id="tel" class="form-control" placeholder="91254*****">
+                                <p id="telalert" class="alert">Please enter Mobile Number</p>
+                            </div>
+                            <div class="mb-3 card-item">
+                                <label for="telalter" class="form-label">Another Phone Number (Optional)</label>
+                                <input type="tel" name="telalter" id="telalter" class="form-control" placeholder="91254*****">
+                                <p id="telalteralert" class="alert">Please enter Mobile Number</p>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <div class="mb-3 card-item passwordAll">
+                                <div>
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="********">
+                                    <p id="passwordalert" class="alert">Please enter Password</p>
+                                </div>
+                            </div>
+                            <div class="mb-3 card-item">
+                                <label for="cpassword" class="form-label">Confirm Password</label>
+                                <input type="password" name="password" id="cpassword" class="form-control" placeholder="********">
+                                <p id="cpasswordalert" class="alert">Please enter confirm Password</p>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <div class="mb-3 card-item">
+                                <label for="gender" class="form-label">Gender</label>
+                                <div class="gender">
+                                    <div class="gender-item">
+                                        <input type="radio" id="male" name="gender" value="Male">
+                                        <label for="gender" class="form-label">Male</label>
+                                    </div>
+                                    <div class="gender-item">
+                                        <input type="radio" id="female" name="gender" value="Female">
+                                        <label for="gender" class="form-label">Female</label>
+                                    </div>
+                                </div>
+                                <p id="genderalert" class="alert">Please select Gender</p>
+                            </div>
+                            <div class="mb-3 card-item">
+                                <label for="dob" class="form-label">Birth of date</label>
+                                <input type="date" name="dob" id="dob" class="form-control">
+                                <p id="dobalert" class="alert">Please select</p>
+                            </div>
+                        </div>
+                    </div>      
+                    <div class="mb-3 d-grid gap-2 btn-container">
+                        <button class="btn btn-primary" type="submit">Create Account</button>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <span id="text">Already have an account? <span id="login" class="text-primary" onclick="login()">login</span></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/signup.js"></script>
+</body>
+</html>
+
+
+
+<!-- <div class="card-left-body">
                             <div class="mb-3 card-item">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="abc@email.com" required>
-                                <!-- <p id="emailAlert">Username should be max 4 letter</p> -->
                             </div>
                             <div class="mb-3 card-item">
                                 <label for="firstname" class="form-label">First Name</label>
@@ -45,13 +129,13 @@
                                 <label for="suggest" class="form-label reason" id="validNumeric"><i class="fa-solid fa-circle-xmark"></i> Password must contain numeric character</label>
                                 <label for="suggest" class="form-label reason" id="validSymbol"><i class="fa-solid fa-circle-xmark"></i> Password must contain symbol character</label>
                             </div>
-                        </div>
-                        <div class="card-right-body">
+                        </div> -->
+                        <!-- <div class="card-right-body">
                             <div class="mb-3 card-item">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" id="username" class="form-control" placeholder="abc2002" required>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="abc2002" required> -->
                                 <!-- <p id="usernamealert">Username should be max 4 letter</p> -->
-                            </div>
+                            <!-- </div>
                             <div class="mb-3 card-item">
                                 <label for="lastname" class="form-label">Last Name</label>
                                 <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Swami" required>
@@ -84,24 +168,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <input type="password" name="gender" id="gender" class="form-control" placeholder="********" required> -->
-                            </div>
+                                </div>
                             <div class="mb-3 card-item">
                                 <label for="age" class="form-label">Birth of date</label>
                                 <input type="date" name="age" id="age" class="form-control" placeholder="********" required>
                             </div>
-                        </div>
-                    </div>      
-                    <div class="mb-3 d-grid gap-2 btn-container">
-                        <button class="btn btn-primary" type="submit">Create Account</button>
-                    </div>
-                    <div class="mb-3 text-center">
-                        <span id="text">Already have an account? <span id="login" class="text-primary" onclick="login()">login</span></span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script src="js/signup.js"></script>
-</body>
-</html>
+                        </div> -->

@@ -4,9 +4,13 @@ function create() {
 
 const user = JSON.parse(localStorage.getItem("user"));
 
-let storedEmail = user.userId;
-let storedPassword = user.userPassword;
-
+let storedEmail = "", storedPassword="";
+if (user) {
+    storedEmail = user.userId.length;
+    storedPassword = user.userPassword;
+} else {
+    console.log("User not found in localStorage");
+}
 let userEmail = document.getElementById("uemail");
 let userPassword = document.getElementById("upassword");
 let emailAlert = document.getElementById("emailAlert");

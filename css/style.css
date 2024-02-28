@@ -1,5 +1,7 @@
 :root{
-    --primary-color : #0d6efd; 
+    --primary-color : #f32853; 
+    --primary-color-hover : #f3285498;
+    --primary-color-extra-hover : #f3285453;
 }
 
 body {
@@ -63,7 +65,7 @@ body {
 .form-control:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    box-shadow: 0 0 0 0.1rem var(--primary-color-extra-hover);
 }
 
 .text-center{
@@ -83,8 +85,8 @@ body {
 
 .btn {
     border-radius: 0.3rem;
-    background-color: #0d6efd;
-    color: white;
+    background-color: var(--primary-color);
+    color: #ffffff;
     border: none;
     height: 2.3rem; 
     width: 100%;
@@ -98,9 +100,9 @@ body {
 
 .btn:disabled{
     cursor: not-allowed;
-    background-color: #558ad9;
+    background-color: var(--primary-color-hover);
     color: white;
-    border: 1px solid #0d6efd;
+    border: 2px solid var(--primary-color-extra-hover);
 }
 .cause{
     display: none;
