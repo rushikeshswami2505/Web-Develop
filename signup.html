@@ -16,31 +16,31 @@
                     <div class="card-data">
                         <div class="card-row">
                             <div class="mb-3 card-item">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label">Email <span class="required">*</span></label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="abc@email.com">
                                 <p id="emailalert" class="alert">Enter valid email</p>
                             </div>
                             <div class="mb-3 card-item">
-                                <label for="username" class="form-label">Username</label>
+                                <label for="username" class="form-label">Username <span class="required">*</span></label>
                                 <input type="text" name="username" id="username" class="form-control" placeholder="abc2002">
                                 <p id="usernamealert" class="alert">Username should be max 6 letter</p>
                             </div>
                         </div>
                         <div class="card-row">
                             <div class="mb-3 card-item">
-                                <label for="firstname" class="form-label">First Name</label>
+                                <label for="firstname" class="form-label">First Name <span class="required">*</span></label>
                                 <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Rushikesh">
                                 <p id="firstnamealert" class="alert">Please enter First Name</p>
                             </div>
                             <div class="mb-3 card-item">
-                                <label for="lastname" class="form-label">Last Name</label>
+                                <label for="lastname" class="form-label">Last Name <span class="required">*</span></label>
                                 <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Swami">
                                 <p id="lastnamealert" class="alert">Please enter Last Name</p>
                             </div>
                         </div>
                         <div class="card-row">
                             <div class="mb-3 card-item">
-                                <label for="tel" class="form-label">Phone Number</label>
+                                <label for="tel" class="form-label">Phone Number <span class="required">*</span></label>
                                 <input type="tel" name="tel" id="tel" class="form-control" placeholder="91254*****">
                                 <p id="telalert" class="alert">Please enter Mobile Number</p>
                             </div>
@@ -53,20 +53,20 @@
                         <div class="card-row">
                             <div class="mb-3 card-item passwordAll">
                                 <div>
-                                    <label for="password" class="form-label">Password</label>
+                                    <label for="password" class="form-label">Password <span class="required">*</span></label>
                                     <input type="password" name="password" id="password" class="form-control" placeholder="********">
                                     <p id="passwordalert" class="alert">Please enter Password</p>
                                 </div>
                             </div>
                             <div class="mb-3 card-item">
-                                <label for="cpassword" class="form-label">Confirm Password</label>
+                                <label for="cpassword" class="form-label">Confirm Password <span class="required">*</span></label>
                                 <input type="password" name="password" id="cpassword" class="form-control" placeholder="********">
                                 <p id="cpasswordalert" class="alert">Please enter confirm Password</p>
                             </div>
                         </div>
                         <div class="card-row">
                             <div class="mb-3 card-item">
-                                <label for="gender" class="form-label">Gender</label>
+                                <label for="gender" class="form-label">Gender <span class="required">*</span></label>
                                 <div class="gender">
                                     <div class="gender-item">
                                         <input type="radio" id="male" name="gender" value="Male">
@@ -80,9 +80,9 @@
                                 <p id="genderalert" class="alert">Please select Gender</p>
                             </div>
                             <div class="mb-3 card-item">
-                                <label for="dob" class="form-label">Birth of date</label>
-                                <input type="date" name="dob" id="dob" class="form-control">
-                                <p id="dobalert" class="alert">Please select</p>
+                                <label for="dob" class="form-label">Birth of date <span class="required">*</span></label>
+                                <input type="date" name="dob" id="dob" class="form-control" min="1950-01-01" max="2020-12-31">
+                                <p id="dobalert" class="alert">Please select a date between 1950 and 2020</p>
                             </div>
                         </div>
                     </div>      

@@ -1,3 +1,9 @@
+:root{
+    --primary-color : #443fde; 
+    --primary-color-hover : #3833e3;
+    --primary-color-extra-hover : #2b24e2;
+    --error-color : #872e36;
+}
 body {
     display: flex;
     justify-content: center;
@@ -78,7 +84,7 @@ body {
 }
 
 .text-primary {
-    color: #0d6efd;
+    color: var(--primary-color);
 }
 
 .btn-container {
@@ -90,7 +96,7 @@ body {
 
 .btn {
     border-radius: 0.3rem;
-    background-color: #0d6efd;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     height: 2.3rem;
@@ -153,4 +159,7 @@ body {
 }
 .invalid {
     border: 1px solid red;
+}
+.required{
+    color: red;
 }

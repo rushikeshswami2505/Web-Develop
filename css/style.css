@@ -1,9 +1,9 @@
 :root{
-    --primary-color : #f32853; 
-    --primary-color-hover : #f3285498;
-    --primary-color-extra-hover : #f3285453;
+    --primary-color : #443fde; 
+    --primary-color-hover : #3833e3;
+    --primary-color-extra-hover : #2b24e2;
+    --error-color : #872e36;
 }
-
 body {
     display: flex;
     justify-content: center;

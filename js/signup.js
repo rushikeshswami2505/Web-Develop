@@ -56,7 +56,8 @@ function signupValidity(event) {
     valid = isValidCpass(passVal,cpassVal);
     valid = isValidGender(genderVal);
     valid = isValidDob(dobVal);
-    // console.log(email);
+    
+        // console.log(email);
         // if (pass === repass) {
         //     const user = {
         //         userId : email,
@@ -96,7 +97,7 @@ function updateTextError(element,msg,state){
 function isValidEmail(emailVal){
     console.log("uname: "+emailVal);
     emailVal.trim();
-    if(emailVal.length==0) updateTextError(emailAlert,"Please enter username",true);
+    if(emailVal.length==0) updateTextError(emailAlert,"Please enter email",true);
     else {
         email.style.border = "0px solid red";
         updateTextError(emailAlert,"",false);
@@ -107,10 +108,12 @@ function isValidEmail(emailVal){
 }
 function isValidUsername(usernameVal){
     console.log("uname: "+usernameVal);
+    const regex = /^[a-zA-Z0-9_.]+$/;
     usernameVal.trim();
     if(usernameVal.length==0) updateTextError(usernameAlert,"Please enter username",true);
     else if(usernameVal.length<6) updateTextError(usernameAlert,"Username should be 6 characters",true);
     else if((/\s/.test(usernameVal))) updateTextError(usernameAlert,"Please do not enter space",true);
+    else if (!regex.test(usernameVal)) updateTextError(usernameAlert, "Please use only letters, numbers, underscore, and dot", true);
     else {
         username.style.border = "0px solid red";
         updateTextError(usernameAlert,"",false);
@@ -121,9 +124,11 @@ function isValidUsername(usernameVal){
 }
 function isValidFirstname(firstnameVal){
     console.log("firsname: "+firstnameVal);
+    const regex = /^[a-zA-Z]+$/;
     firstnameVal.trim();
     if(firstnameVal.length==0) updateTextError(firstnameAlert,"Please enter first name",true);
     else if((/\s/.test(firstnameVal))) updateTextError(firstnameAlert,"Please do not enter space",true);
+    else if(!(regex.test(firstnameVal))) updateTextError(firstnameAlert,"First Name should be contains only characters");
     else{
         firstname.style.border = "0px solid red";
         updateTextError(firstnameAlert,"",false);
@@ -134,9 +139,11 @@ function isValidFirstname(firstnameVal){
 }
 function isValidLastname(lastnameVal){
     console.log("lastname: "+lastnameVal);
+    const regex = /^[a-zA-Z]+$/;
     lastnameVal.trim();
     if(lastnameVal.length==0) updateTextError(lastnameAlert,"Please enter last name",true);
     else if((/\s/.test(lastnameVal))) updateTextError(lastnameAlert,"Please do not enter space",true);
+    else if(!(regex.test(lastnameVal))) updateTextError(lastnameAlert,"First Name should be contains only characters");
     else{
         lastname.style.border = "0px solid red";
         updateTextError(lastnameAlert,"",false);
@@ -235,21 +242,12 @@ function isValidGender(genderVal){
 }
 function isValidDob(dobVal){
     dobVal = dobVal.trim();
-    if(dobVal.length === 0) {
-        dob.style.border = "1px solid red";
+    if(dobVal.length === 0) 
         updateTextError(dobAlert, "Please select Date of birth", true);
-    } else {
-        const selectedDate = new Date(dobVal);
-        const selectedYear = selectedDate.getFullYear();
-
-        if (selectedYear >= 1950 && selectedYear <= 2020) {
-            updateTextError(dobAlert, "", false);
-            dob.style.border = "0px solid red";
-            return true;
-        } else {
-            dob.style.border = "1px solid red";
-            updateTextError(dobAlert, "Please select a valid year (1950 - 2020)", true);
-        }
+    else{
+        dob.style.border = "1px solid red";
+        updateTextError(dobAlert, "Please select a valid year (1950 - 2020)", true);
+        return true;
     }
     dob.style.border = "1px solid red";
     return false;
