@@ -493,53 +493,29 @@ const programmingSkills = [
 
 // const skillsList = [];
 
-const userSkillsInput = document.getElementById("userSkills");
-const skillsDropdown = document.getElementById("skillsDropdown");
-
-userSkillsInput.addEventListener("input", showSkillsDropdown);
-
-document.addEventListener("click", (event) => {
-    if (!userSkillsInput.contains(event.target) && !skillsDropdown.contains(event.target)) {
-        skillsDropdown.style.display = "none";
-    }
+// Populate the select options dynamically
+const skillsSelect = document.getElementById("skills");
+programmingSkills.forEach(skill => {
+    const option = document.createElement("option");
+    option.value = skill;
+    option.textContent = skill;
+    skillsSelect.appendChild(option);
 });
 
-function showSkillsDropdown() {
-    const inputText = userSkillsInput.value.toLowerCase();
-    const matchingSkills = programmingSkills.filter(skill =>
-        skill.toLowerCase().includes(inputText) && !skillsList.includes(skill)
-    );
+function addSelectedSkill() {
+    const skillsSelect = document.getElementById("skills");
+    const selectedSkill = skillsSelect.value;
 
-    // Clear the previous options
-    skillsDropdown.innerHTML = "";
+    if (selectedSkill) {
+        // Add the selected skill to the skills array
+        skillsList.push(selectedSkill);
 
-    matchingSkills.forEach(skill => {
-        const listItem = document.createElement("div");
-        listItem.classList.add("autocomplete-item");
-        listItem.textContent = skill;
-        listItem.addEventListener("click", () => {
-            // Add the selected skill to the skills array
-            skillsList.push(skill);
+        // Update the selected skills container
+        updateSelectedSkillsContainer();
 
-            // Update the selected skills container
-            updateSelectedSkillsContainer();
-
-            // Reset the input and hide the dropdown
-            userSkillsInput.value = "";
-            skillsDropdown.style.display = "none";
-        });
-
-        skillsDropdown.appendChild(listItem);
-    });
-
-    // Set the width and position of the dropdown
-    skillsDropdown.style.width = `${userSkillsInput.offsetWidth}px`;
-    const inputRect = userSkillsInput.getBoundingClientRect();
-    skillsDropdown.style.top = `${inputRect.bottom + window.scrollY}px`;
-    skillsDropdown.style.left = `${inputRect.left + window.scrollX}px`;
-
-    // Show or hide the dropdown based on the number of matching skills
-    skillsDropdown.style.display = matchingSkills.length ? "block" : "none";
+        // Reset the select element
+        skillsSelect.value = "";
+    }
 }
 
 function updateSelectedSkillsContainer() {
