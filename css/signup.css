@@ -1,8 +1,9 @@
 :root{
-    --primary-color : #443fde; 
-    --primary-color-hover : #3833e3;
-    --primary-color-extra-hover : #2b24e2;
-    --error-color : #872e36;
+    --primary-color : #645fe3;      
+    --primary-color-hover : #322be6;
+    --primary-color-extra-hover : #1710e5;
+    --error-color : #872e36; 
+    --font-family-regular: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 body {
     display: flex;
@@ -18,7 +19,7 @@ body {
 }
 
 .container {
-    width: 70%;
+    width: 60%;
     /* max-width: 500px; */
     box-shadow: 0 0 10px #0000001a;
     background-color: #d3d3db;
@@ -109,6 +110,17 @@ body {
     justify-content: center;
     margin: 0 auto; 
 }
+.btn:disabled{
+    cursor: not-allowed;
+    background-color: var(--primary-color);
+    color: white;
+    /* border: 2px solid var(--primary-color); */
+}
+.btn:hover{
+    background-color: var(--primary-color-hover);
+    outline: none;
+    box-shadow: 0 0 0 0.02rem white;
+}
 
 .card-body form{
     justify-content: center;
@@ -150,16 +162,140 @@ body {
 }
 
 .gender{
-    display: flex;
+    /* display: flex; */
+    margin-left: 5%;
 }
 .gender-item{
     display: flex;
     align-items: center;
-    width: 20%;
+    /* width: 20%; */
+}
+.gender-box{
+    display: flex;
+    align-items: center;
 }
 .invalid {
     border: 1px solid red;
 }
 .required{
     color: red;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group-text {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.2rem 0 0 0.2rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+}
+
+.form-control {
+    box-sizing: border-box;
+    border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
+    border: 0.01rem solid #c3b6b6;
+    display: block;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+.phone-input-group {
+    display: flex;
+}
+
+.display-flex{
+    display: flex;
+}
+.role-input{
+    margin-left: 2rem;
+}
+.role-select{
+    margin-left: 5%;
+    font-size: 1.1rem;
+}
+#fixedTextarea {
+    width: 100%;
+
+}
+
+@media (max-width: 600px) {
+    #fixedTextarea {
+        max-width: 100%; 
+    }
+}
+.autocomplete {
+    position: relative;
+}
+
+.autocomplete-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* .card-item #skillsAutocomplete{
+    width: 100%;
+} */
+
+.autocomplete-list li {
+    padding: 2px 12px;
+    cursor: pointer;
+    font-weight: 17.6px;
+}
+
+.autocomplete-list li:hover {
+    background-color: #767676;
+    color: white;
+}
+
+select{
+    font-family: var(--font-family-regular);
+}
+
+/* select option:hover{
+    background-color: #f2f2f2;
+} */
+
+.selected-skill-item {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+
+.close-button {
+    cursor: pointer;
+    margin-left: 5px;
+}
+.phone-input{
+    width: 100%;
+}
+#tel,#telalter{
+    width: 100%;
+}
+.iti{
+    width: 100%;
 }

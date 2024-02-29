@@ -63,6 +63,7 @@ function login(event){
     }
     else{
         passwordAlert.style.display = 'none';
+        loginbtn.style.color = '#443fde';
     }
 
     window.location.href = "home.html";
