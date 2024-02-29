@@ -7,24 +7,6 @@ window.intlTelInput(inputTelalter);
 // You can repeat the above steps for the second phone input if needed
 
 
-const programmingSkills = [
-    "JavaScript",
-    "Python",
-    "Java",
-    "C++",
-    "HTML",
-    "CSS",
-    "React",
-    "Angular",
-    "Node.js",
-    "Ruby",
-    "PHP",
-    "Swift",
-    "TypeScript",
-    "Go",
-    "SQL",
-    "Rust"
-];
 // input
 let email = document.getElementById("email");
 let username = document.getElementById("username");
@@ -490,19 +472,50 @@ function updateAllRole(){
 // const programmingSkills = ["JavaScript", "Python", "Java", "C++", "Ruby", "Swift", "TypeScript"];
 
 // const skills = [];
+const programmingSkills = [
+    "JavaScript",
+    "Python",
+    "Java",
+    "C++",
+    "HTML",
+    "CSS",
+    "React",
+    "Angular",
+    "Node.js",
+    "Ruby",
+    "PHP",
+    "Swift",
+    "TypeScript",
+    "Go",
+    "SQL",
+    "Rust"
+];
 
-function showSkillsAutocomplete() {
-    const inputElement = document.getElementById("skills");
-    const autocompleteList = document.getElementById("skillsAutocomplete");
-    const inputText = inputElement.value.toLowerCase();
-    autocompleteList.innerHTML = "";
-    
+// const skillsList = [];
+
+const userSkillsInput = document.getElementById("userSkills");
+const skillsDropdown = document.getElementById("skillsDropdown");
+
+userSkillsInput.addEventListener("input", showSkillsDropdown);
+
+document.addEventListener("click", (event) => {
+    if (!userSkillsInput.contains(event.target) && !skillsDropdown.contains(event.target)) {
+        skillsDropdown.style.display = "none";
+    }
+});
+
+function showSkillsDropdown() {
+    const inputText = userSkillsInput.value.toLowerCase();
     const matchingSkills = programmingSkills.filter(skill =>
         skill.toLowerCase().includes(inputText) && !skillsList.includes(skill)
     );
 
+    // Clear the previous options
+    skillsDropdown.innerHTML = "";
+
     matchingSkills.forEach(skill => {
-        const listItem = document.createElement("li");
+        const listItem = document.createElement("div");
+        listItem.classList.add("autocomplete-item");
         listItem.textContent = skill;
         listItem.addEventListener("click", () => {
             // Add the selected skill to the skills array
@@ -511,27 +524,28 @@ function showSkillsAutocomplete() {
             // Update the selected skills container
             updateSelectedSkillsContainer();
 
-            // Clear the input field and hide the autocomplete list
-            inputElement.value = "";
-            autocompleteList.style.display = "none";
+            // Reset the input and hide the dropdown
+            userSkillsInput.value = "";
+            skillsDropdown.style.display = "none";
         });
 
-        autocompleteList.appendChild(listItem);
+        skillsDropdown.appendChild(listItem);
     });
 
-    autocompleteList.style.display = matchingSkills.length ? "block" : "none";
-}
+    // Set the width and position of the dropdown
+    skillsDropdown.style.width = `${userSkillsInput.offsetWidth}px`;
+    const inputRect = userSkillsInput.getBoundingClientRect();
+    skillsDropdown.style.top = `${inputRect.bottom + window.scrollY}px`;
+    skillsDropdown.style.left = `${inputRect.left + window.scrollX}px`;
 
-document.addEventListener("click", (event) => {
-    if (event.target !== document.getElementById("skills")) {
-        document.getElementById("skillsAutocomplete").style.display = "none";
-    }
-});
+    // Show or hide the dropdown based on the number of matching skills
+    skillsDropdown.style.display = matchingSkills.length ? "block" : "none";
+}
 
 function updateSelectedSkillsContainer() {
     const selectedSkillsContainer = document.getElementById("selectedSkills");
     selectedSkillsContainer.innerHTML = "";
-    
+
     skillsList.forEach(skill => {
         const selectedSkillItem = document.createElement("div");
         selectedSkillItem.classList.add("selected-skill-item");
