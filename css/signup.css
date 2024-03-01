@@ -4,6 +4,7 @@
     --primary-color-extra-hover : #1710e5;
     --error-color : #872e36; 
     --font-family-regular: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --container-color : #bacada;
 }
 body {
     display: flex;
@@ -19,10 +20,10 @@ body {
 }
 
 .container {
-    width: 60%;
+    width: 55%;
     /* max-width: 500px; */
     box-shadow: 0 0 10px #0000001a;
-    background-color: #d3d3db;
+    background-color: var(--container-color);
     border-radius: 0.4rem;
 }
 
@@ -62,19 +63,21 @@ body {
     margin-bottom: 0.3rem;
 }
 
-.form-control {
+.form-control,#fixedTextarea {
     box-sizing: border-box; /* Add box-sizing property */
     border-radius: 0.2rem;
     border: 0.01rem solid #c3b6b6;
     display: block;
     width: 100%;
+    outline: none;
     padding: 0.3rem;
+    font-family: var(--font-family-regular);
     font-size: 1.1rem;
     line-height: 1.5; /* Adjust line-height property */
     transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.form-control:focus {
+.form-control:focus,#fixedTextarea:hover {
     border-color: #0d6efd;
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
@@ -174,6 +177,12 @@ body {
     display: flex;
     align-items: center;
 }
+.gender-outer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .invalid {
     border: 1px solid red;
 }
@@ -298,3 +307,39 @@ select{
 .iti{
     width: 100%;
 }
+
+.card-item .skillsDropdown{
+    position: relative;
+    width: 100%;
+    padding-left: 1rem;
+}
+
+/* Style for select element */
+.card-item select {
+    border-radius: 0.2rem;
+    border: 0.01rem solid #c3b6b6;
+    display: block;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card-item select:focus, .card-item .selected-skills:focus {
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Style for select options */
+.card-item select option {
+    font-family: var(--font-family-regular);
+    padding: 8px;
+}
+
+.card-item select option:hover {
+    background-color: #f2f2f2;
+    color: var(--primary-color);
+}
+

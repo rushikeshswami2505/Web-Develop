@@ -1,8 +1,16 @@
 var inputTel = document.querySelector("#tel");
-window.intlTelInput(inputTel);
+var itiTel = window.intlTelInput(inputTel, {
+    separateDialCode: true,
+    hiddenInput: "full",
+    utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
+});
 
 var inputTelalter = document.querySelector("#telalter");
-window.intlTelInput(inputTelalter);
+var itiTelalter = window.intlTelInput(inputTelalter, {
+    separateDialCode: true,
+    hiddenInput: "full",
+    utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
+});
 
 // You can repeat the above steps for the second phone input if needed
 
@@ -47,8 +55,6 @@ let rolAlert = document.getElementById("rolealert");
 let addressAlert = document.getElementById("addressalert");
 let skillsAlert = document.getElementById("skillsalert");
 let languageAlert = document.getElementById("languagealert");
-var selectedCountryDataTel = window.intlTelInput(inputTel).getSelectedCountryData();
-var selectedCountryDataTelalter = window.intlTelInput(inputTelalter).getSelectedCountryData();
     
 // console.log(selectedCountryDataTel.dialCode);    
 
@@ -61,6 +67,8 @@ function login() {
 
 function signupValidity(event) {
     event.preventDefault();
+    
+    
     
     let emailVal =  email.value;
     let usernameVal = username.value;
@@ -75,6 +83,8 @@ function signupValidity(event) {
     let addressVal = address.value;
     let languageVal = language.options[language.selectedIndex].value;
 
+    let selectedCountryDataTel = itiTel.getSelectedCountryData().dialCode;
+    let selectedCountryDataTelalter = itiTelalter.getSelectedCountryData().dialCode;
     
     gender.forEach(radio =>  {
         if(radio.checked){
@@ -82,59 +92,87 @@ function signupValidity(event) {
         }
     });
 
+    // console.log("Selected Country Code for inputTel:",inputTel ,selectedCountryDataTel);
+    // console.log("Selected Country Code for inputTelalter:",inputTelalter, selectedCountryDataTelalter);
+    
     if(emailVal.length==0) updateTextError(emailAlert,"Please enter Email",true);
     else updateTextError(emailAlert,"",false);
 
     let valid = false;
     valid = isValidEmail(emailVal);
-    valid = isValidUsername(usernameVal);
-    valid = isValidFirstname(firstnameVal);
-    valid = isValidLastname(lastnameVal);
-    valid = isValidTel(telVal); 
-    valid = isValidTelalter(telalterVal);
-    valid = isValidPass(passVal);
-    valid = isValidCpass(passVal,cpassVal);
-    valid = isValidGender(genderVal);
-    valid = isValidDob(dobVal);
-    valid = isValidRole();
-    valid = isValidAddress(addressVal);
-    valid = isValidSkills(skillsList);
-    valid = isValidLanguage(languageVal);
+    console.log("after valid login 1 "+valid);
+    valid = isValidUsername(usernameVal) && valid;
+    console.log("after valid login 2 "+valid);
+    valid = isValidFirstname(firstnameVal) && valid;
+    console.log("after valid login 3 "+valid);
+    valid = isValidLastname(lastnameVal) && valid;
+    console.log("after valid login 4 "+valid);
+    valid = isValidTel(telVal) && valid; 
+    console.log("after valid login 5 "+valid);
+    valid = isValidTelalter(telalterVal) && valid;
+    console.log("after valid login 6 "+valid);
+    valid = isValidPass(passVal) && valid;
+    console.log("after valid login 7 "+valid);
+    valid = isValidCpass(passVal,cpassVal) && valid;
+    console.log("after valid login 8 "+valid);
+    valid = isValidGender(genderVal) && valid;
+    console.log("after valid login 9 "+valid);
+    valid = isValidDob(dobVal) && valid;
+    console.log("after valid login 10 "+valid);
+    valid = isValidRole() && valid;
+    console.log("after valid login 11 "+valid);
+    valid = isValidAddress(addressVal) && valid;
+    console.log("after valid login 12 "+valid);
+    valid = isValidSkills(skillsList) && valid;
+    console.log("after valid login 13 "+valid);
+    valid = isValidLanguage(languageVal) && valid;
+    console.log("after valid login 14 "+valid);
+    if(!valid){
+        return;
+    }
+    console.log("after valid login 15 "+valid);
 
-    var selectedCountryDataTel = window.intlTelInput(inputTel).getSelectedCountryData().dialCode;
-    var selectedCountryDataTelalter = window.intlTelInput(inputTelalter).getSelectedCountryData().dialCode;
-    const role = [];
+    const role = {};
     if(admin.checked || adminread.indeterminate){
-        role.push('admin');
-        if(adminread.checked) role.push('read');
-        if(adminwrite.checked) role.push('write');
-        if(adminupdate.checked) role.push('update');
+        let admin = [];
+        if(adminread.checked) admin.push('read');
+        if(adminwrite.checked) admin.push('write');
+        if(adminupdate.checked) admin.push('update');
+        role["admin"] = admin;
     }else{
-        role.push('user');
-        if(userread.checked) role.push('read');
-        if(userupdate.checked) role.push('update');
-        if(userexecute.checked) role.push('execute');
+        let user = [];
+        if(userread.checked) user.push('read');
+        if(userupdate.checked) user.push('update');
+        if(userexecute.checked) user.push('execute');
+        role["user"] = user;
     }
 
-    const usersdata = [];
+    const existingUsersDataString = localStorage.getItem("usersData");
+    let usersdata = [];
+    if (existingUsersDataString) {
+        usersdata = JSON.parse(existingUsersDataString);
+    }
     const user = {
-        userEmail : emailVal,
-        userUsername : usernameVal ,
-        userFirstname : firstnameVal,
-        userLastname : lastnameVal,
-        userTel : telVal,
-        userTelalter : telalterVal,
-        userPassword : passVal,
-        userGender : gender,
-        userDob : dobVal,
-        userAddress : addressVal,
-        userLanguage : languageVal,
-        userRole : role,
-        userSkills : skillsList
+        id : usersdata.length + 1,
+        email : emailVal,
+        username : usernameVal ,
+        firstname : firstnameVal,
+        lastname : lastnameVal,
+        phone : "(+"+selectedCountryDataTel+")"+telVal,
+        phonealter : telalterVal.length>0 ? "(+" +selectedCountryDataTelalter+")"+telalterVal : "",
+        password : passVal,
+        gender : genderVal,
+        dob : dobVal,
+        address : addressVal,
+        language : languageVal,
+        roles : role,
+        programmingSkills : skillsList
     };
     usersdata.push(user);
-    localStorage.setItem("usersdate",usersdata);
-    return false;
+    localStorage.setItem("usersData", JSON.stringify(usersdata));
+    console.log("before login");
+    login();
+    return true;
 }
 
 // ALL VALIDATION FUNCTIONS
@@ -306,17 +344,24 @@ function isValidGender(genderVal){
     }
     return false;
 }
-function isValidDob(dobVal){
+function isValidDob(dobVal) {
     dobVal = dobVal.trim();
-    if(dobVal.length === 0) 
+    const selectedDate = new Date(dobVal);
+    const minDate = new Date("1950-01-01");
+    const maxDate = new Date("2020-12-31");
+    if (dobVal.length === 0) {
         updateTextError(dobAlert, "Date field is required", true);
-    else{
-        dob.style.border = "0px solid red";
-        updateTextError(dobAlert, "Please select a valid year (1950 - 2020)", true);
-        return true;
+        dob.style.border = "1px solid red";
+        return false;
     }
-    dob.style.border = "1px solid red";
-    return false;
+    else if (selectedDate < minDate || selectedDate > maxDate) {
+        updateTextError(dobAlert, "Please select a date between 1950 and 2020", true);
+        dob.style.border = "1px solid red";
+        return false;
+    }
+    dob.style.border = "0px solid red";
+    updateTextError(dobAlert, "", false);
+    return true;
 }
 
 
@@ -343,7 +388,7 @@ function isValidSkills(skillsList){
     if(skillsList.length===0) updateTextError(skillsAlert, "Select minimum one skill", true);
     else {
         updateTextError(skillsAlert, "", false);
-        return false;
+        return true;
     }
     return false;
 }
@@ -352,7 +397,7 @@ function isValidLanguage(languageVal){
     if(languageVal.length===0) updateTextError(languageAlert, "Select laguage", true);
     else {
         updateTextError(languageAlert, "", false);
-        return false;
+        return true;
     }
     return false;
 }
@@ -466,12 +511,6 @@ function updateAllRole(){
     adminupdate.checked = false;
 }
 
-//address
-
-
-// const programmingSkills = ["JavaScript", "Python", "Java", "C++", "Ruby", "Swift", "TypeScript"];
-
-// const skills = [];
 const programmingSkills = [
     "JavaScript",
     "Python",
@@ -496,76 +535,75 @@ const programmingSkills = [
 const userSkillsInput = document.getElementById("userSkills");
 const skillsDropdown = document.getElementById("skillsDropdown");
 
-userSkillsInput.addEventListener("input", showSkillsDropdown);
+    userSkillsInput.addEventListener("input", showSkillsDropdown);
 
-document.addEventListener("click", (event) => {
-    if (!userSkillsInput.contains(event.target) && !skillsDropdown.contains(event.target)) {
-        skillsDropdown.style.display = "none";
-    }
-});
-
-function showSkillsDropdown() {
-    const inputText = userSkillsInput.value.toLowerCase();
-    const matchingSkills = programmingSkills.filter(skill =>
-        skill.toLowerCase().includes(inputText) && !skillsList.includes(skill)
-    );
-
-    // Clear the previous options
-    skillsDropdown.innerHTML = "";
-
-    matchingSkills.forEach(skill => {
-        const listItem = document.createElement("div");
-        listItem.classList.add("autocomplete-item");
-        listItem.textContent = skill;
-        listItem.addEventListener("click", () => {
-            // Add the selected skill to the skills array
-            skillsList.push(skill);
-
-            // Update the selected skills container
-            updateSelectedSkillsContainer();
-
-            // Reset the input and hide the dropdown
-            userSkillsInput.value = "";
+    document.addEventListener("click", (event) => {
+        if (!userSkillsInput.contains(event.target) && !skillsDropdown.contains(event.target)) {
             skillsDropdown.style.display = "none";
-        });
-
-        skillsDropdown.appendChild(listItem);
+        }
     });
 
-    // Set the width and position of the dropdown
-    skillsDropdown.style.width = `${userSkillsInput.offsetWidth}px`;
-    const inputRect = userSkillsInput.getBoundingClientRect();
-    skillsDropdown.style.top = `${inputRect.bottom + window.scrollY}px`;
-    skillsDropdown.style.left = `${inputRect.left + window.scrollX}px`;
+    function showSkillsDropdown() {
+        const inputText = userSkillsInput.value.toLowerCase();
+        const matchingSkills = programmingSkills.filter(skill =>
+            skill.toLowerCase().includes(inputText) && !skillsList.includes(skill)
+        );
 
-    // Show or hide the dropdown based on the number of matching skills
-    skillsDropdown.style.display = matchingSkills.length ? "block" : "none";
-}
+        skillsDropdown.innerHTML = "";
 
-function updateSelectedSkillsContainer() {
-    const selectedSkillsContainer = document.getElementById("selectedSkills");
-    selectedSkillsContainer.innerHTML = "";
+        matchingSkills.forEach(skill => {
+            const listItem = document.createElement("div");
+            // listItem.classList.add(".card-item select option");
+            // listItem.classList.add(".card-item select option:hover");
+            listItem.style.paddingLeft = '0.35rem';
+            listItem.style.paddingBottom = '0.1rem';
+            listItem.style.fontWeight = '530';
+            listItem.style.fontFamily = "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif";
+            // listItem.classList.add("autocomplete-item");
 
-    skillsList.forEach(skill => {
-        const selectedSkillItem = document.createElement("div");
-        selectedSkillItem.classList.add("selected-skill-item");
-        selectedSkillItem.textContent = skill;
+    // listItem.style.fontFamily = 'var(--font-family-regular)';
+    // listItem.style.padding = '8px';
 
-        const closeButton = document.createElement("span");
-        closeButton.classList.add("close-button");
-        closeButton.innerHTML = "&times;";
-        closeButton.addEventListener("click", () => {
-            // Remove the skill from the skills array
-            const index = skillsList.indexOf(skill);
-            if (index !== -1) {
-                skillsList.splice(index, 1);
-            }
+            // listItem.classList.add("autocomplete-item");
+            listItem.textContent = skill;
+            listItem.addEventListener("click", () => {
+                skillsList.push(skill);
 
-            // Update the selected skills container
-            updateSelectedSkillsContainer();
+                updateSelectedSkillsContainer();
+                userSkillsInput.value = "";
+                skillsDropdown.style.display = "none";
+            });
+            skillsDropdown.appendChild(listItem);
         });
+        skillsDropdown.style.width = `${userSkillsInput.offsetWidth}px`;
+        const inputRect = userSkillsInput.getBoundingClientRect();
+        skillsDropdown.style.top = `${inputRect.bottom + window.scrollY}px`;
+        skillsDropdown.style.left = `${inputRect.left + window.scrollX}px`;
 
-        selectedSkillItem.appendChild(closeButton);
-        selectedSkillsContainer.appendChild(selectedSkillItem);
-    });
-}
+        skillsDropdown.style.display = matchingSkills.length ? "block" : "none";
+    }
+
+    function updateSelectedSkillsContainer() {
+        const selectedSkillsContainer = document.getElementById("selectedSkills");
+        selectedSkillsContainer.innerHTML = "";
+
+        skillsList.forEach(skill => {
+            const selectedSkillItem = document.createElement("div");
+            selectedSkillItem.classList.add("selected-skill-item");
+            selectedSkillItem.textContent = skill;
+
+            const closeButton = document.createElement("span");
+            closeButton.classList.add("close-button");
+            closeButton.innerHTML = "&times;";
+            closeButton.addEventListener("click", () => {
+                const index = skillsList.indexOf(skill);
+                if (index !== -1) {
+                    skillsList.splice(index, 1);
+                }
+
+                updateSelectedSkillsContainer();
+            });;
+            selectedSkillItem.appendChild(closeButton);
+            selectedSkillsContainer.appendChild(selectedSkillItem);
+        });
+    }
