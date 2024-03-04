@@ -68,8 +68,6 @@ function login() {
 function signupValidity(event) {
     event.preventDefault();
     
-    
-    
     let emailVal =  email.value;
     let usernameVal = username.value;
     let firstnameVal = firstname.value;
@@ -158,8 +156,8 @@ function signupValidity(event) {
         username : usernameVal ,
         firstname : firstnameVal,
         lastname : lastnameVal,
-        phone : "(+"+selectedCountryDataTel+")"+telVal,
-        phonealter : telalterVal.length>0 ? "(+" +selectedCountryDataTelalter+")"+telalterVal : "",
+        phone : "+"+selectedCountryDataTel+""+telVal,
+        phonealter : telalterVal.length>0 ? "" +selectedCountryDataTelalter+""+telalterVal : "",
         password : passVal,
         gender : genderVal,
         dob : dobVal,
@@ -432,7 +430,6 @@ userread.addEventListener('click', updateUserRole);
 userupdate.addEventListener('click', updateUserRole);
 userexecute.addEventListener('click', updateUserRole);
 
-
 function updateAdminRole(){
     if(adminread.checked && adminwrite.checked && adminupdate.checked){
         admin.indeterminate = false;
@@ -472,10 +469,6 @@ function disableAdminRole(){
     adminread.checked = false;
     adminwrite.checked = false;
     adminupdate.checked = false;
-    // admin.disabled = true;
-    // adminread.disabled = true;
-    // adminwrite.disabled = true;
-    // adminupdate.disabled = true;
     console.log("disable admin");
 }
 function disableUserRole(){
@@ -484,21 +477,9 @@ function disableUserRole(){
     userread.checked = false;
     userupdate.checked = false;
     userexecute.checked = false;
-    // user.disabled = true;
-    // userread.disabled = true;
-    // userexecute.disabled = true;
-    // userupdate.disabled = true;
     console.log("disable user");
 }
 function updateAllRole(){
-    // admin.disabled = false;
-    // adminread.disabled = false;
-    // adminwrite.disabled = false;
-    // adminupdate.disabled = false;
-    // user.disabled = false;
-    // userread.disabled = false;
-    // userexecute.disabled = false;
-    // userupdate.disabled = false;
     user.checked = false;
     user.indeterminate = false;
     userread.checked = false;
