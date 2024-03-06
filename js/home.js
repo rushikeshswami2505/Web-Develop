@@ -74,35 +74,14 @@ const originalBorderStyle = email.style.border;
 let userindex = localStorage.getItem("currentuser");
 let usersData = JSON.parse(localStorage.getItem("usersData"));
 let currentuser = usersData[userindex];
-
-let phoneNumber,phoneCountryCode,phoneNumberAlter;
-let index1 = 0;
-if(phoneNumber.length===14) index1=4;
-else if(phoneNumber.length===13) index1=3;
-else if(phoneNumber.length===12) index1=2;
-phoneCountryCode = getCountryCodeFromDialCode(phoneNumber.substring(0,index1)+"");
-itiTel.setCountry(phoneCountryCode);
-console.log(itiTel);
-let = currentuser.phonealter;
-let index2 = 0;
-if(phoneNumberAlter.length===14) index2=4;
-else if(phoneNumberAlter.length===13) index2=3;
-else if(phoneNumberAlter.length===12) index2=2;
+let phoneNumber,phoneCountryCode,phoneNumberAlter,phonealterCountryCode,index1,index2,roles;
 setViewData();
+setEditData();
 
-let phonealterCountryCode = getCountryCodeFromDialCode(phoneNumberAlter.substring(0,index2)+"");
-if(phoneNumberAlter.length>10)
-    itiTelalter.setCountry(phonealterCountryCode);
-else 
-    itiTelalter.setCountry("IN");
-
-
-viewskills.innerHTML = skillFull;
 function setViewData(){
     usersData = JSON.parse(localStorage.getItem("usersData"));
     currentuser = usersData[userindex];
-
-
+    
     phoneNumber = currentuser.phone;
     index1 = 0;
     if(phoneNumber.length===14) index1=4;
@@ -130,18 +109,17 @@ function setViewData(){
     viewdob.innerText = currentuser.dob;
     viewgender.innerText = currentuser.gender;
     viewaddress.innerText = currentuser.address;
-    skillListq = currentuser.programmingSkills;
+    skillListStorage = currentuser.programmingSkills;
     skillFull = "";
-    viewskills.innerHTML = skillFull;
-    console.log(skillListq);
-    skillListq.forEach((skill,index) => {
+    console.log(skillListStorage);
+    skillListStorage.forEach((skill,index) => {
         skillFull = skillFull + "&#8226; " + skill +" ";
     });
-
-    const roles = currentuser.programmingSkills;
+    viewskills.innerHTML = skillFull;
+    
+    roles = currentuser.programmingSkills;
     if(roles.admin){
         console.log("admin",roles.admin);
-        // admin.innerText = 'Admin';
         document.getElementById("role").innerText = "Admin Roles";
         read.innerText = 'Read';
         write.innerText = 'Write';
@@ -204,7 +182,6 @@ function setViewData(){
             viewwrite.style.display = 'block';
         }
         else {
-            // writecheck.checked = false;
             viewwrite.style.display = 'none';
         }
         if(roles.user.includes('execute')){
@@ -215,39 +192,40 @@ function setViewData(){
             update.checked = false;
             viewupdate.style.display = 'none';
         }
-        // roleedit.style.display = 'none';
     }
     console.log("geteee");
 }
 //edit local change
-email.value = currentuser.email;
-username.value = currentuser.username;
-firstname.value = currentuser.firstname;
-lastname.value = currentuser.lastname;
-phone.value = phoneNumber.substring(index1);
-console.log(phoneNumberAlter);
-if(phonealter.length>10)
-phonealter.value = phoneNumberAlter.substring(index2);
-console.log(phoneNumberAlter.substring(index2));
-language.value = currentuser.language;
-dob.value = currentuser.dob;
-document.getElementById(currentuser.gender.toLowerCase()).checked = true;
-address.value = currentuser.address;
-let roles = currentuser.programmingSkills;
-console.log(currentuser);
-console.log(currentuser.roles);
+function setEditData(){
+    email.value = currentuser.email;
+    username.value = currentuser.username;
+    firstname.value = currentuser.firstname;
+    lastname.value = currentuser.lastname;
+    phone.value = phoneNumber.substring(index1);
+    console.log(phoneNumberAlter);
+    if(phonealter.length>10)
+    phonealter.value = phoneNumberAlter.substring(index2);
+    console.log(phoneNumberAlter.substring(index2));
+    language.value = currentuser.language;
+    dob.value = currentuser.dob;
+    document.getElementById(currentuser.gender.toLowerCase()).checked = true;
+    address.value = currentuser.address;
+    roles = currentuser.programmingSkills;
+    console.log(currentuser);
+    console.log(currentuser.roles);
+}
 // console.log("Roles: "+roles['admin']);
 
 // console.log("Roles: "+roles['user']);
 
 // console.log(roles.user);
-    function closeModal() {
-        if ($("#editProfileModal").hasClass("show")) {
-            $("body").removeClass("modal-open");
-            $(".modal-backdrop").remove();
-            $("#editProfileModal").modal("hide");
-        }
+function closeModal() {
+    if ($("#editProfileModal").hasClass("show")) {
+        $("body").removeClass("modal-open");
+        $(".modal-backdrop").remove();
+        $("#editProfileModal").modal("hide");
     }
+}
 
 function updateUser(event){
     event.preventDefault();
@@ -328,7 +306,7 @@ function updateUser(event){
 }
 
 function updateTextError(element,msg,state){
-    if(state){
+    if(state){  
         element.style.display = 'block';
         element.innerText = msg; 
     }else{
@@ -519,7 +497,7 @@ function showSection(sectionId) {
 const selectedSkillsContainer = document.getElementById("selectedSkillsContainer");
 
 // Add pre-filled skills to the container
-// skillListq.forEach(skill => {
+// skillListStorage.forEach(skill => {
 //     const selectedSkillItem = document.createElement("div");
 //     selectedSkillItem.classList.add("selected-skill-item");
 //     selectedSkillItem.textContent = skill;
@@ -589,16 +567,12 @@ function autocomplete(inp, arr, containerId) {
                     inp.value = this.getElementsByTagName("input")[0].value;
                     closeAllLists();
 
-                    // Add the selected skill to the skillList array
                     const selectedSkillValue = this.getElementsByTagName("input")[0].value;
                     if (!skillList.includes(selectedSkillValue)) {
                         skillList.push(selectedSkillValue);
                     }
 
-                    // Clear the input box after selecting an item
                     inp.value = "";
-
-                    // Add the selected skill to the container:
                     const selectedSkillsContainer = document.getElementById(containerId);
                     const selectedSkillItem = document.createElement("div");
                     selectedSkillItem.classList.add("selected-skill-item");
@@ -609,7 +583,6 @@ function autocomplete(inp, arr, containerId) {
                     closeButton.innerHTML = "&times;";
                     closeButton.addEventListener("click", function() {
                         selectedSkillsContainer.removeChild(selectedSkillItem);
-                        // Remove the skill from the skillList array
                         const index = skillList.indexOf(selectedSkillValue);
                         if (index !== -1) {
                             skillList.splice(index, 1);
@@ -683,7 +656,6 @@ function autocomplete(inp, arr, containerId) {
             closeButton.innerHTML = "&times;";
             closeButton.addEventListener("click", function() {
                 selectedSkillsContainer.removeChild(selectedSkillItem);
-                // Remove the skill from the skillList array
                 const index = skillList.indexOf(skill);
                 if (index !== -1) {
                     skillList.splice(index, 1);
@@ -696,7 +668,17 @@ function autocomplete(inp, arr, containerId) {
     }
 
     initializeSelectedSkills();
+}function logout() {
+  // Remove current user data from localStorage
+  localStorage.removeItem("currentuser");
+
+  // Replace the current page's URL with the new one
+  window.history.pushState(null, null, "index.html");
+
+  // Redirect the user to the new page
+  window.location.href = "index.html";
 }
+
 function getCountryCodeFromDialCode(dialCode) {
     var codeMapping = {
         '+1': 'US',

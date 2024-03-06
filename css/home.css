@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* This ensures vertical centering */
+    height: 100vh;
     margin: 0; /* Remove default body margin */
 }
 .navbar {
@@ -53,7 +53,10 @@ body {
 .navbar-nav .active-nav-item a {
     color: #ffffff;  /* Set the desired text color for the active section */
 }
-
+.nav-item:hover{
+    outline: 2px solid #62676d;
+    border-radius: 0.85rem;
+}
 @keyframes fadeIn {
     from {
         opacity: 0;
