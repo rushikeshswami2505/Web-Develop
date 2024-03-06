@@ -84,6 +84,9 @@ function signupValidity(event) {
     let selectedCountryDataTel = itiTel.getSelectedCountryData().dialCode;
     let selectedCountryDataTelalter = itiTelalter.getSelectedCountryData().dialCode;
     
+    
+    
+
     gender.forEach(radio =>  {
         if(radio.checked){
             genderVal = radio.value;
@@ -130,8 +133,9 @@ function signupValidity(event) {
     }
     console.log("after valid login 15 "+valid);
 
+    
     const role = {};
-    if(admin.checked || adminread.indeterminate){
+    if(admin.checked || admin.indeterminate){
         let admin = [];
         if(adminread.checked) admin.push('read');
         if(adminwrite.checked) admin.push('write');
@@ -144,7 +148,7 @@ function signupValidity(event) {
         if(userexecute.checked) user.push('execute');
         role["user"] = user;
     }
-
+    console.log(role);
     const existingUsersDataString = localStorage.getItem("usersData");
     let usersdata = [];
     if (existingUsersDataString) {
@@ -157,7 +161,7 @@ function signupValidity(event) {
         firstname : firstnameVal,
         lastname : lastnameVal,
         phone : "+"+selectedCountryDataTel+""+telVal,
-        phonealter : telalterVal.length>0 ? "" +selectedCountryDataTelalter+""+telalterVal : "",
+        phonealter : telalterVal.length>0 ? "+" +selectedCountryDataTelalter+""+telalterVal : "",
         password : passVal,
         gender : genderVal,
         dob : dobVal,
@@ -491,7 +495,6 @@ function updateAllRole(){
     adminwrite.checked = false;
     adminupdate.checked = false;
 }
-
 const programmingSkills = [
     "JavaScript",
     "Python",
@@ -511,64 +514,124 @@ const programmingSkills = [
     "Rust"
 ];
 
-// const skillsList = [];
+autocomplete(document.getElementById("userSkills"), programmingSkills, "selectedSkillsContainer");
 
-const userSkillsInput = document.getElementById("userSkills");
-const skillsDropdown = document.getElementById("skillsDropdown");
+function autocomplete(inp, arr, containerId) {
+    var currentFocus;
 
-    userSkillsInput.addEventListener("input", showSkillsDropdown);
+    
+    console.log(arr,inp);
+    
+    inp.addEventListener("input", function(e) {
+        var val = this.value;
+        closeAllLists();
 
-    document.addEventListener("click", (event) => {
-        if (!userSkillsInput.contains(event.target) && !skillsDropdown.contains(event.target)) {
-            skillsDropdown.style.display = "none";
+        if (!val) {
+            return false;
+        }
+
+        currentFocus = -1;
+        var a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                var b = document.createElement("DIV");
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+
+                b.addEventListener("click", function(e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+
+                    // Add the selected skill to the skillList array
+                    const selectedSkillValue = this.getElementsByTagName("input")[0].value;
+                    if (!skillsList.includes(selectedSkillValue)) {
+                        skillsList.push(selectedSkillValue);
+                    }
+
+                    // Clear the input box after selecting an item
+                    inp.value = "";
+
+                    // Add the selected skill to the container:
+                    const selectedSkillsContainer = document.getElementById(containerId);
+                    const selectedSkillItem = document.createElement("div");
+                    selectedSkillItem.classList.add("selected-skill-item");
+                    selectedSkillItem.textContent = selectedSkillValue;
+
+                    const closeButton = document.createElement("span");
+                    closeButton.classList.add("close-button");
+                    closeButton.innerHTML = "&times;";
+                    closeButton.addEventListener("click", function() {
+                        selectedSkillsContainer.removeChild(selectedSkillItem);
+                        // Remove the skill from the skillList array
+                        const index = skillsList.indexOf(selectedSkillValue);
+                        if (index !== -1) {
+                            skillsList.splice(index, 1);
+                        }
+                    });
+
+                    selectedSkillItem.appendChild(closeButton);
+                    selectedSkillsContainer.appendChild(selectedSkillItem);
+                });
+
+                a.appendChild(b);
+            }
         }
     });
 
-    function showSkillsDropdown() {
-        const inputText = userSkillsInput.value.toLowerCase();
-        const matchingSkills = programmingSkills.filter(skill =>
-            skill.toLowerCase().includes(inputText) && !skillsList.includes(skill)
-        );
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
 
-        skillsDropdown.innerHTML = "";
+        if (e.keyCode == 40) {
+            currentFocus++;
+            addActive(x);
+        } else if (e.keyCode == 38) {
+            currentFocus--;
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            e.preventDefault();
+            if (currentFocus > -1) {
+                if (x) x[currentFocus].click();
+            }
+        }
+    });
 
-        matchingSkills.forEach(skill => {
-            const listItem = document.createElement("div");
-            // listItem.classList.add(".card-item select option");
-            // listItem.classList.add(".card-item select option:hover");
-            listItem.style.paddingLeft = '0.35rem';
-            listItem.style.paddingBottom = '0.1rem';
-            listItem.style.fontWeight = '530';
-            listItem.style.fontFamily = "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif";
-            // listItem.classList.add("autocomplete-item");
-
-    // listItem.style.fontFamily = 'var(--font-family-regular)';
-    // listItem.style.padding = '8px';
-
-            // listItem.classList.add("autocomplete-item");
-            listItem.textContent = skill;
-            listItem.addEventListener("click", () => {
-                skillsList.push(skill);
-
-                updateSelectedSkillsContainer();
-                userSkillsInput.value = "";
-                skillsDropdown.style.display = "none";
-            });
-            skillsDropdown.appendChild(listItem);
-        });
-        skillsDropdown.style.width = `${userSkillsInput.offsetWidth}px`;
-        const inputRect = userSkillsInput.getBoundingClientRect();
-        skillsDropdown.style.top = `${inputRect.bottom + window.scrollY}px`;
-        skillsDropdown.style.left = `${inputRect.left + window.scrollX}px`;
-
-        skillsDropdown.style.display = matchingSkills.length ? "block" : "none";
+    function addActive(x) {
+        if (!x) return false;
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        x[currentFocus].classList.add("autocomplete-active");
     }
 
-    function updateSelectedSkillsContainer() {
-        const selectedSkillsContainer = document.getElementById("selectedSkills");
-        selectedSkillsContainer.innerHTML = "";
+    function removeActive(x) {
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
 
-        skillsList.forEach(skill => {
+    function closeAllLists(elmnt) {
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if ((elmnt != x[i] && elmnt != inp) || x[i].children.length === 0) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+
+    document.addEventListener("click", function(e) {
+        closeAllLists(e.target);
+    });
+
+    function initializeSelectedSkills() {
+        const selectedSkillsContainer = document.getElementById(containerId);
+
+        for (const skill of selectedSkills) {
             const selectedSkillItem = document.createElement("div");
             selectedSkillItem.classList.add("selected-skill-item");
             selectedSkillItem.textContent = skill;
@@ -576,15 +639,101 @@ const skillsDropdown = document.getElementById("skillsDropdown");
             const closeButton = document.createElement("span");
             closeButton.classList.add("close-button");
             closeButton.innerHTML = "&times;";
-            closeButton.addEventListener("click", () => {
+            closeButton.addEventListener("click", function() {
+                selectedSkillsContainer.removeChild(selectedSkillItem);
+                // Remove the skill from the skillList array
                 const index = skillsList.indexOf(skill);
                 if (index !== -1) {
                     skillsList.splice(index, 1);
                 }
+            });
 
-                updateSelectedSkillsContainer();
-            });;
             selectedSkillItem.appendChild(closeButton);
             selectedSkillsContainer.appendChild(selectedSkillItem);
-        });
+        }
     }
+
+    initializeSelectedSkills();
+}
+
+
+// Example usage
+
+// const skillsList = [];
+
+// const userSkillsInput = document.getElementById("userSkills");
+// const skillsDropdown = document.getElementById("skillsDropdown");
+
+//     userSkillsInput.addEventListener("input", showSkillsDropdown);
+
+//     document.addEventListener("click", (event) => {
+//         if (!userSkillsInput.contains(event.target) && !skillsDropdown.contains(event.target)) {
+//             skillsDropdown.style.display = "none";
+//         }
+//     });
+
+//     function showSkillsDropdown() {
+//         const inputText = userSkillsInput.value.toLowerCase();
+//         const matchingSkills = programmingSkills.filter(skill =>
+//             skill.toLowerCase().includes(inputText) && !skillsList.includes(skill)
+//         );
+
+//         skillsDropdown.innerHTML = "";
+
+//         matchingSkills.forEach(skill => {
+//             const listItem = document.createElement("div");
+//             // listItem.classList.add(".card-item select option");
+//             // listItem.classList.add(".card-item select option:hover");
+//             listItem.style.paddingLeft = '0.35rem';
+//             listItem.style.paddingBottom = '0.1rem';
+//             listItem.style.fontWeight = '530';
+//             listItem.style.fontFamily = "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif";
+//             // listItem.classList.add("autocomplete-item");
+
+//     // listItem.style.fontFamily = 'var(--font-family-regular)';
+//     // listItem.style.padding = '8px';
+
+//             // listItem.classList.add("autocomplete-item");
+//             listItem.textContent = skill;
+//             listItem.addEventListener("click", () => {
+//                 skillsList.push(skill);
+
+//                 updateSelectedSkillsContainer();
+//                 userSkillsInput.value = "";
+//                 skillsDropdown.style.display = "none";
+//             });
+//             skillsDropdown.appendChild(listItem);
+//         });
+//         skillsDropdown.style.width = `${userSkillsInput.offsetWidth}px`;
+//         const inputRect = userSkillsInput.getBoundingClientRect();
+//         skillsDropdown.style.top = `${inputRect.bottom + window.scrollY}px`;
+//         skillsDropdown.style.left = `${inputRect.left + window.scrollX}px`;
+
+//         skillsDropdown.style.display = matchingSkills.length ? "block" : "none";
+//     }
+
+//     function updateSelectedSkillsContainer() {
+//         const selectedSkillsContainer = document.getElementById("selectedSkills");
+//         selectedSkillsContainer.innerHTML = "";
+
+//         skillsList.forEach(skill => {
+//             const selectedSkillItem = document.createElement("div");
+//             selectedSkillItem.classList.add("selected-skill-item");
+//             selectedSkillItem.textContent = skill;
+
+//             const closeButton = document.createElement("span");
+//             closeButton.classList.add("close-button");
+//             closeButton.innerHTML = "&times;";
+//             closeButton.addEventListener("click", () => {
+//                 const index = skillsList.indexOf(skill);
+//                 if (index !== -1) {
+//                     skillsList.splice(index, 1);
+//                 }
+
+//                 updateSelectedSkillsContainer();
+//             });;
+//             selectedSkillItem.appendChild(closeButton);
+//             selectedSkillsContainer.appendChild(selectedSkillItem);
+//         });
+//     }
+

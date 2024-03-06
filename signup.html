@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/utils.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="css/signup.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css"/>
-<script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-<script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/utils.js"></script>
 
 </head>
 <body class="bg-light">
@@ -25,8 +26,8 @@
                                 <p id="emailalert" class="alert">Enter valid email</p>
                             </div>
                             <div class="mb-3 card-item">
-                                <label for="username" class="form-label">Username <span class="required">*</span></label>
-                                <input type="text" name="username" id="username" class="form-control" placeholder="abc2002">
+                                <label for="username" class="form-label">Username <span class="required" >*</span></label>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="abc2002" autocomplete="none">
                                 <p id="usernamealert" class="alert">Username should be max 6 letter</p>
                             </div>
                             
@@ -46,12 +47,12 @@
                         <div class="card-row">
                             <div class="mb-3 card-item">
                                 <label for="tel" class="form-label">Phone Number <span class="required">*</span></label>
-                                <input type="tel" name="tel" id="tel" class="form-control phone-input" placeholder="91254*****">
-                                <p id="telalert" class="alert">Please enter Mobile Number</p>
+                                <input type="tel" name="tel" id="tel" class="form-control phone-input" placeholder="91254*****" autocomplete="none">
+                                <p id="telalert" class="alert"></p>
                             </div>
                             <div class="mb-3 card-item">
-                                <label for="telalter" class="form-label">Another Phone Number</label>
-                                <input type="tel" name="telalter" id="telalter" class="form-control phone-input" placeholder="91254*****">
+                                <label for="telalter" class="form-label">Phone alternative</label>
+                                <input type="tel" name="telalter" id="telalter" class="form-control phone-input" placeholder="91254*****" autocomplete="none">
                                 <p id="telalteralert" class="alert">Please enter Mobile Number</p>
                             </div>
                         </div>                        
@@ -59,13 +60,13 @@
                             <div class="mb-3 card-item passwordAll">
                                 <div>
                                     <label for="password" class="form-label">Password <span class="required">*</span></label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="********">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="********" autocomplete="new-password">
                                     <p id="passwordalert" class="alert">Please enter Password</p>
                                 </div>
                             </div>
                             <div class="mb-3 card-item">
                                 <label for="cpassword" class="form-label">Confirm Password <span class="required">*</span></label>
-                                <input type="password" name="password" id="cpassword" class="form-control" placeholder="********">
+                                <input type="password" name="password" id="cpassword" class="form-control" placeholder="********" autocomplete="new-password">
                                 <p id="cpasswordalert" class="alert">Please enter confirm Password</p>
                             </div>
                         </div>
@@ -144,20 +145,27 @@
                             </div>
                         <div class="mb-3 card-item">
                             <label for="textarea" class="form-label">Address<span class="required">*</span></label>
-                            <textarea id="fixedTextarea" name="fixedTextarea" rows="3" cols="60" wrap="hard" placeholder="A 40, Near ABC road..."></textarea>
+                            <textarea id="fixedTextarea" name="fixedTextarea" rows="3" cols="60" wrap="hard" placeholder="A 40, Near ABC road..." autocomplete="none"></textarea>
                             <p id="addressalert" class="alert">Please enter confirm Password</p>
                         </div>
                     </div>      
                     <div class="card-row">
                          <div class="mb-3 card-item">
                             <div>
-                                <label for="userSkills" class="form-label">Programming skills <span class="required">*</span></label>
+                                <!-- <label for="userSkills" class="form-label">Programming skills <span class="required">*</span></label>
                                 <div class="input-group">
-                                    <input type="text" name="userSkills" id="userSkills" class="form-control" placeholder="Start typing..." oninput="showSkillsDropdown()">
+                                    <input type="text" name="userSkills" id="userSkills" class="form-control" placeholder="Start typing..." oninput="showSkillsDropdown()" autocomplete="none">
                                     <div id="skillsDropdown" class="autocomplete-list"></div>
                                 </div>
-                                <div id="selectedSkills" class="selected-skills"></div>
-                                <p id="skillsalert" class="alert">Please enter confirm Password</p>
+                                <div id="selectedSkills" class="selected-skills"></div> -->
+                                <!-- <p id="skillsalert" class="alert">Please enter confirm Password</p> -->
+                                <label for="userSkills" class="form-label">Skills</label>
+                                <div class="autocomplete">
+                                    <input type="text" name="userSkills" id="userSkills" class="form-control" placeholder="Start typing..." autocomplete="none">
+                                </div>
+                                <div id="selectedSkillsContainer" class="selected-skills-container"></div>
+                                <p id="skillsalert" class="alert"></p>
+
                             </div>
                         </div>
                         

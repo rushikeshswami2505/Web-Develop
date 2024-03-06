@@ -179,13 +179,20 @@ body {
   align-items: center;
 }
 .model-input{
-  width: auto; 
+  border-radius: 0.2rem;
+    border: 0.01rem solid #c3b6b6;
+    display: block;
+    line-height: 0.1rem;
+    width: 95%;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .modal-content {
   background-color: #fefefe;
   padding: 20px;
   background-color: var(--container-color);
-  /* width: 20%; */
+  width: 30%;
   border-radius: 5px;
   margin: auto;
 }
