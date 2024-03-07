@@ -62,7 +62,7 @@ const skillsList = [];
 //ALL FUNCTIONS 
 function login() {
     console.log("ok");
-    window.location.href = "index.html";
+    window.location.href = "login.html";
 }
 
 function signupValidity(event) {

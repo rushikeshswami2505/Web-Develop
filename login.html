@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div id="toast-container">
+        <div id="toast" class="hidden">
+            This is a toast message!
+        </div>
+        <!-- <ul class="notifications"></ul> -->
+    </div>
+    <div class="container mt-5">
+        <div class="card">
+            <h3 class="card-title text-center">Login</h3>
+            <div>
+                <form> <!-- or we can use onclick and onsubmit -->
+                    <div class="mb-3">
+                        <label for="uemail" class="form-label">Username</label>
+                        <div class="input-group">
+                            <!-- <i class="fa-solid fa-envelope"></i> -->
+                            <input type="text" name="email" id="uemail" class="form-control" placeholder="abc2002" required>
+                        </div>
+                        <p id="emailAlert">Couldn't find your Account</p>
+                    </div>
+                    <div class="">
+                        <label for="upassword" class="form-label">Password</label>
+                        <div class="input-group">
+                            <!-- <i class="fa-solid fa-envelope"></i> -->
+                            <input type="password" name="password" id="upassword" class="form-control" placeholder="********" required>
+                        </div>
+                        <!-- <p id="passwordAlert">Wrong password. Try again or click Forgot password to reset it.</p> -->
+                        <p id="passwordAlert">Wrong password. Please try again </p>
+                    </div>
+                    <div class="mb-3 fogot">
+                        <p id="forgotpassword" class="text-primary" onclick="openModal()">Forgot Password</p>
+                    </div>
+                    
+                    <div class="mb-3 btn-container">
+                        <button onclick=login(event) class="btn btn-primary" id="btnSignIn">Login</button>
+                    </div>
+                    
+                    <div class="mb-3 text-center">
+                        <span id="text">Don't have an account? <span id="signup" class="text-primary" onclick="create()">signup</span></span>
+                    </div>
+                </form>
+            </div>  
+        </div>
+    </div>
+          
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Reset Password</p>
+            <div class="mb-3">
+                <label for="forgotEmail" class="form-label">Email</label>
+                <input type="email" class="model-input" id="forgotEmail" placeholder="Enter your email">
+                <p id="forgotEmailalert" class="alert">Enter valid email</p>
+            </div>
+            <div class="mb-3">
+                <label for="newPassword" class="form-label">New Password</label>
+                <input type="password" class="model-input" id="newPassword" placeholder="Enter new password">
+                <p id="fogotPasswordalert" class="alert">Enter valid email</p>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="model-input" id="confirmPassword" placeholder="Confirm new password">
+                <p id="forgotConfirmPasswordalert" class="alert">Enter valid email</p>
+            </div>
+            <div class="mb-3 btn-container">
+                <button onclick=resetPassword(event) class="btn btn-primary" id="btnSignIn">Reset Password</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="js/login.js"></script>
+</body>
+</html>
