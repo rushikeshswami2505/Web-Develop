@@ -7,7 +7,7 @@ var inputTel = document.querySelector("#phone");
         hiddenInput: "full",
         utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
     });
-
+itiTel.setCountry("IN");
 
 // itiTel.setCountry('IN');
 
@@ -18,9 +18,11 @@ var itiTelalter = window.intlTelInput(inputTelalter, {
     utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
 });
 
+itiTelalter.setCountry("IN");
+
 //show box
 let viewemail = document.getElementById("viewemail");
-let viewusername = document.getElementById("viewusername");
+// let viewusername = document.getElementById("viewusername");
 let viewfirstname = document.getElementById("viewfirstname");
 let viewlastname = document.getElementById("viewlastname");
 let viewphone = document.getElementById("viewphone");
@@ -29,17 +31,16 @@ let viewlanguage = document.getElementById("viewlanguage");
 let viewdob = document.getElementById("viewdob");
 let viewgender = document.getElementById("viewgender");
 let viewskills = document.getElementById("viewskills");
-let viewroles = document.getElementById("viewroles");
 let viewaddress = document.getElementById("viewaddress");
 
-let viewrole = document.getElementById("role");
+let viewroles = document.getElementById("viewroles");
 let viewread = document.getElementById("viewread");
 let viewwrite = document.getElementById("viewwrite");
 let viewupdate = document.getElementById("viewupdate");
 
 //edit box
 let email = document.getElementById("email");
-let username = document.getElementById("username");
+// let username = document.getElementById("username");
 let firstname = document.getElementById("firstname");
 let lastname = document.getElementById("lastname");
 let phone = document.getElementById("phone");
@@ -48,27 +49,6 @@ let language = document.getElementById("language");
 let dob = document.getElementById("dob");
 let skills = document.getElementById("userSkills");
 let address = document.getElementById("address");
-
-let admin = document.getElementById("admin");
-let readcheck = document.getElementById("readcheck");
-let writecheck = document.getElementById("writecheck");
-let updatecheck = document.getElementById("updatecheck");
-let read = document.getElementById("read");
-let write = document.getElementById("write");
-let update = document.getElementById("update");
-
-//alert
-let emailAlert = document.getElementById("emailalert");
-let usernameAlert = document.getElementById("usernamealert");
-let firstnameAlert = document.getElementById("firstnamealert");
-let lastnameAlert = document.getElementById("lastnamealert");
-let phoneAlert = document.getElementById("phonealert");
-let phonealertAlert = document.getElementById("phonealteralert");
-let dobAlert = document.getElementById("dobalert");
-let rolAlert = document.getElementById("rolealert");
-let addressAlert = document.getElementById("addressalert");
-let skillsAlert = document.getElementById("skillsalert");
-
 
 const originalBorderStyle = email.style.border;
 
@@ -101,107 +81,64 @@ function setViewData(){
     phonealterCountryCode = getCountryCodeFromDialCode(phoneNumberAlter.substring(0,index2)+"");
 
     viewemail.innerText = currentuser.email;
-    viewusername.innerText = currentuser.username;
+    
+    // console.log(1111111111);
+    // viewusername.innerText = currentuser.username;
     viewfirstname.innerText = currentuser.firstname;
     viewlastname.innerText = currentuser.lastname;
     viewphone.innerText = ""+ phoneNumber.substring(0,index1) + " " + phoneNumber.substring(index1);
     if(phoneNumberAlter.length>10)
     viewphonealter.innerText =  ""+ phoneNumberAlter.substring(0,index2) + " " +  phoneNumberAlter.substring(index2);
-    else
-    viewphonealter.innerHTML = "<p style='font-weight: lighter;'>Yet not set</p>";
+    else viewphonealter.innerHTML = "<p style='font-weight: lighter;'>Yet not set</p>";
     viewdob.innerText = currentuser.dob;
     viewgender.innerText = currentuser.gender;
-    viewaddress.innerText = currentuser.address;
+    if(currentuser.address.length!==0) viewaddress.innerText = currentuser.address;
+    else viewaddress.innerText = "Yet not set"
     skillListStorage = currentuser.programmingSkills;
     skillFull = "";
     console.log(skillListStorage);
     skillListStorage.forEach((skill,index) => {
         skillFull = skillFull + "&#8226; " + skill +" ";
     });
+    // document.getElementById("roles").innerHTML = skillFull;
     viewskills.innerHTML = skillFull;
-    
-    roles = currentuser.programmingSkills;
+    roles = currentuser.roles;
     if(roles.admin){
-        console.log("admin",roles.admin);
-        document.getElementById("role").innerText = "Admin Roles";
-        read.innerText = 'Read';
-        write.innerText = 'Write';
-        update.innerText = 'Update';
-    
         viewread.innerHTML = "&#8226; Read";
         viewwrite.innerHTML = "&#8226; Write";
         viewupdate.innerHTML = "&#8226; Update";
+        viewroles.innerText = "Admin Roles";
         
-        viewrole.innerText = "Admin Roles";
-        if(roles.admin.includes('read')){
-            readcheck.checked = true;
-            viewread.style.display = 'block';
-        }
-        else{
-            readcheck.checked = false;
-            viewread.style.display = 'none';
-        }
-        if(roles.admin.includes('write')){
-            writecheck.checked = true;
-            viewwrite.style.display = 'block';
-        }
-        else {
-            writecheck.checked = false;
-            viewwrite.style.display = 'none';
-        }
-        if(roles.admin.includes('update')){
-            updatecheck.checked = true;
-            viewupdate.style.display = 'block';
-        }
-        else{
-            updatecheck.checked = false;
-            viewupdate.style.display = 'none';
-        }
+        if(roles.admin.includes('read')) viewread.style.display = 'block';
+        else viewread.style.display = 'none';
+        
+        if(roles.admin.includes('write')) viewwrite.style.display = 'block';
+        else viewwrite.style.display = 'none';
+        
+        if(roles.admin.includes('update')) viewupdate.style.display = 'block';
+        else viewupdate.style.display = 'none';
     }
     if(roles.user){
-        console.log("user",roles.user);
-        read.innerText = 'Read';
-        write.innerText = 'Update';
-        update.innerText = 'Execute';
-        readcheck.disabled = true;
-        writecheck.disabled = true;
-        updatecheck.disabled = true;
-    
         viewread.innerHTML = "&#8226; Read";
         viewwrite.innerHTML = "&#8226; Update";
         viewupdate.innerHTML = "&#8226; Execute";
+        viewroles.innerText = "User Roles";
+        if(roles.user.includes('read')) viewread.style.display = 'block';
+        else viewwrite.style.display = 'none';
         
-        viewrole.innerText = "User Roles";
-        if(roles.user.includes('read')){
-            readcheck.checked = true;
-            viewread.style.display = 'block';
-        }
-        else{
-            readcheck.checked = false;
-            viewwrite.style.display = 'none';
-        }
-        if(roles.user.includes('update')){
-            writecheck.checked = true;
-            viewwrite.style.display = 'block';
-        }
-        else {
-            viewwrite.style.display = 'none';
-        }
-        if(roles.user.includes('execute')){
-            updatecheck.checked = true;
-            viewupdate.style.display = 'block';
-        }
-        else{
-            update.checked = false;
-            viewupdate.style.display = 'none';
-        }
+        if(roles.user.includes('update')) viewwrite.style.display = 'block';
+        
+        else viewwrite.style.display = 'none';
+        
+        if(roles.user.includes('execute')) viewupdate.style.display = 'block';
+        else viewupdate.style.display = 'none';
     }
     console.log("geteee");
 }
 //edit local change
 function setEditData(){
     email.value = currentuser.email;
-    username.value = currentuser.username;
+    // username.value = currentuser.username;
     firstname.value = currentuser.firstname;
     lastname.value = currentuser.lastname;
     phone.value = phoneNumber.substring(index1);
@@ -234,7 +171,7 @@ function updateUser(event){
     event.preventDefault();
     
     let emailVal =  email.value;
-    let usernameVal = username.value;
+    // let usernameVal = username.value;
     let firstnameVal = firstname.value;
     let lastnameVal = lastname.value;
     let telVal = phone.value;
@@ -248,7 +185,7 @@ function updateUser(event){
     let languageVal = language.options[language.selectedIndex].value;
 
     console.log(emailVal);
-    console.log(usernameVal);
+    // console.log(usernameVal);
     console.log(firstnameVal);
     console.log(lastnameVal);
     console.log(telVal);
@@ -259,7 +196,7 @@ function updateUser(event){
     console.log(languageVal);
     let valid  = false;
     valid = isValidEmail(emailVal);
-    valid = isValidUsername(usernameVal) && valid;
+    // valid = isValidUsername(usernameVal) && valid;
     valid = isValidFirstname(firstnameVal) && valid;
     valid = isValidLastname(lastnameVal) && valid;
     valid = isValidTel(telVal) && valid;
@@ -291,7 +228,7 @@ function updateUser(event){
     // }
 
     usersData[userindex].email = emailVal;
-    usersData[userindex].username = usernameVal;
+    // usersData[userindex].username = usernameVal;
     usersData[userindex].firstname = firstnameVal;
     usersData[userindex].lastname = lastnameVal;
     currentuser.phone = "+"+itiTel.getSelectedCountryData().dialCode+""+ telVal;
@@ -335,22 +272,6 @@ function isValidEmail(emailVal) {
     return true;
 }
 
-function isValidUsername(usernameVal){
-    console.log("uname: "+usernameVal);
-    const regex = /^[a-zA-Z0-9_.]+$/;
-    usernameVal.trim();
-    if(usernameVal.length==0) updateTextError(usernameAlert,"Username is required",true);
-    else if(usernameVal.length<6) updateTextError(usernameAlert,"Username should be at least 6 characters long",true);
-    else if((/\s/.test(usernameVal))) updateTextError(usernameAlert,"Invalid username. Spaces are not allowed",true);
-    else if (!regex.test(usernameVal)) updateTextError(usernameAlert, "Username can only contain letters, numbers, dots (.), and underscores (_).", true);
-    else {
-        username.style.border = originalBorderStyle;
-        updateTextError(usernameAlert,"",false);
-        return true;
-    }
-    username.style.border = "1px solid red";
-    return false;
-}
 function isValidFirstname(firstnameVal){
     console.log("firsname: "+firstnameVal);
     const regex = /^[a-zA-Z]+$/;

@@ -23,15 +23,16 @@
                         <label for="uemail" class="form-label">Username</label>
                         <div class="input-group">
                             <!-- <i class="fa-solid fa-envelope"></i> -->
-                            <input type="text" name="email" id="uemail" class="form-control" placeholder="abc2002" required>
+                            <input type="text" name="email" id="uemail" class="form-control" placeholder="" required>
                         </div>
                         <p id="emailAlert">Couldn't find your Account</p>
+
                     </div>
                     <div class="">
                         <label for="upassword" class="form-label">Password</label>
                         <div class="input-group">
                             <!-- <i class="fa-solid fa-envelope"></i> -->
-                            <input type="password" name="password" id="upassword" class="form-control" placeholder="********" required>
+                            <input type="password" name="password" id="upassword" class="form-control" placeholder="" required>
                         </div>
                         <!-- <p id="passwordAlert">Wrong password. Try again or click Forgot password to reset it.</p> -->
                         <p id="passwordAlert">Wrong password. Please try again </p>
@@ -55,7 +56,7 @@
     <div id="forgotPasswordModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <p>Reset Password</p>
+            <h3 class="card-title text-center">Reset Password</h3>
             <div class="mb-3">
                 <label for="forgotEmail" class="form-label">Email</label>
                 <input type="email" class="model-input" id="forgotEmail" placeholder="Enter your email">

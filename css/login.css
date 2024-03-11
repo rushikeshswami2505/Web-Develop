@@ -159,8 +159,8 @@ body {
   color: var(--primary-color);
   cursor: pointer;
   font-size: 1.1rem;
-  text-decoration: none; /* Remove underline */
-  margin: 0; /* Remove default margin for <p> element */
+  text-decoration: none;
+  margin: 0; 
 }
 
 #forgotpassword:hover, #signup:hover {

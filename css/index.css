@@ -5,6 +5,7 @@
     --error-color : #872e36; 
     --font-family-regular: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     --container-color : #bacada;
+    --secondary-color : #6c757d;
 }
 /* body { */
     /* padding-top: 56px; */ 
@@ -38,13 +39,13 @@ body {
     transition: color 0.3s ease;
 }
 .navbar-nav .nav-link:hover {
-    color: black;
+    color: white;
 }
 
 .navbar-nav .active-nav-item {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: #ffffff;     
-    border-radius: 10px;
+    border-radius: 0.85rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, color 0.3s ease; 
     animation: fadeIn 0.5s ease;
@@ -53,8 +54,15 @@ body {
 .navbar-nav .active-nav-item a {
     color: #ffffff;  /* Set the desired text color for the active section */
 }
+
 .nav-item:hover{
-    outline: 2px solid #62676d;
+    /* outline: 2px solid var(--primary-color-hover); */
+    background-color: var(--primary-color);
+    color: #ffffff;     
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    /* animation: fadeIn 0.5s ease; */
     border-radius: 0.85rem;
 }
 @keyframes fadeIn {
@@ -155,9 +163,9 @@ body {
 .container-view{
     width: 50%;
 }
-.btn{
+.btn-primary{
     background-color: var(--primary-color);
 }
-.btn:hover{
+.btn-primary:hover{
     background-color: var(--primary-color-hover);
 }

@@ -37,7 +37,7 @@ currentPassword.addEventListener('input', function(){
 function login(event){
     event.preventDefault();
     if(currentEmail.value.length<4) {
-        emailAlert.innerText = "Please enter valid username";
+        emailAlert.innerText = "Please enter valid email";
         emailAlert.style.display = 'block';
         return;
     }
@@ -58,8 +58,8 @@ function login(event){
         usersdata.forEach((user,index)=> {
             const userEmail = user.email;
             const userPassword = user.password;
-            const userUsername = user.username;
-            if(userEmail===currentEmail.value || userUsername===currentEmail.value){
+            // const userUsername = user.username;
+            if(userEmail===currentEmail.value){
                 validemail = true;
                 if(userPassword===currentPassword.value){
                     currentuser = index;
@@ -88,7 +88,7 @@ function login(event){
         toast.classList.remove('hidden');
         toast.classList.add('error');
         toast.classList.remove('success');
-        toast.textContent = "Incorrect username!";
+        toast.textContent = "Incorrect email!";
         setTimeout(() => {
             toast.classList.add('hidden');
         }, 3000);
@@ -252,10 +252,10 @@ function isEmailRegistered(emailVal) {
     for (let index = 0; index < usersdata.length; index++) {
         const user = usersdata[index];
         const userEmail = user.email;
-        const userUsername = user.username;
+        // const userUsername = user.username;
 
-        console.log(emailVal, " ", userUsername);
-        if (userEmail === emailVal || userUsername === emailVal) {
+        // console.log(emailVal, " ", userUsername);
+        if (userEmail === emailVal) {
             forgotEmail.style.border = "0px solid red";
             updateTextError(forgotEmailalert, "", false);
             return index; // Break the loop and return the index

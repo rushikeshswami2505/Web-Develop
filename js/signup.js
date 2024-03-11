@@ -11,13 +11,13 @@ var itiTelalter = window.intlTelInput(inputTelalter, {
     hiddenInput: "full",
     utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
 });
-
+itiTel.setCountry("IN");
+itiTelalter.setCountry("IN");
 // You can repeat the above steps for the second phone input if needed
 
 
 // input
 let email = document.getElementById("email");
-let username = document.getElementById("username");
 let firstname = document.getElementById("firstname");
 let lastname = document.getElementById("lastname");
 let tel = document.getElementById("tel");
@@ -42,7 +42,6 @@ let language = document.getElementById("language");
 
 // alert msg
 let emailAlert = document.getElementById("emailalert");
-let usernameAlert = document.getElementById("usernamealert");
 let firstnameAlert = document.getElementById("firstnamealert");
 let lastnameAlert = document.getElementById("lastnamealert");
 let telAlert = document.getElementById("telalert");
@@ -69,7 +68,6 @@ function signupValidity(event) {
     event.preventDefault();
     
     let emailVal =  email.value;
-    let usernameVal = username.value;
     let firstnameVal = firstname.value;
     let lastnameVal = lastname.value;
     let telVal = tel.value;
@@ -102,8 +100,6 @@ function signupValidity(event) {
     let valid = false;
     valid = isValidEmail(emailVal);
     console.log("after valid login 1 "+valid);
-    valid = isValidUsername(usernameVal) && valid;
-    console.log("after valid login 2 "+valid);
     valid = isValidFirstname(firstnameVal) && valid;
     console.log("after valid login 3 "+valid);
     valid = isValidLastname(lastnameVal) && valid;
@@ -157,7 +153,6 @@ function signupValidity(event) {
     const user = {
         id : usersdata.length + 1,
         email : emailVal,
-        username : usernameVal ,
         firstname : firstnameVal,
         lastname : lastnameVal,
         phone : "+"+selectedCountryDataTel+""+telVal,
@@ -205,29 +200,13 @@ function isValidEmail(emailVal) {
     return true;
 }
 
-function isValidUsername(usernameVal){
-    console.log("uname: "+usernameVal);
-    const regex = /^[a-zA-Z0-9_.]+$/;
-    usernameVal.trim();
-    if(usernameVal.length==0) updateTextError(usernameAlert,"Username is required",true);
-    else if(usernameVal.length<6) updateTextError(usernameAlert,"Username should be at least 6 characters long",true);
-    else if((/\s/.test(usernameVal))) updateTextError(usernameAlert,"Invalid username. Spaces are not allowed",true);
-    else if (!regex.test(usernameVal)) updateTextError(usernameAlert, "Username can only contain letters, numbers, dots (.), and underscores (_).", true);
-    else {
-        username.style.border = "0px solid red";
-        updateTextError(usernameAlert,"",false);
-        return true;
-    }
-    username.style.border = "1px solid red";
-    return false;
-}
 function isValidFirstname(firstnameVal){
     console.log("firsname: "+firstnameVal);
     const regex = /^[a-zA-Z]+$/;
     firstnameVal.trim();
     if(firstnameVal.length==0) updateTextError(firstnameAlert,"First Name is required",true);
     else if((/\s/.test(firstnameVal))) updateTextError(firstnameAlert,"Invalid First name. Spaces are not allowed",true);
-    else if(!(regex.test(firstnameVal))) updateTextError(firstnameAlert,"First Name should be contains only characters");
+    else if(!(regex.test(firstnameVal))) updateTextError(firstnameAlert,"First Name should be contains only characters",true);
     else{
         firstname.style.border = "0px solid red";
         updateTextError(firstnameAlert,"",false);
@@ -242,7 +221,7 @@ function isValidLastname(lastnameVal){
     lastnameVal.trim();
     if(lastnameVal.length==0) updateTextError(lastnameAlert,"Last Name is required",true);
     else if((/\s/.test(lastnameVal))) updateTextError(lastnameAlert,"Invalid Last name. Spaces are not allowed",true);
-    else if(!(regex.test(lastnameVal))) updateTextError(lastnameAlert,"First Name should be contains only characters");
+    else if(!(regex.test(lastnameVal))) updateTextError(lastnameAlert,"First Name should be contains only characters",true);
     else{
         lastname.style.border = "0px solid red";
         updateTextError(lastnameAlert,"",false);
@@ -378,13 +357,13 @@ function isValidRole(){
 }
 
 function isValidAddress(addressVal){
-    addressVal = addressVal.trim();
-    if(addressVal.length===0) updateTextError(addressAlert, "Address field is required", true);
-    else{
+    // addressVal = addressVal.trim();
+    // if(addressVal.length===0) updateTextError(addressAlert, "Address field is required", true);
+    // else{
         updateTextError(addressAlert, "", false);
         return true;
-    }
-    return false;
+    // }
+    // return false;
 }
 function isValidSkills(skillsList){
     if(skillsList.length===0) updateTextError(skillsAlert, "Select minimum one skill", true);
@@ -628,6 +607,7 @@ function autocomplete(inp, arr, containerId) {
         closeAllLists(e.target);
     });
 
+    selectedSkills = [];
     function initializeSelectedSkills() {
         const selectedSkillsContainer = document.getElementById(containerId);
 
@@ -656,6 +636,71 @@ function autocomplete(inp, arr, containerId) {
     initializeSelectedSkills();
 }
 
+$('body').click(function(){
+    console.log("Clicked anywhere");
+    let emailVal =  email.value;
+    
+    let firstnameVal = firstname.value;
+    let lastnameVal = lastname.value;
+    let telVal = tel.value;
+    let telalterVal = telalter.value;
+    let passVal = password.value;
+    let cpassVal = cpassword.value;
+    let dobVal = dob.value;
+    let genderVal = "";
+    let addressVal = address.value;
+    let languageVal = language.options[language.selectedIndex].value;
+
+    // let selectedCountryDataTel = itiTel.getSelectedCountryData().dialCode;
+    // let selectedCountryDataTelalter = itiTelalter.getSelectedCountryData().dialCode;
+    gender.forEach(radio =>  {
+        if(radio.checked){
+            genderVal = radio.value;
+        }
+    });
+    
+    let valid = false;
+    if(emailVal.length!==0) valid = isValidEmail(emailVal);
+    else {
+        updateTextError(emailAlert, "", false);
+        email.style.border = "0px solid red";
+    }
+
+    if(firstnameVal.length!==0) valid = isValidFirstname(firstnameVal) && valid;
+    else {
+        updateTextError(firstnameAlert, "", false);
+        firstname.style.border = "0px solid red";
+    }
+    if(lastnameVal.length!==0) valid = isValidLastname(lastnameVal) && valid;
+    else {
+        updateTextError(lastnameAlert, "", false);
+        lastname.style.border = "0px solid red";
+    }
+
+    if(telVal.length!==0) valid = isValidTel(telVal) && valid; 
+    else {
+        updateTextError(telAlert, "", false);
+        tel.style.border = "0px solid red";
+    }
+
+    if(telalterVal.length!==0) valid = isValidTelalter(telalterVal) && valid;
+    else {
+        updateTextError(telalterAlert, "", false);
+        telalter.style.border = "0px solid red";
+    }
+
+    if(passVal.length!==0) valid = isValidPass(passVal) && valid;
+    else {
+        updateTextError(passwordAlert, "", false);
+        password.style.border = "0px solid red";
+    }
+
+    if(cpassVal.length!==0) valid = isValidCpass(passVal,cpassVal) && valid;
+    else {
+        updateTextError(cpasswordAlert, "", false);
+        cpassword.style.border = "0px solid red";
+    }
+});
 
 // Example usage
 

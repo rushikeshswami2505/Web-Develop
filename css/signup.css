@@ -64,7 +64,7 @@ body {
 }
 
 .form-control,#fixedTextarea {
-    box-sizing: border-box; /* Add box-sizing property */
+    box-sizing: border-box; 
     border-radius: 0.2rem;
     border: 0.01rem solid #c3b6b6;
     display: block;
@@ -73,7 +73,7 @@ body {
     padding: 0.3rem;
     font-family: var(--font-family-regular);
     font-size: 1.1rem;
-    line-height: 1.5; /* Adjust line-height property */
+    line-height: 1.5; 
     transition: border-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -311,7 +311,6 @@ select{
     padding-left: 1rem;
 }
 
-/* Style for select element */
 .card-item select {
     border-radius: 0.2rem;
     border: 0.01rem solid #c3b6b6;
@@ -328,8 +327,6 @@ select{
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
 }
-
-/* Style for select options */
 .card-item select option {
     font-family: var(--font-family-regular);
     padding: 8px;
@@ -345,7 +342,6 @@ select{
     width: 100%;
 } */
 
-/* Add these styles to your existing stylesheet */
 
 .autocomplete {
     position: relative;

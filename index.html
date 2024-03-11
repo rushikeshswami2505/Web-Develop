@@ -98,16 +98,6 @@
                         <div class="card p-1">
                             <div class="card-row d-flex justify-content-around">
                                 <div class="card-item col-5">
-                                    <span class="form-label fw-bold">Email</span>
-                                    <p id="viewemail">abc@example.com</p>
-                                </div>
-                                <div class="card-item col-5">
-                                    <span class="form-label fw-bold">User name</span>
-                                    <p id="viewusername">ac342</p>
-                                </div>
-                            </div>
-                            <div class="card-row d-flex justify-content-around">
-                                <div class="card-item col-5">
                                     <span class="form-label fw-bold">First Name</span>
                                     <p id="viewfirstname">abc</p>
                                 </div>
@@ -115,6 +105,20 @@
                                     <span class="form-label fw-bold">Last Name</span>
                                     <p id="viewlastname">axy</p>
                                 </div>
+                            </div>
+                            <div class="card-row d-flex justify-content-around">
+                                <div class="card-item col-5">
+                                    <span class="form-label fw-bold">Email</span>
+                                    <p id="viewemail">abc@example.com</p>
+                                </div>
+                                <div class="card-item col-5">
+                                    <span class="form-label fw-bold">Date of birth</span>
+                                    <p id="viewdob">January 1, 1990</p>
+                                </div>
+                                <!-- <div class="card-item col-5">
+                                    <span class="form-label fw-bold">User name</span>
+                                    <p id="viewusername">ac342</p>
+                                </div> -->
                             </div>
                             <div class="card-row d-flex justify-content-around">
                                 <div class="card-item col-5">
@@ -126,30 +130,15 @@
                                     <p id="viewphonealter">(987) 654-3210</p>
                                 </div>
                             </div>
-                            <div class="card-row d-flex justify-content-around">
-                                <div class="card-item col-5">
-                                    <span class="form-label fw-bold">Language</span>
-                                    <p id="viewl    anguage">English</p>
-                                </div>
-                                <div class="card-item col-5">
-                                    <span class="form-label fw-bold">Date of birth</span>
-                                    <p id="viewdob">January 1, 1990</p>
-                                </div>
-                            </div>
+                            
                             <div class="card-row d-flex justify-content-around">
                                 <div class="card-item col-5">
                                     <span class="form-label fw-bold fw-bold">Gender</span>
                                     <p id="viewgender">Male</p>
                                 </div>
                                 <div class="card-item col-5">
-                                    <div class="d-flex">
-                                        <p id="role" class="form-label fw-bold">Roles</p>
-                                    </div>
-                                    <div class="d-flex">
-                                        <p id="viewread" class="pe-1">&#8226; Read </p>
-                                        <P id="viewwrite" class="pe-1">&#8226; Write</p>
-                                        <p id="viewupdate" class="pe-1">&#8226; Update</p>
-                                    </div>
+                                    <span class="form-label fw-bold">Language</span>
+                                    <p id="viewlanguage">English</p>
                                 </div>
                             </div>  
                             <div class="card-row d-flex justify-content-around">
@@ -162,6 +151,19 @@
                                     <span class="form-label fw-bold">Address</span>
                                     <p id="viewaddress">123 Main Street, Cityville, Country</p>
                                 </div>
+                            </div>
+                            <div class="card-row d-flex justify-content-around">
+                                <div class="card-item col-5">
+                                    <div class="d-flex">
+                                        <p id="viewroles" class="form-label fw-bold">Roles</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p id="viewread" class="pe-1">&#8226; Read </p>
+                                        <P id="viewwrite" class="pe-1">&#8226; Write</p>
+                                        <p id="viewupdate" class="pe-1">&#8226; Update</p>
+                                    </div>
+                                </div>
+                                <div class="card-item col-5"></div>
                             </div>
                         </div>
                     </div>
@@ -204,18 +206,6 @@
                                     <div class="card p-1">
                                         <div class="card-row d-flex justify-content-around">
                                             <div class="card-item col-5">
-                                                <label for="email" class="form-label">Email</label>
-                                                <input id="email" type="text" class="form-control">
-                                                <p id="emailalert" class="alert"></p>
-                                            </div>
-                                            <div class="card-item col-5">
-                                                <label for="username" for="name" class="form-label">User name</label>
-                                                <input id="username" type="text" class="form-control">
-                                                <p id="usernamealert" class="alert"></p>
-                                            </div>
-                                        </div>
-                                        <div class="card-row d-flex justify-content-around">
-                                            <div class="card-item col-5">
                                                 <label for="firstname" class="form-label">First Name</label>
                                                 <input id="firstname" type="text" class="form-control">
                                                 <p id="firstnamealert" class="alert"></p>
@@ -224,6 +214,23 @@
                                                 <label for="lastname" class="form-label">Last Name</label>
                                                 <input id="lastname" type="text" class="form-control">
                                                 <p id="lastnamealert" class="alert"></p>
+                                            </div>
+                                        </div>
+                                        <div class="card-row d-flex justify-content-around">
+                                            <div class="card-item col-5">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input id="email" type="text" class="form-control">
+                                                <p id="emailalert" class="alert"></p>
+                                            </div>
+                                            <!-- <div class="card-item col-5">
+                                                <label for="username" for="name" class="form-label">User name</label>
+                                                <input id="username" type="text" class="form-control">
+                                                <p id="usernamealert" class="alert"></p>
+                                            </div> -->
+                                            <div class="card-item col-5">
+                                                <label for="dob" class="form-label">Date of birth</label>
+                                                <input id="dob" type="date" class="form-control">
+                                                <p id="dobalert" class="alert"></p>
                                             </div>
                                         </div>
                                         <div class="card-row d-flex justify-content-around">
@@ -252,13 +259,6 @@
                                                     <option value="urdu">Urdu</option>
                                                 </select>
                                             </div>
-                                            <div class="card-item col-5">
-                                                <label for="dob" class="form-label">Date of birth</label>
-                                                <input id="dob" type="date" class="form-control">
-                                                <p id="dobalert" class="alert"></p>
-                                            </div>
-                                        </div>
-                                        <div class="card-row d-flex justify-content-around">
                                             <div class="card-item col-md-5">
                                                 <label class="form-label">Gender</label>
                                                 <div class="d-flex ps-5">
@@ -272,29 +272,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="card-item col-md-5" id="role-edit">
-                                                <p id="role" class="form-label">Roles</p>
-                                                <div class="row d-flex">
-                                                    <div class="col-6">
-                                                        <div class="d-flex">
-                                                            <div class="form-check me-1">
-                                                                <input id="readcheck" type="checkbox" class="form-check-input">
-                                                                <medium id="read" class="form-check-label">Read</medium>
-                                                            </div>
-                                                            <div class="form-check me-1">
-                                                                <input id="writecheck" type="checkbox" class="form-check-input">
-                                                                <medium id="write" class="form-check-label">Write</medium>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input id="updatecheck" type="checkbox" class="form-check-input">
-                                                                <medium id="update" class="form-check-label">Update</medium>
-                                                            </div>
-                                                        </div>
-                                                        <p id="rolealert" class="alert"></p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        </div>
+                                        <div class="card-row d-flex justify-content-around">
                                         </div>  
                                         <div class="card-row d-flex justify-content-around">
                                             <div class="card-item col-md-5">
@@ -321,7 +300,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary closebtn" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="updateUser(event)">Save changes</button>
+                        <button type="button" class="btn btn-primary" onclick="updateUser(event)">Save</button>
                     </div>
                 </div>
             </div>
