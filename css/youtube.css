@@ -1,0 +1,8 @@
+.search-left{
+    width: 550px;
+    border-radius: 180px 0px 0px 180px;
+}
+.search-right{
+    border-radius: 0px 180px 180px 0px;
+    height: 100%;
+}
