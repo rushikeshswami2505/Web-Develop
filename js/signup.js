@@ -13,8 +13,6 @@ var itiTelalter = window.intlTelInput(inputTelalter, {
 });
 itiTel.setCountry("IN");
 itiTelalter.setCountry("IN");
-// You can repeat the above steps for the second phone input if needed
-
 
 // input
 let email = document.getElementById("email");
@@ -54,7 +52,13 @@ let rolAlert = document.getElementById("rolealert");
 let addressAlert = document.getElementById("addressalert");
 let skillsAlert = document.getElementById("skillsalert");
 let languageAlert = document.getElementById("languagealert");
-    
+
+let toast = document.getElementById('toast');
+
+// toast.classList.remove('hidden');
+// toast.classList.remove('error');
+// toast.classList.add('success'); 
+// toast.textContent = "Created Successful!!!";
 // console.log(selectedCountryDataTel.dialCode);    
 
 const skillsList = [];
@@ -167,9 +171,16 @@ function signupValidity(event) {
     };
     usersdata.push(user);
     localStorage.setItem("usersData", JSON.stringify(usersdata));
-    console.log("before login");
-    login();
-    return true;
+    // console.log("before login");
+    toast.classList.remove('hidden');
+    toast.classList.remove('error');
+    toast.classList.add('success'); 
+    toast.textContent = "Created Successful!!!";
+    setTimeout(() => {
+        toast.classList.add('hidden');
+        login();
+        return true;
+    }, 1000);
 }
 
 // ALL VALIDATION FUNCTIONS

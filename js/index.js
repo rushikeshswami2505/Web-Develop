@@ -1,6 +1,16 @@
+// check it current user is avaliable or not
 if(localStorage.getItem("currentuser")===null){
     logout()
 }
+
+// logout
+function logout() {
+    localStorage.removeItem("currentuser");
+    window.history.pushState(null, null, "login.html");
+    window.location.href = "login.html";
+}
+
+// set country code list for phone number 
 var inputTel = document.querySelector("#phone");
     var itiTel = window.intlTelInput(inputTel, {
         separateDialCode: true,
@@ -9,20 +19,16 @@ var inputTel = document.querySelector("#phone");
     });
 itiTel.setCountry("IN");
 
-// itiTel.setCountry('IN');
-
 var inputTelalter = document.querySelector("#phonealter");
 var itiTelalter = window.intlTelInput(inputTelalter, {
     separateDialCode: true,
     hiddenInput: "full",
     utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
 });
-
 itiTelalter.setCountry("IN");
 
-//show box
+//View data ids 
 let viewemail = document.getElementById("viewemail");
-// let viewusername = document.getElementById("viewusername");
 let viewfirstname = document.getElementById("viewfirstname");
 let viewlastname = document.getElementById("viewlastname");
 let viewphone = document.getElementById("viewphone");
@@ -32,15 +38,13 @@ let viewdob = document.getElementById("viewdob");
 let viewgender = document.getElementById("viewgender");
 let viewskills = document.getElementById("viewskills");
 let viewaddress = document.getElementById("viewaddress");
-
 let viewroles = document.getElementById("viewroles");
 let viewread = document.getElementById("viewread");
 let viewwrite = document.getElementById("viewwrite");
 let viewupdate = document.getElementById("viewupdate");
 
-//edit box
+//Edit data ids
 let email = document.getElementById("email");
-// let username = document.getElementById("username");
 let firstname = document.getElementById("firstname");
 let lastname = document.getElementById("lastname");
 let phone = document.getElementById("phone");
@@ -50,40 +54,47 @@ let dob = document.getElementById("dob");
 let skills = document.getElementById("userSkills");
 let address = document.getElementById("address");
 
+// Alert data ids
+let emailAlert = document.getElementById("emailalert");
+let firstnameAlert = document.getElementById("firstnamealert");
+let lastnameAlert = document.getElementById("lastnamealert");
+let phoneAlert = document.getElementById("phonealert");
+let phonealterAlert = document.getElementById("phonealteralert");
+let dobAlert = document.getElementById("dobalert");
+let rolAlert = document.getElementById("rolealert");
+let addressAlert = document.getElementById("addressalert");
+let skillsAlert = document.getElementById("skillsalert");
+
+// input box style
 const originalBorderStyle = email.style.border;
 
 
-//local changes
-let userindex = localStorage.getItem("currentuser");
-let usersData = JSON.parse(localStorage.getItem("usersData"));
-let currentuser = usersData[userindex];
+//local data and variables
+let currentuser = JSON.parse(localStorage.getItem("currentuser"));
 let phoneNumber,phoneCountryCode,phoneNumberAlter,phonealterCountryCode,index1,index2,roles;
+
+// set data at view and edit position
 setViewData();
 setEditData();
 
 function setViewData(){
     usersData = JSON.parse(localStorage.getItem("usersData"));
-    currentuser = usersData[userindex];
+    currentuser = JSON.parse(localStorage.getItem("currentuser"));
     
     phoneNumber = currentuser.phone;
     index1 = 0;
     if(phoneNumber.length===14) index1=4;
     else if(phoneNumber.length===13) index1=3;
     else if(phoneNumber.length===12) index1=2;
-    phoneCountryCode = getCountryCodeFromDialCode(phoneNumber.substring(0,index1)+"");
-    itiTel.setCountry(phoneCountryCode);
-    console.log(itiTel);
+    
     phoneNumberAlter = currentuser.phonealter;
     index2 = 0;
     if(phoneNumberAlter.length===14) index2=4;
     else if(phoneNumberAlter.length===13) index2=3;
     else if(phoneNumberAlter.length===12) index2=2;
-    phonealterCountryCode = getCountryCodeFromDialCode(phoneNumberAlter.substring(0,index2)+"");
 
-    viewemail.innerText = currentuser.email;
     
-    // console.log(1111111111);
-    // viewusername.innerText = currentuser.username;
+    viewemail.innerText = currentuser.email;
     viewfirstname.innerText = currentuser.firstname;
     viewlastname.innerText = currentuser.lastname;
     viewphone.innerText = ""+ phoneNumber.substring(0,index1) + " " + phoneNumber.substring(index1);
@@ -100,7 +111,6 @@ function setViewData(){
     skillListStorage.forEach((skill,index) => {
         skillFull = skillFull + "&#8226; " + skill +" ";
     });
-    // document.getElementById("roles").innerHTML = skillFull;
     viewskills.innerHTML = skillFull;
     roles = currentuser.roles;
     if(roles.admin){
@@ -135,30 +145,28 @@ function setViewData(){
     }
     console.log("geteee");
 }
-//edit local change
+
 function setEditData(){
     email.value = currentuser.email;
-    // username.value = currentuser.username;
     firstname.value = currentuser.firstname;
     lastname.value = currentuser.lastname;
+    
+    phoneCountryCode = getCountryCodeFromDialCode(phoneNumber.substring(0,index1)+"");
+    itiTel.setCountry(phoneCountryCode);
+    phonealterCountryCode = getCountryCodeFromDialCode(phoneNumberAlter.substring(0,index2)+"");
+    itiTelalter.setCountry(phonealterCountryCode);
+
     phone.value = phoneNumber.substring(index1);
-    console.log(phoneNumberAlter);
-    if(phonealter.length>10)
+    if(phoneNumberAlter.length>10)
     phonealter.value = phoneNumberAlter.substring(index2);
-    console.log(phoneNumberAlter.substring(index2));
     language.value = currentuser.language;
     dob.value = currentuser.dob;
     document.getElementById(currentuser.gender.toLowerCase()).checked = true;
     address.value = currentuser.address;
     roles = currentuser.programmingSkills;
-    console.log(currentuser);
-    console.log(currentuser.roles);
 }
-// console.log("Roles: "+roles['admin']);
 
-// console.log("Roles: "+roles['user']);
-
-// console.log(roles.user);
+// close edit model
 function closeModal() {
     if ($("#editProfileModal").hasClass("show")) {
         $("body").removeClass("modal-open");
@@ -167,11 +175,11 @@ function closeModal() {
     }
 }
 
+// update data after user click on save button
 function updateUser(event){
     event.preventDefault();
-    
+
     let emailVal =  email.value;
-    // let usernameVal = username.value;
     let firstnameVal = firstname.value;
     let lastnameVal = lastname.value;
     let telVal = phone.value;
@@ -184,67 +192,36 @@ function updateUser(event){
     let addressVal = address.value;
     let languageVal = language.options[language.selectedIndex].value;
 
-    console.log(emailVal);
-    // console.log(usernameVal);
-    console.log(firstnameVal);
-    console.log(lastnameVal);
-    console.log(telVal);
-    console.log(telalterVal);
-    console.log(dobVal);
-    console.log(genderVal);
-    console.log(addressVal);
-    console.log(languageVal);
     let valid  = false;
     valid = isValidEmail(emailVal);
-    // valid = isValidUsername(usernameVal) && valid;
     valid = isValidFirstname(firstnameVal) && valid;
     valid = isValidLastname(lastnameVal) && valid;
     valid = isValidTel(telVal) && valid;
     valid = isValidTelalter(telalterVal) && valid;
     valid = isValidDob(dobVal) && valid;
     valid = isValidSkills(skillList) && valid;
-    valid = isValidAddress(addressVal) && valid;
     console.log(skillList+" "+valid);
     if(!valid){
         return;
     }
-    if(roles.admin){
-        const role = {};
-        let admin = [];
-        if(readcheck.checked) admin.push('read');
-        if(writecheck.checked) admin.push('write');
-        if(updatecheck.checked) admin.push('update');
-        role["admin"] = admin;
-        usersData[userindex].roles = role;
-        // console.log("inside admin"+role);
-        // return;
-    }
-    // else{
-    //     let user = [];
-    //     if(userread.checked) user.push('read');
-    //     if(userupdate.checked) user.push('update');
-    //     if(userexecute.checked) user.push('execute');
-    //     role["user"] = user;
-    // }
-
-    usersData[userindex].email = emailVal;
-    // usersData[userindex].username = usernameVal;
-    usersData[userindex].firstname = firstnameVal;
-    usersData[userindex].lastname = lastnameVal;
+    currentuser.email = emailVal;
+    currentuser.firstname = firstnameVal;
+    currentuser.lastname = lastnameVal;
     currentuser.phone = "+"+itiTel.getSelectedCountryData().dialCode+""+ telVal;
     currentuser.phonealter = "+"+itiTel.getSelectedCountryData().dialCode+""+telalterVal;
-    usersData[userindex].dob = dobVal;
-    usersData[userindex].gender = genderVal;
-    usersData[userindex].address = addressVal;
-    usersData[userindex].language = languageVal;
-    usersData[userindex].programmingSkills = skillList;
+    currentuser.dob = dobVal;
+    currentuser.gender = genderVal;
+    currentuser.address = addressVal;
+    currentuser.language = languageVal;
+    currentuser.programmingSkills = skillList;
+    let usersData = JSON.parse(localStorage.getItem("usersData"));
+    usersData[currentuser.id-1] = currentuser;
     localStorage.setItem("usersData", JSON.stringify(usersData));
-    console.log(9);
+    localStorage.setItem("currentuser",JSON.stringify(currentuser));
     $(".closebtn").click();
-    setViewData();          
-    // closeModal();
+    setViewData();         
 }
-
+// This is main fuction for changing error msg and updating input box
 function updateTextError(element,msg,state){
     if(state){  
         element.style.display = 'block';
@@ -254,10 +231,10 @@ function updateTextError(element,msg,state){
     }
 }
 
+// All function for validations
 function isValidEmail(emailVal) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    console.log(email);
     if (emailVal.length === 0) {
         updateTextError(emailAlert, "Email is required", true);
     } else if (!emailRegex.test(emailVal)) {
@@ -273,7 +250,6 @@ function isValidEmail(emailVal) {
 }
 
 function isValidFirstname(firstnameVal){
-    console.log("firsname: "+firstnameVal);
     const regex = /^[a-zA-Z]+$/;
     firstnameVal.trim();
     if(firstnameVal.length==0) updateTextError(firstnameAlert,"First Name is required",true);
@@ -288,7 +264,6 @@ function isValidFirstname(firstnameVal){
     return false;
 }
 function isValidLastname(lastnameVal){
-    console.log("lastname: "+lastnameVal);
     const regex = /^[a-zA-Z]+$/;
     lastnameVal.trim();
     if(lastnameVal.length==0) updateTextError(lastnameAlert,"Last Name is required",true);
@@ -303,8 +278,6 @@ function isValidLastname(lastnameVal){
     return false;
 }
 function isValidTel(telVal){
-    // console.log("tel: "+telVal);
-    console.log(phoneAlert);
     telVal = telVal.trim();
     if(telVal.length==0) updateTextError(phoneAlert,"Phone number is required",true);
     else if((/\s/.test(telVal))) updateTextError(phoneAlert,"Invalid Phone number. Spaces are not allowed",true);
@@ -320,7 +293,6 @@ function isValidTel(telVal){
 }
 
 function isValidTelalter(telalterVal){
-    console.log("telalter: "+telalterVal);
     telalterVal = telalterVal.trim();
     if(telalterVal.length==0) return true;
     else if((/\s/.test(telalterVal))) updateTextError(phonealterAlert,"Invalid Phone number. Spaces are not allowed",true);
@@ -358,7 +330,6 @@ function isValidDob(dobVal) {
 
 function isValidRole(){
     if(admin.checked || admin.indeterminate || user.checked || user.indeterminate){
-        // dob.style.border = "0px solid red";
         updateTextError(rolAlert, "", false);
         return true;
     }
@@ -366,17 +337,7 @@ function isValidRole(){
     return false;
 }
 
-function isValidAddress(addressVal){
-    addressVal = addressVal.trim();
-    if(addressVal.length===0) updateTextError(addressAlert, "Address field is required", true);
-    else{
-        address.style.border =  originalBorderStyle
-        updateTextError(addressAlert, "", false);
-        return true;
-    }
-    address.style.border = "1px solid red";
-    return false;
-}
+
 function isValidSkills(skillsList){
     if(skillsList.length===0) updateTextError(skillsAlert, "Select minimum one skill", true);
     else {
@@ -388,7 +349,6 @@ function isValidSkills(skillsList){
     return false;
 }
 function isValidLanguage(languageVal){
-    // console.log(languageVal);
     if(languageVal.length===0) updateTextError(languageAlert, "Select laguage", true);
     else {
         updateTextError(languageAlert, "", false);
@@ -397,7 +357,7 @@ function isValidLanguage(languageVal){
     return false;
 }
 
-
+// it changes from home-profile-about using navbar
 function showSection(sectionId) {
     var navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(function(item) {
@@ -417,25 +377,8 @@ function showSection(sectionId) {
         selectedSection.classList.add('active');
     }
 }
-
+// it is for autocomplete skills
 const selectedSkillsContainer = document.getElementById("selectedSkillsContainer");
-
-// Add pre-filled skills to the container
-// skillListStorage.forEach(skill => {
-//     const selectedSkillItem = document.createElement("div");
-//     selectedSkillItem.classList.add("selected-skill-item");
-//     selectedSkillItem.textContent = skill;
-
-//     const closeButton = document.createElement("span");
-//     closeButton.classList.add("close-button");
-//     closeButton.innerHTML = "&times;";
-//     closeButton.addEventListener("click", function() {
-//         selectedSkillsContainer.removeChild(selectedSkillItem);
-//     });
-
-//     selectedSkillItem.appendChild(closeButton);
-//     selectedSkillsContainer.appendChild(selectedSkillItem);
-// });
 programmingSkills = [
     "JavaScript",
     "Python",
@@ -457,7 +400,6 @@ programmingSkills = [
 var selectedSkills = currentuser.programmingSkills;
 var skillList = selectedSkills.slice();
  // Initialize skillList with the selected skills
-
 autocomplete(document.getElementById("userSkills"), programmingSkills, "selectedSkillsContainer");
 
 function autocomplete(inp, arr, containerId) {
@@ -593,17 +535,8 @@ function autocomplete(inp, arr, containerId) {
 
     initializeSelectedSkills();
 }
-function logout() {
-  // Remove current user data from localStorage
-  localStorage.removeItem("currentuser");
 
-  // Replace the current page's URL with the new one
-  window.history.pushState(null, null, "login.html");
-
-  // Redirect the user to the new page
-  window.location.href = "login.html";
-}
-
+// it map all countrycode to dialcode
 function getCountryCodeFromDialCode(dialCode) {
     var codeMapping = {
         '+1': 'US',
@@ -812,7 +745,6 @@ function getCountryCodeFromDialCode(dialCode) {
         '+995': 'GE',
         '+996': 'KG',
         '+998': 'UZ',
-        // Add more mappings as needed
     };
 
     return codeMapping[dialCode] || '';

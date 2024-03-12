@@ -13,6 +13,13 @@
 
 </head>
 <body class="bg-light">
+    <div id="toast-container">
+        <div id="toast" class="hidden">
+            This is a toast message!
+        </div>
+        <!-- <ul class="notifications"></ul> -->
+    </div>
+
     <div class="container mt-5">
         <div class="card">
             <h3 class="card-title">Signup</h3>
@@ -165,13 +172,6 @@
                     <div class="card-row">
                          <div class="mb-3 card-item">
                             <div>
-                                <!-- <label for="userSkills" class="form-label">Programming skills <span class="required">*</span></label>
-                                <div class="input-group">
-                                    <input type="text" name="userSkills" id="userSkills" class="form-control" placeholder="Start typing..." oninput="showSkillsDropdown()" autocomplete="none">
-                                    <div id="skillsDropdown" class="autocomplete-list"></div>
-                                </div>
-                                <div id="selectedSkills" class="selected-skills"></div> -->
-                                <!-- <p id="skillsalert" class="alert">Please enter confirm Password</p> -->
                                 <label for="userSkills" class="form-label">Skills</label>
                                 <div class="autocomplete">
                                     <input type="text" name="userSkills" id="userSkills" class="form-control" placeholder="Start typing..." autocomplete="none">

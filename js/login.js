@@ -12,7 +12,6 @@ let currentPassword = document.getElementById("upassword");
 let emailAlert = document.getElementById("emailAlert");
 let passwordAlert = document.getElementById("passwordAlert");
 let toast = document.getElementById('toast');
-
 let forgotEmail = document.getElementById("forgotEmail");
 let newPassword = document.getElementById("newPassword");
 let confirmPassword = document.getElementById("confirmPassword");
@@ -53,18 +52,16 @@ function login(event){
     }
 
     let validemail = false, validpassword = false;
-    let currentuser = 0;
+    let currentUser = 0;
     if(usersdata.length!==0){
         usersdata.forEach((user,index)=> {
             const userEmail = user.email;
             const userPassword = user.password;
-            // const userUsername = user.username;
             if(userEmail===currentEmail.value){
                 validemail = true;
                 if(userPassword===currentPassword.value){
-                    currentuser = index;
+                    currentUser = user;
                     validpassword = true;
-                    // break;
                 }
                 
             }
@@ -108,8 +105,8 @@ function login(event){
         // toast for password
     }
     else {
-        console.log(currentuser);
-        localStorage.setItem("currentuser",currentuser);
+        console.log(currentUser);
+        localStorage.setItem("currentuser",JSON.stringify(currentUser));
         emailAlert.innerText = "";
         emailAlert.style.display = 'none'; 
         passwordAlert.innerText = "";
@@ -178,6 +175,7 @@ window.onclick = function (event) {
         closeModal();
     }
 }
+
 function isValidPass(passVal){
     
     if(passVal.length==0){
