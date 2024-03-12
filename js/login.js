@@ -134,7 +134,10 @@ function closeModal() {
     document.getElementById('forgotPasswordModal').style.display = 'none';
 }
 
-function resetPassword() {
+function resetPassword(event) {
+    
+    event.preventDefault();
+
     // Add your password reset logic here
     let forgotemail = forgotEmail.value;
     let newpassword =  newPassword.value;
@@ -153,19 +156,21 @@ function resetPassword() {
     }
     valid = isValidPass(newpassword);
     valid = isValidCpass(newpassword,confirmpassword);
+    console.log(valid);
     if(!valid){
         return;
     }
     usersdata[index].password = newpassword;
     localStorage.setItem("usersData", JSON.stringify(usersdata));
-    closeModal();
+    $(".closebtn").click();
     toast.classList.remove('hidden');
     toast.classList.add('success');
     toast.classList.remove('error');
     toast.textContent = "Password reset successful!";
     setTimeout(() => {
         toast.classList.add('hidden');
-    },3000);
+    },1000);
+    
 }
 
 // Close modal if clicked outside of it

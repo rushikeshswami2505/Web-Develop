@@ -1,146 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div id="toast-container">
+        <div id="toast" class="hidden">
+            This is a toast message!
+        </div>
+        <!-- <ul class="notifications"></ul> -->
+    </div>
+    <div class="container mt-5">
+        <div class="card">
+            <h3 class="card-title text-center">Login</h3>
+            <div>
+                <form> <!-- or we can use onclick and onsubmit -->
+                    <div class="mb-3">
+                        <label for="uemail" class="form-label">Username</label>
+                        <div class="input-group">
+                            <!-- <i class="fa-solid fa-envelope"></i> -->
+                            <input type="text" name="email" id="uemail" class="form-control" placeholder="" required>
+                        </div>
+                        <p id="emailAlert">Couldn't find your Account</p>
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-:root {
-  --dark: #34495E;
-  --light: #ffffff;
-  --success: #0ABF30;
-  --error: #E24D4C;
-  --warning: #E9BD0C;
-  --info: #3498DB;
-}
-.notifications {
-  position: fixed;
-  top: 30px;
-  right: 20px;
-}
-.notifications :where(.toast, .column) {
-  display: flex;
-  align-items: center;
-}
-.notifications .toast {
-  width: 400px;
-  position: relative;
-  overflow: hidden;
-  list-style: none;
-  border-radius: 4px;
-  padding: 16px 17px;
-  margin-bottom: 10px;
-  background: var(--light);
-  justify-content: space-between;
-  animation: show_toast 0.3s ease forwards;
-}
-@keyframes show_toast {
-  0% {
-    transform: translateX(100%);
-  }
-  40% {
-    transform: translateX(-5%);
-  }
-  80% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-10px);
-  }
-}
-.notifications .toast.hide {
-  animation: hide_toast 0.3s ease forwards;
-}
-@keyframes hide_toast {
-  0% {
-    transform: translateX(-10px);
-  }
-  40% {
-    transform: translateX(0%);
-  }
-  80% {
-    transform: translateX(-5%);
-  }
-  100% {
-    transform: translateX(calc(100% + 20px));
-  }
-}
-.toast::before {
-  position: absolute;
-  content: "";
-  height: 3px;
-  width: 100%;
-  bottom: 0px;
-  left: 0px;
-  animation: progress 5s linear forwards;
-}
-@keyframes progress {
-  100% {
-    width: 0%;
-  }
-}
-.toast.success::before, .btn#success {
-  background: var(--success);
-}
-.toast.error::before, .btn#error {
-  background: var(--error);
-}
-.toast.warning::before, .btn#warning {
-  background: var(--warning);
-}
-.toast.info::before, .btn#info {
-  background: var(--info);
-}
-.toast .column i {
-  font-size: 1.75rem;
-}
-.toast.success .column i {
-  color: var(--success);
-}
-.toast.error .column i {
-  color: var(--error);
-}
-.toast.warning .column i {
-  color: var(--warning);
-}
-.toast.info .column i {
-  color: var(--info);
-}
-.toast .column span {
-  font-size: 1.07rem;
-  margin-left: 12px;
-}
-.toast i:last-child {
-  color: #aeb0d7;
-  cursor: pointer;
-}
-.toast i:last-child:hover {
-  color: var(--dark);
-}
-.buttons .btn {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin: 0 5px;
-  color: var(--light);
-  font-size: 1.2rem;
-  padding: 10px 20px;
-  border-radius: 4px;
-}
+                    </div>
+                    <div class="">
+                        <label for="upassword" class="form-label">Password</label>
+                        <div class="input-group">
+                            <!-- <i class="fa-solid fa-envelope"></i> -->
+                            <input type="password" name="password" id="upassword" class="form-control" placeholder="" required>
+                        </div>
+                        <!-- <p id="passwordAlert">Wrong password. Try again or click Forgot password to reset it.</p> -->
+                        <p id="passwordAlert">Wrong password. Please try again </p>
+                    </div>
+                    <div class="mb-3 fogot">
+                        <p id="forgotpassword" class="text-primary" onclick="openModal()">Forgot Password</p>
+                    </div>
+                    
+                    <div class="mb-3 btn-container">
+                        <button onclick=login(event) class="btn btn-primary" id="btnSignIn">Login</button>
+                    </div>
+                    
+                    <div class="mb-3 text-center">
+                        <span id="text">Don't have an account? <span id="signup" class="text-primary" onclick="create()">signup</span></span>
+                    </div>
+                </form>
+            </div>  
+        </div>
+    </div>
+          
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 class="card-title text-center">Reset Password</h3>
+            <div class="mb-3">
+                <label for="forgotEmail" class="form-label">Email</label>
+                <input type="email" class="model-input" id="forgotEmail" placeholder="Enter your email">
+                <p id="forgotEmailalert" class="alert">Enter valid email</p>
+            </div>
+            <div class="mb-3">
+                <label for="newPassword" class="form-label">New Password</label>
+                <input type="password" class="model-input" id="newPassword" placeholder="Enter new password">
+                <p id="fogotPasswordalert" class="alert">Enter valid email</p>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="model-input" id="confirmPassword" placeholder="Confirm new password">
+                <p id="forgotConfirmPasswordalert" class="alert">Enter valid email</p>
+            </div>
+            <div class="mb-3 btn-container">
+                <button onclick=resetPassword(event) class="btn btn-primary" id="btnSignIn">Reset Password</button>
+            </div>
+        </div>
+    </div>
+    
 
-@media screen and (max-width: 530px) {
-  .notifications {
-    width: 95%;
-  }
-  .notifications .toast {
-    width: 100%;
-    font-size: 1rem;
-    margin-left: 20px;
-  }
-  .buttons .btn {
-    margin: 0 1px;
-    font-size: 1.1rem;
-    padding: 8px 15px;
-  }
-}
+    <script src="js/login.js"></script>
+</body>
+</html>
+
+
+
