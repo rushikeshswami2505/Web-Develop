@@ -153,13 +153,6 @@ body {
 .iti{
     width: 100%;
 }
-.modal.show {
-    /* display: block !important; */
-}
-
-.modal-backdrop {
-    /* Add your styles for the modal backdrop here, if needed */
-}
 .container-view{
     width: 50%;
 }

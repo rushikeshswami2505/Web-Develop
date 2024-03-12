@@ -1,4 +1,8 @@
-function create() {
+function loginIntoYoutube() {
+    console.log("youtube");
+    window.location.href = "youtube.html";
+}
+function create(){
     window.location.href = "signup.html";
 }
 const existingUsersDataString = localStorage.getItem("usersData");
@@ -117,7 +121,7 @@ function login(event){
         toast.textContent = "Login successful...";
         setTimeout(() => {
             toast.classList.add('hidden');
-            window.location.href = "index.html";
+            loginIntoYoutube();
         }, 1000);
         // toast sucesfull
     }
@@ -174,12 +178,12 @@ function resetPassword(event) {
 }
 
 // Close modal if clicked outside of it
-window.onclick = function (event) {
-    var modal = document.getElementById('forgotPasswordModal');
-    if (event.target == modal) {
-        closeModal();
-    }
-}
+// window.onclick = function (event) {
+//     var modal = document.getElementById('forgotPasswordModal');
+//     if (event.target == modal) {
+//         closeModal();
+//     }
+// }
 
 function isValidPass(passVal){
     
