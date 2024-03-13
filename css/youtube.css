@@ -6,6 +6,10 @@
 }
 /* nav bar */
     /* icon and menu */
+
+.navbar{
+    background-color: white;
+}
 body{
     animation: none;
     transition: none;
@@ -96,11 +100,15 @@ i{
     font-size: 10px;
 }
 .main-guide{
+    /* position: fixed; */
 }
 .main-guide div button{
     width: 4rem;
     height: 4.3rem;
     
+}
+.btn-main-guide:hover{
+    background-color: var(--btn-active-bg-color);
 }
 /* suggest */
 .nav-suggest{
@@ -131,13 +139,24 @@ i{
 }
 
 /* suggest */
-.nav-suggest {
-    width: 100%;
-    overflow-x: hidden;
+.card-box{
+    width: 20rem;
 }
-.card-text {
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Display an ellipsis (...) for overflowed text */
-    width: 100%; /* Ensure text takes up full width of the card body */
+.channel-icon{
+    width: 30px;
+    height: 30px;
+}
+.channel-subtitle{
+    /* display: block; */
+    overflow: hidden;
+    /* white-space: nowrap; */
+    height: 10%;
+    text-overflow: ellipsis;
+}
+.check{
+    font-size: 0.80rem;
+}
+.box-videos{
+    overflow-y: auto;
+    max-height: 500px;
 }
