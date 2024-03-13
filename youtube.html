@@ -24,26 +24,195 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid d-flex justify-content-between">
             <div class="col-2">
-                <div class="d-flex align-items-center justify-content-start ms-3">
-                    <a class="nav-link align-items-center pt-1 fw-lighter" href="#" width="25" heigth="25"><i class="fa-solid fa-bars"></i>
-                    <a class="navbar-brand ms-3" href="#">
+                <div class="d-flex align-items-center">
+                    <button class="btn rounded-circle nav-menu me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                         <img src="assets/images/youtubeLogo.png" alt="youtube" width="90" height="20">
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="col-8">
                 <div class="d-flex justify-content-center align-items-center">
-                    <input class="border border-dark-subtle p-2 search-left" placeholder="Search" type="text">
-                    <button class="btn rounded-end-circle p-2 btn-primary search-right"><i class="bi bi-search"></i></button>
+                    <input class="border border-dark-subtle p-2 input-search-left" placeholder="Search" type="text">
+                    <button class="btn rounded-end-circle border border-dark-subtle p-2 btn-search-right"><i class="bi bi-search"></i></button>
+                    <div class="ms-3">
+                        <button class="btn rounded-circle btn-mic">
+                            <i class="bi bi-mic-fill"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="col-2">
-                <div class="d-flex align-items-start justify-content-start me-3">
-                    Here
+                <div class="d-flex align-items-start justify-content-end">
+                    <button class="btn rounded-circle me-2 btn-camera">
+                        <i class="bi bi-camera-video"></i>
+                    </button>
+                    <button class="btn rounded-circle me-2 btn-bell">
+                        <i class="bi bi-bell"></i>
+                    </button>
+                    <button class="btn rounded-circle me-2 btn-user">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
+    <section>
+        <div class="offcanvas offcanvas-start mt-5 border-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-body offcanvas-guide">
+                <div class="align-item-center justify-content-center">
+                    <div>
+                        <button class="btn text-start btn-guide btn-active-guide">
+                            <i class="bi bi-house-door-fill ms-1 me-3"></i>
+                            <span class="">Home</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-film ms-1 me-3"></i>
+                            <span class="">Shorts</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-collection-play ms-1 me-3"></i>
+                            <span class="">Subscription</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div>
+                        <button class="btn text-start btn-guide-title">
+                            <span class="fw-bold">You</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-person-square ms-1 me-3"></i>
+                            <span class="">Your channel</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-clock-history ms-1 me-3"></i>
+                            <span class="">History</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-play-btn ms-1 me-3"></i>
+                            <span class="">Your Videos</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-clock ms-1 me-3"></i>
+                            <span class="">Watch Later</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-scissors ms-1 me-3"></i>
+                            <span class="">Your clips</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <i class="bi bi-chevron-down ms-1 me-3"></i>
+                            <span class="">Show More</span>
+                        </button>
+                    </div>
+                    <hr>
+                    <div>
+                        <button class="btn text-start btn-guide-title">
+                            <span class="fw-bold">Subscriptions</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <img class="rounded-circle ms-1 me-3 img-guide" src="assets/images/durga.jpg" alt="Durga Software">
+                            <span class="">Durga Software</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <img class="rounded-circle ms-1 me-3 img-guide" src="assets/images/english.jpg" alt="Durga Software">
+                            <span class="">English Speeches</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <img class="rounded-circle ms-1 me-3 img-guide" src="assets/images/indiaToday.jpg" alt="Durga Software">
+                            <span class="">India Today</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <img class="rounded-circle ms-1 me-3 img-guide" src="assets/images/craft.jpg" alt="Durga Software">
+                            <span class="">5 Minutes Craft Enginnering</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <img class="rounded-circle ms-1 me-3 img-guide" src="assets/images/a2.jpg" alt="Durga Software">
+                            <span class="">A2 Motivation</span>
+                        </button>
+                        <button class="btn text-start btn-guide">
+                            <img class="rounded-circle ms-1 me-3 img-guide" src="assets/images/abhishekh.jpg" alt="Durga Software">
+                            <span class="">Abhishek Upmanyu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="d-flex">
+            <!-- side main guider -->
+            <div class="main-guide ms-1 me-2">
+                <div class="d-grid">
+                    <button class="btn ps-0 pe-0 text-center btn-main-guide btn-active-guide">
+                        <i class="bi bi-house-door-fill"></i>
+                        <span class="d-block pt-1">Home</span>
+                    </button>
+                </div>
+                <div class="d-grid">
+                    <button class="btn ps-0 pe-0 text-center btn-main-guide">
+                        <i class="bi bi-film"></i>
+                        <span class="d-block pt-1">Shorts</span>
+                    </button>
+                </div>
+                <div class="d-grid">
+                    <button class="btn ps-0 pe-0 text-center btn-main-guide">
+                        <i class="bi bi-collection-play"></i>
+                        <span class="d-block pt-1">Subscription</span>
+                    </button>
+                </div>
+                <div class="d-grid">
+                    <button class="btn ps-0 pe-0 text-center btn-main-guide">
+                        <i class="bi bi-play-btn"></i>
+                        <span class="d-block pt-1">You</span>
+                    </button>
+                </div>
+            </div>
+            <div class="ms-2">
+                <!-- suggested topic for user stick -->
+                <div class="nav-suggest">
+                    <nav class="navbar bg-body-tertiary">
+                        <div class="container-suggest-wrapper">
+                            <div class="container-suggest d-flex flex-nowrap">
+                                <button class="btn btn-suggest me-3 btn-active-suggest">All</button>
+                                <button class="btn btn-suggest me-3">Mixes</button>
+                                <button class="btn btn-suggest me-3">Music</button>
+                                <button class="btn btn-suggest me-3">Shark Tank</button>
+                                <button class="btn btn-suggest me-3">Arijit Singh</button>
+                                <button class="btn btn-suggest me-3">Computer programming</button>
+                                <button class="btn btn-suggest me-3">Mantras</button>
+                                <button class="btn btn-suggest me-3">Live</button>
+                                <button class="btn btn-suggest me-3">Film criticism</button>
+                                <button class="btn btn-suggest me-3">A. R. Rehman</button>
+                                <button class="btn btn-suggest me-3">Shreyas Gopal</button>
+                                <button class="btn btn-suggest me-3">Rahat Fateh Ali Khan</button>
+                                <button class="btn btn-suggest me-3">Dramedy</button>
+                                <button class="btn btn-suggest me-3">Presentations</button>
+                                <button class="btn btn-suggest me-3">Pop Music</button>
+                                <button class="btn btn-suggest me-3">Electronics Music</button>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <!-- all video list -->
+                <div class="d-flex mt-4">
+                    <div class="card border-0">
+                        <img src="assets/images/sharktank.webp" alt="" width="300px" height="150px">
+                        <div class="card-body text-start ps-0 pb-0">
+                            <img class="rounded-circle img-guide" src="assets/images/durga.jpg" alt="Durga Software">
+                            <span class="card-text">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section> -->
+        
+    <!-- </section> -->
 </body>
 </html>
