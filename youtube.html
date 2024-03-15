@@ -24,7 +24,7 @@
 
 
     <link rel="stylesheet" href="css/youtube.css">
-    <link rel="stylesheet" href="css/model.css">
+    <link rel="stylesheet" href="css/modal.css">
 
 </head>
 <body>
@@ -59,13 +59,14 @@
                         <i class="bi bi-bell"></i>
                     </button>
                     <div class="btn-group">
-                        <button class="btn rounded-circle me-2 btn-profile btn-profile-user dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle"></i>
+                        <button class="btn rounded-circle me-2 btn-profile-user dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <!-- <i class="bi bi-person-circle"></i> -->
+                            <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/my_icon.jpg" alt="Shark Tank Icon">
                         </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end">
-                            <li><button class="dropdown-item" id="viewProfile" type="button" data-bs-toggle="modal" data-bs-target="#viewProfileModal">View Profle</button></li>
-                            <li><button class="dropdown-item" id="viewProfile" type="button" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profle</button></li>
-                            <li><button class="dropdown-item" id="signOut" type="button">Sign out</button></li>
+                            <li><button class="dropdown-item li-profile" id="viewProfile" type="button" data-bs-toggle="modal" data-bs-target="#viewProfileModal">View Profle</button></li>
+                            <li><button class="dropdown-item li-profile" id="viewProfile" type="button" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profle</button></li>
+                            <li><button class="dropdown-item " id="signOut" type="button" onclick="signOut()">Sign out</button></li>
                         </ul>
                     </div>
                 </div>
@@ -76,14 +77,14 @@
         <div class="d-flex main-section">
             <!-- side main guider -->
             <div id="mainGuide">
-                <div class="align-item-center justify-content-center" id="mainLargeGuide">
+                <div class="align-item-center justify-content-center nav-pills" id="mainLargeGuide">
                     <div>
                         <button class="btn text-start btn-guide btn-active-guide">
                             <i class="bi bi-house-door-fill ms-1 me-3"></i>
                             <span class="">Home</span>
                         </button>
                         <button class="btn text-start btn-guide">
-                            <i class="bi bi-film ms-1 me-3"></i>
+                            <i class="bi bi-file-play ms-1 me-3"></i>
                             <span class="">Shorts</span>
                         </button>
                         <button class="btn text-start btn-guide">
@@ -98,11 +99,11 @@
                             <i class="bi bi-chevron-right"></i>
                         </button>
                         <button class="btn text-start btn-guide">
-                            <i class="bi bi-person-square ms-1 me-3"></i>
+                            <i class="bi bi-file-person ms-1 me-3"></i>
                             <span class="">Your channel</span>
                         </button>
                         <button class="btn text-start btn-guide">
-                            <i class="bi bi-clock-history ms-1 me-3"></i>
+                            <i class="bi bi-hourglass-top ms-1 me-3"></i>
                             <span class="">History</span>
                         </button>
                         <button class="btn text-start btn-guide">
@@ -114,7 +115,7 @@
                             <span class="">Watch Later</span>
                         </button>
                         <button class="btn text-start btn-guide">
-                            <i class="bi bi-scissors ms-1 me-3"></i>
+                            <i class="bi bi-pen ms-1 me-3"></i>
                             <span class="">Your clips</span>
                         </button>
                         <button class="btn text-start btn-guide">
@@ -163,7 +164,7 @@
                     </div>
                     <div class="d-grid">
                         <button class="btn ps-0 pe-0 text-center btn-main-guide">
-                            <i class="bi bi-film"></i>
+                            <i class="bi-file-play"></i>
                             <span class="d-block pt-1">Shorts</span>
                         </button>
                     </div>
@@ -187,25 +188,25 @@
                 <!-- suggested topic for user stick -->
                 <div class="nav-suggest">
                     <nav class="navbar bg-body-tertiary">
-                        <div class="container-suggest-wrapper">
+                        <div class="row container-suggest-wrapper">
                             <div class="container-suggest d-flex flex-wrap" id="suggest-buttons">
-                                <button class="btn btn-suggest me-3 btn-active-suggest">All</button>
-                                <button class="btn btn-suggest me-3">Mixes</button>
-                                <button class="btn btn-suggest me-3">Music</button>
-                                <button class="btn btn-suggest me-3">Shark Tank</button>
-                                <button class="btn btn-suggest me-3">Arijit Singh</button>
-                                <button class="btn btn-suggest me-3">Computer programming</button>
-                                <button class="btn btn-suggest me-3">Mantras</button>
-                                <button class="btn btn-suggest me-3">Live</button>
-                                <button class="btn btn-suggest me-3">Film criticism</button>
-                                <button class="btn btn-suggest me-3">A. R. Rehman</button>
-                                <button class="btn btn-suggest me-3">Shreyas Gopal</button>
-                                <button class="btn btn-suggest me-3">Rahat Fateh Ali Khan</button>
-                                <button class="btn btn-suggest me-3">Dramedy</button>
+                                <button class="btn btn-suggest mb-5 mb-5 me-3 btn-active-suggest">All</button>
+                                <button class="btn btn-suggest mb-5 mb-5 me-3">Mixes</button>
+                                <button class="btn btn-suggest mb-5 me-3">Music</button>
+                                <button class="btn btn-suggest mb-5 me-3">Shark Tank</button>
+                                <button class="btn btn-suggest mb-5 me-3">Arijit Singh</button>
+                                <button class="btn btn-suggest mb-5 me-3">Computer programming</button>
+                                <button class="btn btn-suggest mb-5 me-3">Mantras</button>
+                                <button class="btn btn-suggest mb-5 me-3">Live</button>
+                                <button class="btn btn-suggest mb-5 me-3">Film criticism</button>
+                                <button class="btn btn-suggest mb-5 me-3">A. R. Rehman</button>
+                                <button class="btn btn-suggest mb-5 me-3">Shreyas Gopal</button>
+                                <button class="btn btn-suggest mb-5 me-3">Rahat Fateh Ali Khan</button>
+                                <button class="btn btn-suggest mb-5 me-3">Dramedy</button>
                                 <!-- <button class="btn"><i class="bi bi-chevron-right"></i></button> -->
-                                <button class="btn btn-suggest me-3">Presentations</button>
-                                <button class="btn btn-suggest me-3">Pop Music</button>
-                                <button class="btn btn-suggest me-3">Electronics Music</button>
+                                <button class="btn btn-suggest mb-5 me-3">Presentations</button>
+                                <button class="btn btn-suggest mb-5 me-3">Pop Music</button>
+                                <button class="btn btn-suggest mb-5 me-3">Electronics Music</button>
                             </div>
                         </div>
                     </nav>
@@ -234,14 +235,76 @@
                     </div>
                     <div class="d-flex mt-4 card-box">
                         <div class="card border-0">
-                            <img class="rounded-3" src="assets/images/sharktank.webp" alt="">
+                            <img class="rounded-3" src="assets/images/luka_chupi_tumbnil.jpg" alt="">
                             <div class="card-body text-start ps-0 pb-0 pt-2">
                                 <div class="row">
                                     <div class="col-2 pe-0">
-                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/sharktank_icon.jpg" alt="Shark Tank Icon">
+                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/luka_chpi_icon.jpg" alt="Shark Tank Icon">
+                                    </div>
+                                    <div class="col-10 ps-0"> 
+                                        <span class="card-text fw-semibold channel-subtitle">Luka Chuppi | Lata Mangeshkar | A.R. Rahman | Rang De Basanti</span>
+                                        <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
+                                        <br>
+                                        <span class="card-text text-muted fs-6">Soul Music <i class="bi bi-check-circle-fill check"></i></span>
+                                        <br>
+                                        <span class="card-text text-muted fs-6">3.5M views &#x2022; 1 year ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mt-4 card-box">
+                        <div class="card border-0">
+                            <img class="rounded-3" src="assets/images/relax_thumbnil.jpg" alt="">
+                            <div class="card-body text-start ps-0 pb-0 pt-2">
+                                <div class="row">
+                                    <div class="col-2 pe-0">
+                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/relax_icon.jpg" alt="Shark Tank Icon">
+                                    </div>
+                                    <div class="col-10 ps-0"> 
+                                        <span class="card-text fw-semibold channel-subtitle">Pandit Ravi Shankar Mind Relaxing Sitar Music | Wake Up Happy & Positive Energy</span>
+                                        <br>
+                                        <span class="card-text text-muted fs-6">Saregama Hindustani Classical <i class="bi bi-check-circle-fill check"></i></span>
+                                        <br>
+                                        <span class="card-text text-muted fs-6">478k views &#x2022; 3 month ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="d-flex mt-4 card-box">
+                        <div class="card border-0">
+                            <img class="rounded-3" src="assets/images/belive_thumbnil.jpg" alt="">
+                            <div class="card-body text-start ps-0 pb-0 pt-2">
+                                <div class="row">
+                                    <div class="col-2 pe-0">
+                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/belive_icon.jpg" alt="Shark Tank Icon">
                                     </div>
                                     <div class="col-10 ps-0"> 
                                         <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India</span>
+                                        <br>
+                                        <span class="card-text text-muted fs-6">Reteless <i class="bi bi-check-circle-fill check"></i></span>
+                                        <br>
+                                        <span class="card-text text-muted fs-6">2.8M views &#x2022; 2 year ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mt-4 card-box">
+                        <div class="card border-0">
+                            <img class="rounded-3" src="assets/images/old_thumbnil.jpg" alt="">
+                            <div class="card-body text-start ps-0 pb-0 pt-2">
+                                <div class="row">
+                                    <div class="col-2 pe-0">
+                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/old_icon.jpg" alt="Shark Tank Icon">
+                                    </div>
+                                    <div class="col-10 ps-0"> 
+                                        <span class="card-text fw-semibold channel-subtitle">Old Hindi Song | EVER GREEN SONG | Asha Bhosle Lata Mangeshkar</span>
                                         <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
                                         <br>
                                         <span class="card-text text-muted fs-6">Shark Tank India <i class="bi bi-check-circle-fill check"></i></span>
@@ -255,14 +318,35 @@
 
                     <div class="d-flex mt-4 card-box">
                         <div class="card border-0">
-                            <img class="rounded-3" src="assets/images/sharktank.webp" alt="">
+                            <img class="rounded-3" src="assets/images/scenic_thumbnil.jpg" alt="">
                             <div class="card-body text-start ps-0 pb-0 pt-2">
                                 <div class="row">
                                     <div class="col-2 pe-0">
-                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/sharktank_icon.jpg" alt="Shark Tank Icon">
+                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/scenic_icon.jpg" alt="Shark Tank Icon">
                                     </div>
                                     <div class="col-10 ps-0"> 
-                                        <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India</span>
+                                        <span class="card-text fw-semibold channel-subtitle">Amazon 4k - The World’s Largest Tropical Rainforest Part 2 | Jungle Sounds</span>
+                                        <br>
+                                        <span class="card-text text-muted fs-6">Scenic Scenes <i class="bi bi-check-circle-fill check"></i></span>
+                                        <br>
+                                        <span class="card-text text-muted fs-6">27M views &#x2022; 2 year ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex mt-4 card-box">
+                        <div class="card border-0">
+                            <img class="rounded-3" src="assets/images/open_source_thumbnil.jpg" alt="">
+                            <div class="card-body text-start ps-0 pb-0 pt-2">
+                                <div class="row">
+                                    <div class="col-2 pe-0">
+                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/open_source_icon.jpg" alt="Shark Tank Icon">
+                                    </div>
+                                    <div class="col-10 ps-0"> 
+                                        <span class="card-text fw-semibold channel-subtitle">Day 1: Open Source Contributions | BootCamp</span>
                                         <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
                                         <br>
                                         <span class="card-text text-muted fs-6">Shark Tank India <i class="bi bi-check-circle-fill check"></i></span>
@@ -276,103 +360,18 @@
 
                     <div class="d-flex mt-4 card-box">
                         <div class="card border-0">
-                            <img class="rounded-3" src="assets/images/sharktank.webp" alt="">
+                            <img class="rounded-3" src="assets/images/plannet_thumbnil.jpg" alt="">
                             <div class="card-body text-start ps-0 pb-0 pt-2">
                                 <div class="row">
                                     <div class="col-2 pe-0">
-                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/sharktank_icon.jpg" alt="Shark Tank Icon">
+                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/plannet_icon.jpg" alt="Shark Tank Icon">
                                     </div>
                                     <div class="col-10 ps-0"> 
-                                        <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India</span>
-                                        <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
+                                        <span class="card-text fw-semibold channel-subtitle">Our Planet | One Planet | FULL EPISODE | Netflix</span>
                                         <br>
-                                        <span class="card-text text-muted fs-6">Shark Tank India <i class="bi bi-check-circle-fill check"></i></span>
+                                        <span class="card-text text-muted fs-6">Netflix <i class="bi bi-check-circle-fill check"></i></span>
                                         <br>
-                                        <span class="card-text text-muted fs-6">200k views &#x2022; 1 year ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex mt-4 card-box">
-                        <div class="card border-0">
-                            <img class="rounded-3" src="assets/images/sharktank.webp" alt="">
-                            <div class="card-body text-start ps-0 pb-0 pt-2">
-                                <div class="row">
-                                    <div class="col-2 pe-0">
-                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/sharktank_icon.jpg" alt="Shark Tank Icon">
-                                    </div>
-                                    <div class="col-10 ps-0"> 
-                                        <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India</span>
-                                        <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
-                                        <br>
-                                        <span class="card-text text-muted fs-6">Shark Tank India <i class="bi bi-check-circle-fill check"></i></span>
-                                        <br>
-                                        <span class="card-text text-muted fs-6">200k views &#x2022; 1 year ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex mt-4 card-box">
-                        <div class="card border-0">
-                            <img class="rounded-3" src="assets/images/sharktank.webp" alt="">
-                            <div class="card-body text-start ps-0 pb-0 pt-2">
-                                <div class="row">
-                                    <div class="col-2 pe-0">
-                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/sharktank_icon.jpg" alt="Shark Tank Icon">
-                                    </div>
-                                    <div class="col-10 ps-0"> 
-                                        <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India</span>
-                                        <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
-                                        <br>
-                                        <span class="card-text text-muted fs-6">Shark Tank India <i class="bi bi-check-circle-fill check"></i></span>
-                                        <br>
-                                        <span class="card-text text-muted fs-6">200k views &#x2022; 1 year ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex mt-4 card-box">
-                        <div class="card border-0">
-                            <img class="rounded-3" src="assets/images/sharktank.webp" alt="">
-                            <div class="card-body text-start ps-0 pb-0 pt-2">
-                                <div class="row">
-                                    <div class="col-2 pe-0">
-                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/sharktank_icon.jpg" alt="Shark Tank Icon">
-                                    </div>
-                                    <div class="col-10 ps-0"> 
-                                        <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India</span>
-                                        <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
-                                        <br>
-                                        <span class="card-text text-muted fs-6">Shark Tank India <i class="bi bi-check-circle-fill check"></i></span>
-                                        <br>
-                                        <span class="card-text text-muted fs-6">200k views &#x2022; 1 year ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex mt-4 card-box">
-                        <div class="card border-0">
-                            <img class="rounded-3" src="assets/images/sharktank.webp" alt="">
-                            <div class="card-body text-start ps-0 pb-0 pt-2">
-                                <div class="row">
-                                    <div class="col-2 pe-0">
-                                        <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/sharktank_icon.jpg" alt="Shark Tank Icon">
-                                    </div>
-                                    <div class="col-10 ps-0"> 
-                                        <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India</span>
-                                        <!-- <span class="card-text fw-semibold channel-subtitle">The Sharks Go NUTS To Invest In This Product | Shark Tank India | Full Pitch</span> -->
-                                        <br>
-                                        <span class="card-text text-muted fs-6">Shark Tank India <i class="bi bi-check-circle-fill check"></i></span>
-                                        <br>
-                                        <span class="card-text text-muted fs-6">200k views &#x2022; 1 year ago</span>
+                                        <span class="card-text text-muted fs-6">26M views &#x2022; 3 year ago</span>
                                     </div>
                                 </div>
                             </div>
@@ -397,27 +396,27 @@
                                 <div class="text-center">
                                     <div class="card-title text-center fw-bold">Professional Details</div>
                                     <div class="card-body justify-content-center">
-                                        <div class="card-item">
-                                            <img src="assets/images/profile.png" alt="Profile Image" class="img-fluid" style="max-width: 40%;">
+                                        <div class="card-item mb-4">
+                                            <img src="assets/images/my_icon.jpg" alt="Profile Image" class="rounded-circle img-fluid" style="max-width: 40%;">
                                         </div>
                                         <div class="card-item">
-                                            <ul class="list-group mt-1">
-                                                <li class="list-group-item"><i class="fa-brands fa-facebook" style="color: #0024b3;"></i> Facebook</li>
+                                            <ul class="list-group mt-1 mb-4">
+                                                <li class="list-group-item" ><i class="fa-brands fa-facebook" style="color: #0024b3;"></i> Facebook</li>
                                                 <li class="list-group-item"><i class="fa-brands fa-instagram" style="color: #fd1c32;"></i> Instagram</li>
                                                 <li class="list-group-item"><i class="fa-brands fa-linkedin" style="color: #003185;"></i> LinkedIn</li>
                                             </ul>
+                                            <div class="card-item">
+                                                <button class="btn btn-primary mt-2 btn-view-edit" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                                    Edit Profile
+                                                </button>
+                                            </div>  
                                         </div>
-                                        <div class="card-item">
-                                            <button class="btn btn-primary mt-1 btn-edit" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                                                Edit Profile
-                                            </button>
-                                        </div>  
                                     </div>
                                     
                                 </div>
                             </div>
-                            <div class="col-lg-9 p-1">
-                                <div class="card p-1">
+                            <div class="col-lg-9 p-1 card-full-data">
+                                <div class="card">
                                     <div class="card-row d-flex justify-content-around">
                                         <div class="card-item col-5">
                                             <span class="form-label fw-bold">First Name</span>
@@ -507,21 +506,26 @@
                                 <div class="text-center">
                                     <div class="card-title text-center fw-bold">Professional Details</div>
                                     <div class="card-body justify-content-center">
-                                        <div class="card-item">
-                                            <img src="assets/images/profile.png" alt="" class="img-fluid" style="max-width: 40%;">
+                                        <div class="card-item mb-4">
+                                            <img src="assets/images/my_icon.jpg" alt="" class="rounded-circle img-fluid" style="max-width: 40%;">
                                         </div>
                                         <div class="card-item">
-                                            <ul class="list-group mt-1">
+                                            <ul class="list-group mt-1 mb-4">
                                                 <li class="list-group-item"><i class="fa-brands fa-facebook" style="color: #0024b3;"></i> Facebook</li>
                                                 <li class="list-group-item"><i class="fa-brands fa-instagram" style="color: #fd1c32;"></i> Instagram</li>
                                                 <li class="list-group-item"><i class="fa-brands fa-linkedin" style="color: #003185;"></i> Linkdin</li>
                                             </ul>
+                                            <div class="card-item">
+                                                <button class="btn btn-primary mt-2 btn-view-edit" data-bs-toggle="modal" data-bs-target="#viewProfileModal">
+                                                    View Profile
+                                                </button>
+                                            </div>  
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-9 p-1">
-                                <div class="card p-1">
+                            <div class="col-lg-9 p-1 card-full-data">
+                                <div class="card">
                                     <div class="card-row d-flex justify-content-around">
                                         <div class="card-item col-5">
                                             <label for="firstname" class="form-label">First Name</label>
@@ -540,11 +544,6 @@
                                             <input id="email" type="text" class="form-control">
                                             <p id="emailalert" class="alert"></p>
                                         </div>
-                                        <!-- <div class="card-item col-5">
-                                            <label for="username" for="name" class="form-label">User name</label>
-                                            <input id="username" type="text" class="form-control">
-                                            <p id="usernamealert" class="alert"></p>
-                                        </div> -->
                                         <div class="card-item col-5">
                                             <label for="dob" class="form-label">Date of birth</label>
                                             <input id="dob" type="date" class="form-control">
@@ -618,7 +617,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary closebtn" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="updateUser(event)">Save</button>
+                    <button type="button" class="btn btn-primary savebtn" onclick="updateUser(event)">Save</button>
                 </div>
             </div>
         </div>
@@ -626,6 +625,6 @@
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/intlTelInput.min.js"></script>
     <script src="js/youtube.js"></script>
-    <script src="js/model.js"></script>
+    <script src="js/modal.js"></script>
 </body>
 </html>

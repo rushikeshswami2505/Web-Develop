@@ -1,8 +1,14 @@
 :root{
+    /* --btn-bg-light-color : #f8f8f8;
+    --btn-active-light-bg-color : #f2f2f2;
+    --btn-bg-color : #F2F2F2;
+    --btn-active-bg-color : #D9D9D9; */
+
     --btn-bg-light-color : #f8f8f8;
     --btn-active-light-bg-color : #f2f2f2;
     --btn-bg-color : #F2F2F2;
-    --btn-active-bg-color : #D9D9D9;
+    --btn-active-bg-color : #bacada;
+    --btn-bg-hover-color : #322be6;
 
     --primary-color : #645fe3;      
     --primary-color-hover : #322be6;
@@ -11,17 +17,21 @@
     --container-color : #bacada;
     
 }
+.modal-content,.list-group-item,.card-row{
+    background-color: var(--container-color) !important;
+}
 /* nav bar */
     /* icon and menu */
 
-.navbar{
-    background-color: white;
-}
+
 body{
     animation: none;
     transition: none;
     scrollbar-width: thin;
     overflow: hidden;
+}
+.navbar{
+    background-color: white;
 }
 .nav-menu{
     width: 2.5rem;
@@ -64,8 +74,17 @@ body{
     text-align: center;
     align-self: center;
 }
+.li-profile:hover{
+    background-color: #645fe3;
+    color: white;
+    font-weight: bolder;
+}
 .btn-profile:hover{
     background-color: var(--btn-active-bg-color);
+}
+.btn-profile-user:focus{
+    outline: none;
+    box-shadow: none;
 }
 
 /* sidebar canvas */
@@ -105,7 +124,8 @@ body{
     text-overflow: ellipsis;
 }
 .btn-guide:hover{
-    background-color: var(--btn-bg-color);
+    /* background-color: var(--btn-bg-color); */
+    background-color: var(--btn-active-bg-color);
 }
 
 /* subscription */
@@ -131,45 +151,65 @@ body{
 .btn-main-guide:hover{
     background-color: var(--btn-active-bg-color);
 }
-.btn-main-guide:active {
-    background-color: unset;
-}
+
 .btn-active-guide{
     background-color: var(--btn-active-bg-color);
+    font-weight: bold;
 }
 /* suggest */
 .btn-suggest{
-    background-color: var(--btn-bg-color);
+    /* background-color: var(--btn-bg-color); */
+    background-color: var(--btn-active-bg-color);
+    
     font-size: small;
     height: 2rem;
     font-weight: bold;
 }
 .btn-suggest:hover{
-    background-color: var(--btn-active-bg-color);
-}
-.btn-active-suggest{
-    background-color: black;
+    background-color: #645fe3;
     color: white;
     font-weight: bolder;
 }
+.btn-active-suggest:focus, .btn-active-suggest:active{
+    /* background-color: black; */
+    background-color: #645fe3;
+    color: white;
+    font-weight: bolder;
+}
+.btn-main-guide:focus{
+    background-color: white;
+}
+
+.btn-active-suggest{
+    /* background-color: black; */
+    background-color: #645fe3;
+    color: white;
+    font-weight: bolder;
+}
+
 /* scrollbar */
 .container-suggest-wrapper {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .container-suggest {
-    width: 200%;
-    white-space: nowrap;
+    /* width: 200%;
+    white-space: nowrap; */
 }
 
 /* suggest */
 .card-box{
     width: 20rem;
 }
+.col-2 div .btn-group{
+    width: 3.0rem;
+    height: 3.0rem;
+}
 .channel-icon{
     width: 30px;
     height: 30px;
 }
+
 .channel-subtitle{
     /* display: block; */
     overflow: hidden;
@@ -190,8 +230,8 @@ body{
 }
 
 .nav-suggest {
-    overflow-x: hidden;
-    width: calc(100% - 16px); /* Adjust the width as needed */
+    /* overflow-x: hidden;
+    width: calc(100% - 16px); */
 }
 
 .navbar {
@@ -199,8 +239,8 @@ body{
 }
 
 .container-suggest {
-    max-width: 100%; /* Ensure container doesn't exceed parent width */
-    justify-content: flex-start; /* Align buttons to the start of container */
+    /* max-width: 100%; 
+    justify-content: flex-start;  */
 }
 
 .btn-suggest {
@@ -228,7 +268,8 @@ body{
 .nav-suggest {
     overflow: hidden;
     width: 100%; 
-    height: 2.8rem;
+    /* height: 2.8rem; */
+    /* display: nowrap; */
 }
 /* Adjust video box size for different screen sizes */
 
@@ -305,6 +346,8 @@ body{
         width: 550px;
     }
 }
+/* main section padding  */
+
 /* Styling for the sticky section */
 .box-videos {
     position: sticky;
@@ -312,12 +355,16 @@ body{
     height: calc(100vh - 56px); /* Adjust the height as needed */
     overflow-y: auto; /* Enable vertical scrollbar */
 }
-/* div.container-suggest {
-    background-color: #333;
-  overflow: auto;
-  white-space: nowrap;
+.ms-2 .nav-suggest {
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 3.00rem;
+    scrollbar-width: none;
 }
 
-div.container-suggest button{
-    display: inline-flex;
-} */
+.container-suggest-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 3.00rem;
+    min-width: 200%; /* Ensure the container takes up the full width */
+}

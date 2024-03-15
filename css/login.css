@@ -17,6 +17,14 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+hr{
+    color: #ffffff;
+    height: 1px;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;
+    font-weight: bold;
+}
 #emailAlert, #passwordAlert{
     color: red;
     display: none;

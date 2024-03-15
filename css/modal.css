@@ -10,6 +10,9 @@
 body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+#viewProfileModal .card,#editProfileModal .card{
+  border: none;
+}
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
@@ -76,6 +79,10 @@ body{
 .btn-primary:hover{
     background-color: var(--primary-color-hover);
 }
-.btn-edit{
+.btn-view-edit{
     background-color: var(--primary-color);
+    width: 100%;
+}
+.closebtn,.savebtn{
+  width: 7rem;
 }
