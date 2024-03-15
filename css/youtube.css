@@ -3,6 +3,13 @@
     --btn-active-light-bg-color : #f2f2f2;
     --btn-bg-color : #F2F2F2;
     --btn-active-bg-color : #D9D9D9;
+
+    --primary-color : #645fe3;      
+    --primary-color-hover : #322be6;
+    --primary-color-extra-hover : #0600be;
+    --error-color : #872e36;
+    --container-color : #bacada;
+    
 }
 /* nav bar */
     /* icon and menu */
@@ -13,6 +20,8 @@
 body{
     animation: none;
     transition: none;
+    scrollbar-width: thin;
+    overflow: hidden;
 }
 .nav-menu{
     width: 2.5rem;
@@ -30,6 +39,7 @@ body{
 .btn-search-right{
     border-radius: 0px 180px 180px 0px;
     width: 4rem;    
+    height: 2.6rem;
     background-color: var(--btn-bg-light-color);
 }
 .btn-search-right:hover{
@@ -44,16 +54,23 @@ body{
 .btn-mic:hover{
     background-color: var(--btn-active-bg-color);
 }
-.btn-camera, .btn-bell, .btn-user{
-    width: 2.5rem;
+.btn-profile{
+    width: 3.0rem;
+    height: 3.0rem;
+    border-radius: 180px 180px 180px 180px;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    text-align: center;
+    align-self: center;
 }
-.btn-camera:hover, .btn-bell:hover, .btn-user:hover{
+.btn-profile:hover{
     background-color: var(--btn-active-bg-color);
 }
 
 /* sidebar canvas */
-i{
-    font-size: 1rem;
+.btn-profile i{
+    font-size: 1.2rem;
 }
 .btn{
     border: none;
@@ -62,9 +79,24 @@ i{
     background-color: var(--btn-active-bg-color);
     animation: none;
 }
-.offcanvas-guide{
-    width: 60%;    
+#mainLargeGuide{
+    /* display: none; */
+    /* width: min-content; */
+    width: 15rem;
+    justify-content: center;
+    padding: 15px;
+    padding-top: 5px;
+    overflow: hidden;
+    height: 100vh;
 }
+#mainLargeGuide:hover{
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+#mainSmallGuide{
+    display: none;
+}
+
 .btn-guide{
     width: 100%;
     height: 2.5rem;
@@ -75,45 +107,37 @@ i{
 .btn-guide:hover{
     background-color: var(--btn-bg-color);
 }
-.btn-active-guide{
-    background-color: var(--btn-bg-color);
-    font-weight: 600;
-}
-.btn-active-guide:hover{
-    background-color: var(--btn-active-bg-color);
-}
+
 /* subscription */
 .img-guide{
     width: 20px;
     height: 20px;
 }
 /* scrollbar */
-.offcanvas-guide {
-    overflow: hidden;
-}
-
-.offcanvas-guide:hover {
-    overflow-y: auto; 
-}
 /* main guide */
 .main-guide div button span{
     font-size: 10px;
 }
-.main-guide{
-    /* position: fixed; */
-}
+/* .main-guide{
+} */
 .main-guide div button{
     width: 4rem;
     height: 4.3rem;
     
 }
+.btn-main-guide{
+    background-color: unset;
+}
 .btn-main-guide:hover{
     background-color: var(--btn-active-bg-color);
 }
-/* suggest */
-.nav-suggest{
-    width: 100%;
+.btn-main-guide:active {
+    background-color: unset;
 }
+.btn-active-guide{
+    background-color: var(--btn-active-bg-color);
+}
+/* suggest */
 .btn-suggest{
     background-color: var(--btn-bg-color);
     font-size: small;
@@ -158,5 +182,142 @@ i{
 }
 .box-videos{
     overflow-y: auto;
-    max-height: 500px;
+    /* max-height: 500px; */
 }
+[class*=" bi-"]::before {
+    line-height: unset;
+    vertical-align: middle;
+}
+
+.nav-suggest {
+    overflow-x: hidden;
+    width: calc(100% - 16px); /* Adjust the width as needed */
+}
+
+.navbar {
+    margin-right: 0; /* Remove margin for navbar */
+}
+
+.container-suggest {
+    max-width: 100%; /* Ensure container doesn't exceed parent width */
+    justify-content: flex-start; /* Align buttons to the start of container */
+}
+
+.btn-suggest {
+    margin-bottom: 5px; /* Add some space between buttons */
+    max-width: calc(25% - 10px); /* Set max width for each button to 25% */
+}
+
+@media (max-width: 992px) {
+    .btn-suggest {
+        max-width: calc(33.33% - 10px); /* Set max width for each button to 33.33% for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .btn-suggest {
+        max-width: calc(50% - 10px); /* Set max width for each button to 50% for small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .btn-suggest {
+        max-width: 100%; /* Set max width for each button to 100% for extra small screens */
+    }
+}
+.nav-suggest {
+    overflow: hidden;
+    width: 100%; 
+    height: 2.8rem;
+}
+/* Adjust video box size for different screen sizes */
+
+@media (max-width: 320px) {
+    .box-videos .card-box {
+        flex: 1 0 calc(100% - 20px); /* Each video box takes full width on smaller screens with reduced gap */
+        margin-right: 0; /* No margin on smaller screens */
+    }
+}
+@media (max-width: 380px) {
+    .input-search-left, .btn-profile-camera, .btn-profile-bell, .btn-mic {
+        display: none;   
+    }
+    .btn-search-right,.btn-profile-user {
+        border-radius: 50%;
+        padding: 0px;         
+        width: 40px;
+        height: 40px;
+        margin-left: 80px;
+    }
+}
+
+@media (min-width: 381px) and (max-width: 500px) {
+    .btn-profile-camera,.btn-profile-bell,.btn-mic,.input-search-left{
+        display: none;   
+    }
+    .btn-search-right,.btn-profile-user {
+        border-radius: 50%; /* Make it a circle */
+        padding: 0px; /* Remove padding */
+        width: 40px; /* Set width and height to make it a circle */
+        height: 40px;
+        margin-left: 80px;
+    }
+    /* .input-search-left{
+        margin-left: 70px;
+    } */
+}
+
+@media (min-width: 321px) and (max-width: 576px) {
+    .box-videos .card-box {
+        flex: 1 0 calc(100% - 20px); /* Each video box takes full width on smaller screens with reduced gap */
+        margin-right: 0; /* No margin on smaller screens */
+    }
+    .input-search-left{
+        width: 80px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+    .box-videos .card-box {
+        flex: 1 0 calc(50% - 10px); /* Each video box takes 50% width with a small gap */
+        margin-right: 10px; /* Add small gap between video boxes */
+    }
+    .input-search-left{
+        width: 180px;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1000px) {
+    .box-videos .card-box {
+        flex: 1 0 calc(33.333% - 10px); /* Each video box takes 33.333% width with a small gap */
+        margin-right: 10px; /* Add small gap between video boxes */
+    }
+    .input-search-left{
+        width: 480px;
+    }
+}
+@media (min-width: 1001px) {
+    .box-videos .card-box {
+        flex: 1 0 calc(25% - 10px); /* Each video box takes 33.333% width with a small gap */
+        margin-right: 10px; /* Add small gap between video boxes */
+    }
+    .input-search-left{
+        width: 550px;
+    }
+}
+/* Styling for the sticky section */
+.box-videos {
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 56px); /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrollbar */
+}
+/* div.container-suggest {
+    background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.container-suggest button{
+    display: inline-flex;
+} */
