@@ -86,3 +86,34 @@ body{
 .closebtn,.savebtn{
   width: 7rem;
 }
+/* toast */
+
+#toast-container {
+  position: fixed;
+  top: 3rem; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  z-index: 3000;
+}
+
+#toast {
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+}
+
+#toast.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#toast.success {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+#toast.error {
+  background-color: #D32F2F;
+  color: #fff;
+}

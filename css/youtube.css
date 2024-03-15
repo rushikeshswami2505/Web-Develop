@@ -290,6 +290,12 @@ body{
         height: 40px;
         margin-left: 80px;
     }
+    #mainLargeGuide{
+        display: none;
+    }
+    #mainSmallGuide{
+        display: block;
+    }
 }
 
 @media (min-width: 381px) and (max-width: 500px) {
@@ -303,9 +309,12 @@ body{
         height: 40px;
         margin-left: 80px;
     }
-    /* .input-search-left{
-        margin-left: 70px;
-    } */
+    #mainLargeGuide{
+        display: none;
+    }
+    #mainSmallGuide{
+        display: block;
+    }
 }
 
 @media (min-width: 321px) and (max-width: 576px) {
@@ -316,15 +325,29 @@ body{
     .input-search-left{
         width: 80px;
     }
+    #mainLargeGuide{
+        display: none;
+    }
+    #mainSmallGuide{
+        display: block;
+    }
+    
 }
 
 @media (min-width: 577px) and (max-width: 992px) {
     .box-videos .card-box {
         flex: 1 0 calc(50% - 10px); /* Each video box takes 50% width with a small gap */
         margin-right: 10px; /* Add small gap between video boxes */
+        
     }
     .input-search-left{
         width: 180px;
+    }
+    #mainLargeGuide{
+        display: none;
+    }
+    #mainSmallGuide{
+        display: block;
     }
 }
 

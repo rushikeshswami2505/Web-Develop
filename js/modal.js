@@ -221,8 +221,18 @@ function updateUser(event){
     usersData[currentuser.id-1] = currentuser;
     localStorage.setItem("usersData", JSON.stringify(usersData));
     localStorage.setItem("currentuser",JSON.stringify(currentuser));
+    
     $(".closebtn").click();
     setViewData();         
+
+    toast.classList.remove('hidden');
+    toast.classList.remove('error');
+    toast.classList.add('success'); 
+    toast.textContent = "Update Saved!!!";
+    setTimeout(() => {
+        toast.classList.add('hidden');
+    }, 1000);
+    
 }
 // This is main fuction for changing error msg and updating input box
 function updateTextError(element,msg,state){
