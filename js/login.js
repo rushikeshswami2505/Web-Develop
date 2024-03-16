@@ -1,16 +1,21 @@
+// got to youtube page
 function loginIntoYoutube() {
-    console.log("youtube");
     window.location.href = "youtube.html";
 }
+
+// go to signup page
 function create(){
     window.location.href = "signup.html";
 }
+
+// get local storage
 const existingUsersDataString = localStorage.getItem("usersData");
 let usersdata = [];
 if (existingUsersDataString) {
     usersdata = JSON.parse(existingUsersDataString);
 }
 
+// all local variable for input data
 let currentEmail = document.getElementById("uemail");
 let currentPassword = document.getElementById("upassword");
 let emailAlert = document.getElementById("emailAlert");
@@ -23,20 +28,21 @@ let forgotEmailalert = document.getElementById("forgotEmailalert");
 let fogotPasswordalert = document.getElementById("fogotPasswordalert");
 let forgotConfirmPasswordalert = document.getElementById("forgotConfirmPasswordalert");
 
-
+// disable login button till user enter all deatils
 let loginbtn = document.getElementById("btnSignIn");
 loginbtn.disabled = true;
 
+// disable for email 
 currentEmail.addEventListener('input', function(){
     loginbtn.disabled = currentEmail.value.length === 0 || currentPassword.value.length === 0;
-    console.log(currentEmail.value.length+" "+currentPassword.value.length);
 });
 
+// disable for password 
 currentPassword.addEventListener('input', function(){
     loginbtn.disabled = currentEmail.value.length === 0 || currentPassword.value.length ===0;
-    console.log(currentEmail.value.length+" "+currentPassword.value.length);
 });
 
+// After clicking on login it checks all validation first then it calls youtube page
 function login(event){
     event.preventDefault();
     if(currentEmail.value.length<4) {
@@ -72,7 +78,6 @@ function login(event){
         });
     }
     else{
-        // toast no record is found 
         toast.classList.remove('hidden');
         toast.classList.add('error');
         toast.classList.remove('success');
@@ -106,10 +111,8 @@ function login(event){
             toast.classList.add('hidden');
         }, 3000);
         return;
-        // toast for password
     }
     else {
-        console.log(currentUser);
         localStorage.setItem("currentuser",JSON.stringify(currentUser));
         emailAlert.innerText = "";
         emailAlert.style.display = 'none'; 
@@ -123,44 +126,22 @@ function login(event){
             toast.classList.add('hidden');
             loginIntoYoutube();
         }, 1000);
-        // toast sucesfull
     }
 }
 
-function forgotPassword(){
-
-}
-function openModal() {
-    document.getElementById('forgotPasswordModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('forgotPasswordModal').style.display = 'none';
-}
-
+// It checks all the new password and old password validation after click on reset password
 function resetPassword(event) {
-    
     event.preventDefault();
-
-    // Add your password reset logic here
     let forgotemail = forgotEmail.value;
     let newpassword =  newPassword.value;
     let confirmpassword = confirmPassword.value;
     let valid = false;
-    // valid = isValidEmail(forgotemail);
     index = isEmailRegistered(forgotemail);
     if(index===-1){
-        // updateTextError(fogotPasswordalert,"Email is not registered",true);
-        console.log(index);
         return;
-    }
-    else{
-        console.log(index);
-        // updateTextError(fogotPasswordalert,"",false);
     }
     valid = isValidPass(newpassword);
     valid = isValidCpass(newpassword,confirmpassword);
-    console.log(valid);
     if(!valid){
         return;
     }
@@ -177,14 +158,7 @@ function resetPassword(event) {
     
 }
 
-// Close modal if clicked outside of it
-// window.onclick = function (event) {
-//     var modal = document.getElementById('forgotPasswordModal');
-//     if (event.target == modal) {
-//         closeModal();
-//     }
-// }
-
+// Validation for new passowrd
 function isValidPass(passVal){
     
     if(passVal.length==0){
@@ -210,9 +184,7 @@ function isValidPass(passVal){
         else if (c >= 'a' && c <= 'z') lower = true;
         else if (c >= '0' && c <= '9') number = true;
         else sybmol = true;
-        console.log(c + " " + capital + " " + lower + " " + number + " " + sybmol);
     }
-    console.log(capital + " " + lower + " " + number + " " + sybmol);
 
     if (!capital || !lower || !number || !sybmol || !len) {
         updateTextError(fogotPasswordalert,"Password must include at least one lowercase letter, one uppercase letter, one number, and one symbol",true);
@@ -225,6 +197,8 @@ function isValidPass(passVal){
         return true;
     }
 }
+
+// Validation for confirm new password
 function isValidCpass(passVal,cpassVal){
     cpassVal = cpassVal.trim();
     passVal = passVal.trim();
@@ -239,6 +213,8 @@ function isValidCpass(passVal,cpassVal){
     confirmPassword.style.border = "1px solid red";
     return false;
 }
+
+// Validation for email
 function isValidEmail(emailVal) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -255,27 +231,26 @@ function isValidEmail(emailVal) {
     forgotEmail.style.border = "1px solid red";
     return true;
 }
+
+// Validate if user already registered or not
 function isEmailRegistered(emailVal) {
     for (let index = 0; index < usersdata.length; index++) {
         const user = usersdata[index];
         const userEmail = user.email;
-        // const userUsername = user.username;
-
-        // console.log(emailVal, " ", userUsername);
         if (userEmail === emailVal) {
             forgotEmail.style.border = "0px solid red";
             updateTextError(forgotEmailalert, "", false);
-            return index; // Break the loop and return the index
+            return index;
         }
     }
 
-    console.log(emailVal);
     forgotEmail.style.border = "1px solid red";
     updateTextError(forgotEmailalert, "Email is not registered", true);
 
-    return -1; // Return -1 if no match is found
+    return -1;
 }
 
+// It set the error msg if user entered the wrong input
 function updateTextError(element,msg,state){
     if(state){
         element.style.display = 'block';
@@ -284,46 +259,3 @@ function updateTextError(element,msg,state){
         element.style.display = 'none';
     }
 }
-
-
-// const notifications = document.querySelector(".notifications");
-
-// const toastDetails = {
-//     timer: 5000,
-//     success: {
-//         icon: 'fa-circle-check',
-//         text: 'Success: This is a success toast.',
-//     },
-//     error: {
-//         icon: 'fa-circle-xmark',
-//         text: 'Error: This is an error toast.',
-//     },
-//     warning: {
-//         icon: 'fa-triangle-exclamation',
-//         text: 'Warning: This is a warning toast.',
-//     },
-//     info: {
-//         icon: 'fa-circle-info',
-//         text: 'Info: This is an information toast.',
-//     }
-// }
-// const removeToast = (toast) => {
-//     toast.classList.add("hide");
-//     if(toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
-//     setTimeout(() => toast.remove(), 500); // Removing the toast after 500ms
-// }
-// const createToast = (id) => {
-//     // Getting the icon and text for the toast based on the id passed
-//     const { icon, text } = toastDetails[id];
-//     const toast = document.createElement("li"); // Creating a new 'li' element for the toast
-//     toast.className = `toast ${id}`; // Setting the classes for the toast
-//     // Setting the inner HTML for the toast
-//     toast.innerHTML = `<div class="column">
-//                          <i class="fa-solid ${icon}"></i>
-//                          <span>${text}</span>
-//                       </div>
-//                       <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
-//     notifications.appendChild(toast); // Append the toast to the notification ul
-//     // Setting a timeout to remove the toast after the specified duration
-//     toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
-// }

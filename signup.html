@@ -4,85 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication</title>
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Country code css and js -->
     <link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/utils.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script> -->
+    
+    <!-- signup css -->
     <link rel="stylesheet" href="css/signup.css">
+    
 
 </head>
 <body class="bg-light">
+
+    <!-- default Toast -->
     <div id="toast-container">
-        <div id="toast" class="hidden">
-            This is a toast message!
-        </div>
-        <!-- <ul class="notifications"></ul> -->
+        <div id="toast" class="hidden"></div>
     </div>
 
-    <div class="container mt-5">
+    <!-- start signup main container -->
+    <div class="container mt-5">    
         <div class="card">
             <h3 class="card-title">Signup</h3>
             <div class="card-body">
+                <!-- signup form -->
                 <form onsubmit = "return signupValidity(event)">
                     <div class="card-data">
                         <div class="card-row">
+                            <!-- signup firstname input -->
                             <div class="mb-3 card-item">
                                 <label for="firstname" class="form-label">First Name <span class="required">*</span></label>
                                 <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name">
-                                <p id="firstnamealert" class="alert">Please enter First Name</p>
+                                <p id="firstnamealert" class="alert"></p>
                             </div>
+                            <!-- signup lastname input -->
                             <div class="mb-3 card-item">
                                 <label for="lastname" class="form-label">Last Name <span class="required">*</span></label>
                                 <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name">
-                                <p id="lastnamealert" class="alert">Please enter Last Name</p>
+                                <p id="lastnamealert" class="alert"></p>
                             </div>
                         </div>
                         <div class="card-row">
+                            <!-- signup email input -->
                             <div class="mb-3 card-item">
                                 <label for="email" class="form-label">Email <span class="required">*</span></label>
                                 <input type="text" name="email" id="email" class="form-control" placeholder="abc@email.com">
-                                <p id="emailalert" class="alert">Enter valid email</p>
+                                <p id="emailalert" class="alert"></p>
                             </div>
+                            <!-- signup dob input -->
                             <div class="mb-3 card-item">
                                 <label for="dob" class="form-label">Date of birth <span class="required">*</span></label>
                                 <input type="date" name="dob" id="dob" class="form-control" min="1950-01-01" max="2020-12-31">
-                                <p id="dobalert" class="alert">Please select a date between 1950 and 2020</p>
+                                <p id="dobalert" class="alert"></p>
                             </div>
-                            <!-- <div class="mb-3 card-item">
-                                <label for="username" class="form-label">Username <span class="required" >*</span></label>
-                                <input type="text" name="username" id="username" class="form-control" placeholder="abc2002" autocomplete="none">
-                                <p id="usernamealert" class="alert">Username should be max 6 letter</p>
-                            </div> -->
                         </div>
                         <div class="card-row">
+                            <!-- signup phone number input -->
                             <div class="mb-3 card-item">
                                 <label for="tel" class="form-label">Phone Number <span class="required">*</span></label>
                                 <input type="tel" name="tel" id="tel" class="form-control phone-input" placeholder="91254*****" autocomplete="none">
                                 <p id="telalert" class="alert"></p>
                             </div>
+                            <!-- signup alternative phone number input -->
                             <div class="mb-3 card-item">
                                 <label for="telalter" class="form-label">Phone alternative</label>
                                 <input type="tel" name="telalter" id="telalter" class="form-control phone-input" placeholder="91254*****" autocomplete="none">
-                                <p id="telalteralert" class="alert">Please enter Mobile Number</p>
+                                <p id="telalteralert" class="alert"></p>
                             </div>
                         </div>                        
                         <div class="card-row">
+                            <!-- signup password input -->
                             <div class="mb-3 card-item passwordAll">
                                 <div>
                                     <label for="password" class="form-label">Password <span class="required">*</span></label>
                                     <input type="password" name="password" id="password" class="form-control" placeholder="********" autocomplete="new-password">
-                                    <p id="passwordalert" class="alert">Please enter Password</p>
+                                    <p id="passwordalert" class="alert"></p>
                                 </div>
                             </div>
+                            <!-- signup confirm password input -->
                             <div class="mb-3 card-item">
                                 <label for="cpassword" class="form-label">Confirm Password <span class="required">*</span></label>
                                 <input type="password" name="password" id="cpassword" class="form-control" placeholder="********" autocomplete="new-password">
-                                <p id="cpasswordalert" class="alert">Please enter confirm Password</p>
+                                <p id="cpasswordalert" class="alert"></p>
                             </div>
                         </div>
                         <div class="card-row">
+                            <!-- signup gender input -->
                             <div class="mb-3 card-item gender-outer">
                                 <div class="gender-box">
                                     <label for="gender" class="form-label">Gender <span class="required">*</span></label>
@@ -97,8 +107,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p id="genderalert" class="alert">Please select Gender</p>
+                                <p id="genderalert" class="alert"></p>
                             </div>
+                            <!-- signup preferred language input -->
                             <div class="mb-3 card-item">
                                 <label for="language" class="form-label">Preferred Language <span class="required">*</span></label>
                                 <select name="language" id="language" class="form-control" aria-placeholder="Select language">
@@ -111,11 +122,12 @@
                                     <option value="tamil">Tamil</option>
                                     <option value="urdu">Urdu</option>
                                 </select>
-                                <p id="languagealert" class="alert">Please enter confirm Password</p>
+                                <p id="languagealert" class="alert"></p>
                             </div>
                         </div>
                     </div>
                         <div class="card-row">
+                            <!-- signup preferred role -->
                             <div class="mb-3 card-item">
                                 <label for="password" class="form-label">Role<span class="required">*</span></label>
                                 <div class="display-flex roles">
@@ -162,15 +174,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p id="rolealert" class="alert">Please select role</p>
+                                <p id="rolealert" class="alert"></p>
                             </div>
-                        <div class="mb-3 card-item">
-                            <label for="textarea" class="form-label">Address</label>
-                            <textarea id="fixedTextarea" name="fixedTextarea" rows="3" cols="60" wrap="hard" placeholder="A 40, Near ABC road..." autocomplete="none"></textarea>
-                            <p id="addressalert" class="alert">Please enter confirm Password</p>
+                            <!-- signup preferred role -->
+                            <div class="mb-3 card-item">
+                                <label for="textarea" class="form-label">Address</label>
+                                <textarea id="fixedTextarea" name="fixedTextarea" rows="3" cols="60" wrap="hard" placeholder="A 40, Near ABC road..." autocomplete="none"></textarea>
+                            </div>
                         </div>
                     </div>      
                     <div class="card-row">
+                        <!-- signup skill input -->
                          <div class="mb-3 card-item">
                             <div>
                                 <label for="userSkills" class="form-label">Skills</label>
@@ -179,7 +193,6 @@
                                 </div>
                                 <div id="selectedSkillsContainer" class="selected-skills-container"></div>
                                 <p id="skillsalert" class="alert"></p>
-
                             </div>
                         </div>
                         <div class="mb-3 card-item"></div>
@@ -194,7 +207,11 @@
             </div>
         </div>
     </div>
+    <!-- end signup main container -->
+
+    <!-- signup js -->
     <script src="js/signup.js"></script>
+    <!-- conuntry code js -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/intlTelInput.min.js"></script>
 </body>
 </html>

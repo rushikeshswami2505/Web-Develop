@@ -1,3 +1,14 @@
+/* Define root variables for color schemes */
+/* Define global styles for the body */
+/* Define styles for horizontal rule elements */
+/* Define styles for error message alerts */
+/* Define styles for links related to password recovery and sign up */
+/* Define styles for cards */
+/* Define styles for toast notifications */
+/* Define styles for buttons and button containers */
+/* Define styles for forgot password modal */
+/* Define styles for alert messages */
+
 :root{
     --primary-color : #645fe3;      
     --primary-color-hover : #322be6;

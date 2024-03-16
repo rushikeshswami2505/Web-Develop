@@ -1,3 +1,14 @@
+/* Root variable definitions for color schemes */
+/* Global styles for the body */
+/* Styles for horizontal rule elements */
+/* Styles for error message alerts */
+/* Styles for links related to password recovery and sign up */
+/* Styles for cards */
+/* Styles for toast notifications */
+/* Styles for buttons and button containers */
+/* Styles for forgot password modal */
+/* Styles for alert messages */
+
 :root{
     --primary-color : #645fe3;      
     --primary-color-hover : #322be6;
@@ -10,7 +21,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
     margin: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #ffffff;
@@ -21,7 +31,6 @@ body {
 
 .container {
     width: 55%;
-    /* max-width: 500px; */
     box-shadow: 0 0 10px #0000001a;
     background-color: var(--container-color);
     border-radius: 0.4rem;
@@ -34,7 +43,6 @@ body {
 }
 
 .card-data{
-    /* display: flex; */
     justify-content: space-evenly;
 }
 .card-item{
@@ -117,7 +125,6 @@ body {
     cursor: not-allowed;
     background-color: var(--primary-color);
     color: white;
-    /* border: 2px solid var(--primary-color); */
 }
 .btn:hover{
     background-color: var(--primary-color-hover);
@@ -165,13 +172,11 @@ body {
 }
 
 .gender{
-    /* display: flex; */
     margin-left: 5%;
 }
 .gender-item{
     display: flex;
     align-items: center;
-    /* width: 20%; */
 }
 .gender-box{
     display: flex;
@@ -244,44 +249,10 @@ body {
         max-width: 100%; 
     }
 }
-/* .autocomplete {
-    position: relative;
-}
-
-.autocomplete-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    z-index: 1000;
-    display: none;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    max-height: 150px;
-    overflow-y: auto;
-}
-
-
-.autocomplete-list li {
-    padding: 2px 12px;
-    cursor: pointer;
-    font-weight: 17.6px;
-}
-
-.autocomplete-list li:hover {
-    background-color: #767676;
-    color: white;
-} */
 
 select{
     font-family: var(--font-family-regular);
 }
-
-/* select option:hover{
-    background-color: #f2f2f2;
-} */
 
 .selected-skill-item {
     display: inline-block;
@@ -336,12 +307,6 @@ select{
     background-color: #f2f2f2;
     color: var(--primary-color);
 }
-
-
-/* .iti__selected-flag{
-    width: 100%;
-} */
-
 
 .autocomplete {
     position: relative;
