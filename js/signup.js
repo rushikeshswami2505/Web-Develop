@@ -1,10 +1,11 @@
+// it shows the flag icon for phone number
 var inputTel = document.querySelector("#tel");
 var itiTel = window.intlTelInput(inputTel, {
     separateDialCode: true,
     hiddenInput: "full",
     utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.js"
 });
-
+// it shows the flag icon for alternative phone number
 var inputTelalter = document.querySelector("#telalter");
 var itiTelalter = window.intlTelInput(inputTelalter, {
     separateDialCode: true,
@@ -14,7 +15,7 @@ var itiTelalter = window.intlTelInput(inputTelalter, {
 itiTel.setCountry("IN");
 itiTelalter.setCountry("IN");
 
-// input
+// signup input variables
 let email = document.getElementById("email");
 let firstname = document.getElementById("firstname");
 let lastname = document.getElementById("lastname");
@@ -24,7 +25,6 @@ let password = document.getElementById("password");
 let cpassword = document.getElementById("cpassword");
 let gender = document.getElementsByName("gender");
 let dob = document.getElementById("dob");
-
 let admin = document.getElementById("admin");
 let user = document.getElementById("user");
 let adminread = document.getElementById("adminread");
@@ -33,12 +33,11 @@ let adminupdate = document.getElementById("adminupdate");
 let userread = document.getElementById("userread");
 let userupdate = document.getElementById("userupdate");
 let userexecute = document.getElementById("userexecute");
-
 let address = document.getElementById("fixedTextarea");
 let skills = document.getElementById("skillsAutocomplete");
 let language = document.getElementById("language");
 
-// alert msg
+// signup alert message
 let emailAlert = document.getElementById("emailalert");
 let firstnameAlert = document.getElementById("firstnamealert");
 let lastnameAlert = document.getElementById("lastnamealert");
@@ -52,22 +51,15 @@ let rolAlert = document.getElementById("rolealert");
 let addressAlert = document.getElementById("addressalert");
 let skillsAlert = document.getElementById("skillsalert");
 let languageAlert = document.getElementById("languagealert");
-
 let toast = document.getElementById('toast');
-
-// toast.classList.remove('hidden');
-// toast.classList.remove('error');
-// toast.classList.add('success'); 
-// toast.textContent = "Created Successful!!!";
-// console.log(selectedCountryDataTel.dialCode);    
-
 const skillsList = [];
-//ALL FUNCTIONS 
+
+// go to login page from signup page
 function login() {
-    console.log("ok");
     window.location.href = "login.html";
 }
 
+// signup validity when click on submit
 function signupValidity(event) {
     event.preventDefault();
     
@@ -82,11 +74,8 @@ function signupValidity(event) {
     let genderVal = "";
     let addressVal = address.value;
     let languageVal = language.options[language.selectedIndex].value;
-
     let selectedCountryDataTel = itiTel.getSelectedCountryData().dialCode;
     let selectedCountryDataTelalter = itiTelalter.getSelectedCountryData().dialCode;
-    
-    
     
 
     gender.forEach(radio =>  {
@@ -94,46 +83,23 @@ function signupValidity(event) {
             genderVal = radio.value;
         }
     });
-
-    // console.log("Selected Country Code for inputTel:",inputTel ,selectedCountryDataTel);
-    // console.log("Selected Country Code for inputTelalter:",inputTelalter, selectedCountryDataTelalter);
     
-    if(emailVal.length==0) updateTextError(emailAlert,"Please enter Email",true);
-    else updateTextError(emailAlert,"",false);
-
     let valid = false;
     valid = isValidEmail(emailVal);
-    console.log("after valid login 1 "+valid);
     valid = isValidFirstname(firstnameVal) && valid;
-    console.log("after valid login 3 "+valid);
     valid = isValidLastname(lastnameVal) && valid;
-    console.log("after valid login 4 "+valid);
     valid = isValidTel(telVal) && valid; 
-    console.log("after valid login 5 "+valid);
     valid = isValidTelalter(telalterVal) && valid;
-    console.log("after valid login 6 "+valid);
     valid = isValidPass(passVal) && valid;
-    console.log("after valid login 7 "+valid);
     valid = isValidCpass(passVal,cpassVal) && valid;
-    console.log("after valid login 8 "+valid);
     valid = isValidGender(genderVal) && valid;
-    console.log("after valid login 9 "+valid);
     valid = isValidDob(dobVal) && valid;
-    console.log("after valid login 10 "+valid);
     valid = isValidRole() && valid;
-    console.log("after valid login 11 "+valid);
-    valid = isValidAddress(addressVal) && valid;
-    console.log("after valid login 12 "+valid);
     valid = isValidSkills(skillsList) && valid;
-    console.log("after valid login 13 "+valid);
     valid = isValidLanguage(languageVal) && valid;
-    console.log("after valid login 14 "+valid);
     if(!valid){
         return;
-    }
-    console.log("after valid login 15 "+valid);
-
-    
+    }    
     const role = {};
     if(admin.checked || admin.indeterminate){
         let admin = [];
@@ -148,7 +114,6 @@ function signupValidity(event) {
         if(userexecute.checked) user.push('execute');
         role["user"] = user;
     }
-    console.log(role);
     const existingUsersDataString = localStorage.getItem("usersData");
     let usersdata = [];
     if (existingUsersDataString) {
@@ -171,7 +136,6 @@ function signupValidity(event) {
     };
     usersdata.push(user);
     localStorage.setItem("usersData", JSON.stringify(usersdata));
-    // console.log("before login");
     toast.classList.remove('hidden');
     toast.classList.remove('error');
     toast.classList.add('success'); 
@@ -183,8 +147,7 @@ function signupValidity(event) {
     }, 1000);
 }
 
-// ALL VALIDATION FUNCTIONS
-
+// it shows default toast message 
 function updateTextError(element,msg,state){
     if(state){
         element.style.display = 'block';
@@ -194,6 +157,7 @@ function updateTextError(element,msg,state){
     }
 }
 
+// validation for email
 function isValidEmail(emailVal) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -208,11 +172,11 @@ function isValidEmail(emailVal) {
     }
 
     email.style.border = "1px solid red";
-    return true;
+    return false;
 }
 
+// validation for first name
 function isValidFirstname(firstnameVal){
-    console.log("firsname: "+firstnameVal);
     const regex = /^[a-zA-Z]+$/;
     firstnameVal.trim();
     if(firstnameVal.length==0) updateTextError(firstnameAlert,"First Name is required",true);
@@ -226,8 +190,9 @@ function isValidFirstname(firstnameVal){
     firstname.style.border = "1px solid red";
     return false;
 }
+
+// validation for flast name
 function isValidLastname(lastnameVal){
-    console.log("lastname: "+lastnameVal);
     const regex = /^[a-zA-Z]+$/;
     lastnameVal.trim();
     if(lastnameVal.length==0) updateTextError(lastnameAlert,"Last Name is required",true);
@@ -241,8 +206,10 @@ function isValidLastname(lastnameVal){
     lastname.style.border = "1px solid red";
     return false;
 }
+
+// validation for phone number
 function isValidTel(telVal){
-    console.log("tel: "+telVal);
+
     telVal = telVal.trim();
     if(telVal.length==0) updateTextError(telAlert,"Phone number is required",true);
     else if((/\s/.test(telVal))) updateTextError(telAlert,"Invalid Phone number. Spaces are not allowed",true);
@@ -257,8 +224,8 @@ function isValidTel(telVal){
     return false;
 }
 
+// validation for alternative phone number
 function isValidTelalter(telalterVal){
-    console.log("telalter: "+telalterVal);
     telalterVal = telalterVal.trim();
     if(telalterVal.length==0) return true;
     else if((/\s/.test(telalterVal))) updateTextError(telalterAlert,"Invalid Phone number. Spaces are not allowed",true);
@@ -273,6 +240,7 @@ function isValidTelalter(telalterVal){
     return false;
 }
 
+// validation for password
 function isValidPass(passVal){
     
     if(passVal.length==0){
@@ -298,9 +266,7 @@ function isValidPass(passVal){
         else if (c >= 'a' && c <= 'z') lower = true;
         else if (c >= '0' && c <= '9') number = true;
         else sybmol = true;
-        console.log(c + " " + capital + " " + lower + " " + number + " " + sybmol);
     }
-    console.log(capital + " " + lower + " " + number + " " + sybmol);
 
     if (!capital || !lower || !number || !sybmol || !len) {
         updateTextError(passwordAlert,"Password must include at least one lowercase letter, one uppercase letter, one number, and one symbol",true);
@@ -313,6 +279,8 @@ function isValidPass(passVal){
         return true;
     }
 }
+
+// validation for confirm password
 function isValidCpass(passVal,cpassVal){
     cpassVal = cpassVal.trim();
     passVal = passVal.trim();
@@ -336,6 +304,8 @@ function isValidGender(genderVal){
     }
     return false;
 }
+
+// validation for date of birth
 function isValidDob(dobVal) {
     dobVal = dobVal.trim();
     const selectedDate = new Date(dobVal);
@@ -356,10 +326,9 @@ function isValidDob(dobVal) {
     return true;
 }
 
-
+// validation for role
 function isValidRole(){
     if(admin.checked || admin.indeterminate || user.checked || user.indeterminate){
-        // dob.style.border = "0px solid red";
         updateTextError(rolAlert, "", false);
         return true;
     }
@@ -367,15 +336,7 @@ function isValidRole(){
     return false;
 }
 
-function isValidAddress(addressVal){
-    // addressVal = addressVal.trim();
-    // if(addressVal.length===0) updateTextError(addressAlert, "Address field is required", true);
-    // else{
-        updateTextError(addressAlert, "", false);
-        return true;
-    // }
-    // return false;
-}
+// validation for skills
 function isValidSkills(skillsList){
     if(skillsList.length===0) updateTextError(skillsAlert, "Select minimum one skill", true);
     else {
@@ -384,8 +345,9 @@ function isValidSkills(skillsList){
     }
     return false;
 }
+
+// validation for language
 function isValidLanguage(languageVal){
-    // console.log(languageVal);
     if(languageVal.length===0) updateTextError(languageAlert, "Select laguage", true);
     else {
         updateTextError(languageAlert, "", false);
@@ -393,7 +355,8 @@ function isValidLanguage(languageVal){
     }
     return false;
 }
-//check box 
+
+// setting for user role it make disable and all other for roles
 admin.addEventListener('click',function(){
     if(this.checked){
         disableUserRole();
@@ -416,14 +379,15 @@ user.addEventListener('click',function(){
     }
 })
 
+// event listener for admin and user roles
 adminread.addEventListener('click', updateAdminRole);
 adminwrite.addEventListener('click', updateAdminRole);
 adminupdate.addEventListener('click', updateAdminRole);
-
 userread.addEventListener('click', updateUserRole);
 userupdate.addEventListener('click', updateUserRole);
 userexecute.addEventListener('click', updateUserRole);
 
+// it check and uncheck for admin role
 function updateAdminRole(){
     if(adminread.checked && adminwrite.checked && adminupdate.checked){
         admin.indeterminate = false;
@@ -438,8 +402,9 @@ function updateAdminRole(){
     else{
         updateAllRole();
     }
-    console.log("admin role");
 }
+
+// it check and uncheck for user role
 function updateUserRole(){
     if(userread.checked && userupdate.checked && userexecute.checked){
         user.indeterminate = false;
@@ -454,25 +419,26 @@ function updateUserRole(){
     else{
         updateAllRole();
     }
-    console.log("user role");
 }
 
+// disable all checks box for admin
 function disableAdminRole(){
     admin.checked = false;
     admin.indeterminate = false;
     adminread.checked = false;
     adminwrite.checked = false;
     adminupdate.checked = false;
-    console.log("disable admin");
 }
+// disable all check box for user
 function disableUserRole(){
     user.indeterminate = false;
     user.checked = false;
     userread.checked = false;
     userupdate.checked = false;
     userexecute.checked = false;
-    console.log("disable user");
 }
+
+// make able to select new role for user 
 function updateAllRole(){
     user.checked = false;
     user.indeterminate = false;
@@ -485,6 +451,9 @@ function updateAllRole(){
     adminwrite.checked = false;
     adminupdate.checked = false;
 }
+// PROGRAMMING SKILLS SECTIONS
+
+// list of programming skills avaliable
 const programmingSkills = [
     "JavaScript",
     "Python",
@@ -504,13 +473,14 @@ const programmingSkills = [
     "Rust"
 ];
 
+// calling for autocomplete
 autocomplete(document.getElementById("userSkills"), programmingSkills, "selectedSkillsContainer");
 
+// it shows the autocomplete lists
 function autocomplete(inp, arr, containerId) {
     var currentFocus;
 
     
-    console.log(arr,inp);
     
     inp.addEventListener("input", function(e) {
         var val = this.value;
@@ -537,16 +507,11 @@ function autocomplete(inp, arr, containerId) {
                     inp.value = this.getElementsByTagName("input")[0].value;
                     closeAllLists();
 
-                    // Add the selected skill to the skillList array
                     const selectedSkillValue = this.getElementsByTagName("input")[0].value;
                     if (!skillsList.includes(selectedSkillValue)) {
                         skillsList.push(selectedSkillValue);
                     }
-
-                    // Clear the input box after selecting an item
                     inp.value = "";
-
-                    // Add the selected skill to the container:
                     const selectedSkillsContainer = document.getElementById(containerId);
                     const selectedSkillItem = document.createElement("div");
                     selectedSkillItem.classList.add("selected-skill-item");
@@ -557,7 +522,6 @@ function autocomplete(inp, arr, containerId) {
                     closeButton.innerHTML = "&times;";
                     closeButton.addEventListener("click", function() {
                         selectedSkillsContainer.removeChild(selectedSkillItem);
-                        // Remove the skill from the skillList array
                         const index = skillsList.indexOf(selectedSkillValue);
                         if (index !== -1) {
                             skillsList.splice(index, 1);
@@ -632,7 +596,6 @@ function autocomplete(inp, arr, containerId) {
             closeButton.innerHTML = "&times;";
             closeButton.addEventListener("click", function() {
                 selectedSkillsContainer.removeChild(selectedSkillItem);
-                // Remove the skill from the skillList array
                 const index = skillsList.indexOf(skill);
                 if (index !== -1) {
                     skillsList.splice(index, 1);
@@ -647,8 +610,8 @@ function autocomplete(inp, arr, containerId) {
     initializeSelectedSkills();
 }
 
+// if user click anywhere the check if he entered correct data for last input
 $('body').click(function(){
-    console.log("Clicked anywhere");
     let emailVal =  email.value;
     
     let firstnameVal = firstname.value;
@@ -662,8 +625,6 @@ $('body').click(function(){
     let addressVal = address.value;
     let languageVal = language.options[language.selectedIndex].value;
 
-    // let selectedCountryDataTel = itiTel.getSelectedCountryData().dialCode;
-    // let selectedCountryDataTelalter = itiTelalter.getSelectedCountryData().dialCode;
     gender.forEach(radio =>  {
         if(radio.checked){
             genderVal = radio.value;
@@ -671,6 +632,13 @@ $('body').click(function(){
     });
     
     let valid = false;
+    updateTextError(rolAlert, "", false);
+    updateTextError(dobAlert, "", false);
+    dob.style.border = "0px solid red";
+    updateTextError(genderAlert, "", false);
+    updateTextError(skillsAlert,"",false);
+    updateTextError(languageAlert,"",false);
+
     if(emailVal.length!==0) valid = isValidEmail(emailVal);
     else {
         updateTextError(emailAlert, "", false);
@@ -711,85 +679,5 @@ $('body').click(function(){
         updateTextError(cpasswordAlert, "", false);
         cpassword.style.border = "0px solid red";
     }
+    
 });
-
-// Example usage
-
-// const skillsList = [];
-
-// const userSkillsInput = document.getElementById("userSkills");
-// const skillsDropdown = document.getElementById("skillsDropdown");
-
-//     userSkillsInput.addEventListener("input", showSkillsDropdown);
-
-//     document.addEventListener("click", (event) => {
-//         if (!userSkillsInput.contains(event.target) && !skillsDropdown.contains(event.target)) {
-//             skillsDropdown.style.display = "none";
-//         }
-//     });
-
-//     function showSkillsDropdown() {
-//         const inputText = userSkillsInput.value.toLowerCase();
-//         const matchingSkills = programmingSkills.filter(skill =>
-//             skill.toLowerCase().includes(inputText) && !skillsList.includes(skill)
-//         );
-
-//         skillsDropdown.innerHTML = "";
-
-//         matchingSkills.forEach(skill => {
-//             const listItem = document.createElement("div");
-//             // listItem.classList.add(".card-item select option");
-//             // listItem.classList.add(".card-item select option:hover");
-//             listItem.style.paddingLeft = '0.35rem';
-//             listItem.style.paddingBottom = '0.1rem';
-//             listItem.style.fontWeight = '530';
-//             listItem.style.fontFamily = "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif";
-//             // listItem.classList.add("autocomplete-item");
-
-//     // listItem.style.fontFamily = 'var(--font-family-regular)';
-//     // listItem.style.padding = '8px';
-
-//             // listItem.classList.add("autocomplete-item");
-//             listItem.textContent = skill;
-//             listItem.addEventListener("click", () => {
-//                 skillsList.push(skill);
-
-//                 updateSelectedSkillsContainer();
-//                 userSkillsInput.value = "";
-//                 skillsDropdown.style.display = "none";
-//             });
-//             skillsDropdown.appendChild(listItem);
-//         });
-//         skillsDropdown.style.width = `${userSkillsInput.offsetWidth}px`;
-//         const inputRect = userSkillsInput.getBoundingClientRect();
-//         skillsDropdown.style.top = `${inputRect.bottom + window.scrollY}px`;
-//         skillsDropdown.style.left = `${inputRect.left + window.scrollX}px`;
-
-//         skillsDropdown.style.display = matchingSkills.length ? "block" : "none";
-//     }
-
-//     function updateSelectedSkillsContainer() {
-//         const selectedSkillsContainer = document.getElementById("selectedSkills");
-//         selectedSkillsContainer.innerHTML = "";
-
-//         skillsList.forEach(skill => {
-//             const selectedSkillItem = document.createElement("div");
-//             selectedSkillItem.classList.add("selected-skill-item");
-//             selectedSkillItem.textContent = skill;
-
-//             const closeButton = document.createElement("span");
-//             closeButton.classList.add("close-button");
-//             closeButton.innerHTML = "&times;";
-//             closeButton.addEventListener("click", () => {
-//                 const index = skillsList.indexOf(skill);
-//                 if (index !== -1) {
-//                     skillsList.splice(index, 1);
-//                 }
-
-//                 updateSelectedSkillsContainer();
-//             });;
-//             selectedSkillItem.appendChild(closeButton);
-//             selectedSkillsContainer.appendChild(selectedSkillItem);
-//         });
-//     }
-

@@ -22,19 +22,22 @@
     <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/utils.js"></script>    
 
-
+    <!-- Youtube and model css files -->
     <link rel="stylesheet" href="css/youtube.css">
     <link rel="stylesheet" href="css/modal.css">
 
 </head>
 <body>
 
+    <!-- default toast -->
     <div id="toast-container">
         <div id="toast" class="hidden"></div>
     </div>
 
+    <!-- start youtube top navigation bar for icon and search and profile menu-->
     <nav class="navbar bg-body-tertiary sticky-top">
         <div class="container-fluid d-flex justify-content-between">
+            <!-- youtube icon and menu option nav -->
             <div class="col-2">
                 <div class="d-flex align-items-center">
                     <button class="btn rounded-circle nav-menu me-2" onclick="openSideGuide()">
@@ -44,6 +47,7 @@
                     </button>
                 </div>
             </div>
+            <!-- youtube search and mic nav-->
             <div class="col-8">
                 <div class="d-flex justify-content-center align-items-center">
                     <input class="border border-dark-subtle p-2 ps-3 input-search-left" placeholder="Search" type="text">
@@ -55,6 +59,7 @@
                     </div>
                 </div>
             </div>
+            <!-- youtube profile dropdown nav-->
             <div class="col-2">
                 <div class="d-flex align-items-start justify-content-end">
                     <button class="btn rounded-circle me-2 btn-profile btn-profile-camera">
@@ -65,7 +70,6 @@
                     </button>
                     <div class="btn-group">
                         <button class="btn rounded-circle me-2 btn-profile-user dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <!-- <i class="bi bi-person-circle"></i> -->
                             <img class="rounded-circle img-guide rounded channel-icon" src="assets/images/my_icon.jpg" alt="Shark Tank Icon">
                         </button>
                         <ul class="dropdown-menu dropdown-menu-lg-end">
@@ -78,10 +82,14 @@
             </div>
         </div>
     </nav>
+    <!-- end youtube top navigation bar for icon and search and profile menu-->
+
+    <!-- start youtube main buttom container below the nav bar-->
     <section>
         <div class="d-flex main-section">
-            <!-- side main guider -->
+            <!-- side navbar -->
             <div id="mainGuide">
+                <!-- side large nav bar -->
                 <div class="align-item-center justify-content-center nav-pills" id="mainLargeGuide">
                     <div>
                         <button class="btn text-start btn-guide btn-active-guide">
@@ -159,7 +167,7 @@
                         </button>
                     </div>
                 </div>
-
+                <!-- side small nav bar -->
                 <div class="main-guide ms-1 me-2" id="mainSmallGuide">
                     <div class="d-grid">
                         <button class="btn ps-0 pe-0 text-center btn-main-guide">
@@ -396,6 +404,7 @@
             </div>
         </div>
     </section>
+    <!-- end youtube main buttom container below the nav bar-->
 
     <div class="modal fade" id="viewProfileModal" tabindex="-1" aria-labelledby="viewModelLabel" aria-hidden="true">
         <div class="modal-dialog  modal-xl">
