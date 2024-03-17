@@ -1,3 +1,4 @@
+// icons for left large navbar 
 const beforeClickClasses = ['bi-house-door', 'bi-file-play', 'bi-collection-play', 'bi-file-person', 
                             'bi-hourglass-top', 'bi-play-btn', 'bi-clock', 'bi-pen'];
 
@@ -6,6 +7,8 @@ const afterClickClasses = ['bi-house-door-fill', 'bi-file-play-fill', 'bi-collec
 
 const btnGuideList = document.querySelectorAll(".btn-guide");
 let currentBtnGuide = 0;
+
+// for on click listener on nav button
 for(let i=0;i<btnGuideList.length;i++){
     btnGuideList[i].addEventListener('click', function() {
         btnGuideList[currentBtnGuide].classList.remove("btn-active-guide");
@@ -25,26 +28,26 @@ for(let i=0;i<btnGuideList.length;i++){
     });    
 }
 
+// icon for left large navbar
 const beforeClickMainGuide = ['bi-house-door', 'bi-file-play', 'bi-collection-play', 'bi-play-btn'];
 const afterClickMainGuide = ['bi-house-door-fill', 'bi-file-play-fill', 'bi-collection-play-fill','bi-play-btn-fill'];
 let btnMainGuide = document.querySelectorAll(".btn-main-guide");
 let currentMainGuide = 0;
-console.log(btnMainGuide);
+
+// for on click listener on small left navbar
 for(let i=0;i<btnMainGuide.length;i++){
     btnMainGuide[i].addEventListener('click', function() {
-        console.log(i," ",currentMainGuide); 
         const iconElementOld = btnMainGuide[currentMainGuide].querySelector('i');
         iconElementOld.classList.remove(afterClickMainGuide[currentMainGuide]);
         iconElementOld.classList.add(beforeClickMainGuide[currentMainGuide]);
-        console.log(iconElementOld);
         const iconElementNew = btnMainGuide[i].querySelector('i');
         iconElementNew.classList.remove(beforeClickMainGuide[i]);
         iconElementNew.classList.add(afterClickMainGuide[i]);
         currentMainGuide = i;
-        // console.log(beforeClickMainGuide[currentMainGuide]," ",afterClickMainGuide[currentMainGuide]);
     });
 }
 
+// it changes the on click background for navbar keyword suggest
 const btnSuggest = document.querySelectorAll(".btn-suggest");
 let currentBtnSuggest = 0
 for(let i=0;i<btnSuggest.length;i++){
@@ -56,31 +59,15 @@ for(let i=0;i<btnSuggest.length;i++){
 }
 
 
-
+// signout function
 function signOut(){
     localStorage.removeItem("currentuser");
     window.history.pushState(null, null, "login.html");
     window.location.href = "login.html";
 }
 
+// it toggle for left small and large navbar
 function openSideGuide(){
     $("#mainLargeGuide").toggle();
     $("#mainSmallGuide").toggle();
 }
-
-
-// function hideExtraButtons() {
-//     const container = document.querySelector('.container-suggest');
-//     const buttons = container.querySelectorAll('.btn-suggest');
-//     const containerWidth = container.offsetWidth;
-//     let buttonsWidth = 0;
-
-//     buttons.forEach(button => {
-//         buttonsWidth += button.offsetWidth;
-//         if (buttonsWidth > containerWidth) {
-//             button.style.display = 'none';
-//         } else {
-//             button.style.display = 'inline-block';
-//         }
-//     });
-// }

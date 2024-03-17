@@ -1,119 +1,126 @@
+/* Root variable definitions for color schemes */
+/* Global styles for the body */
+/* Styles for card containers */
+/* Styles for autocomplete components */
+/* Styles for selected skills container */
+/* Styles for alert messages */
+/* Styles for buttons and button hover effects */
+/* Styles for toast notifications */
+
 :root{
-    --primary-color : #645fe3;      
-    --primary-color-hover : #322be6;
-    --primary-color-extra-hover : #1710e5;
-    --error-color : #872e36; 
-    --font-family-regular: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    --container-color : #bacada;
-    --secondary-color : #6c757d;
+  --primary-color : #645fe3;      
+  --primary-color-hover : #322be6;
+  --primary-color-extra-hover : #1710e5;
+  --error-color : #872e36; 
+  --font-family-regular: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  --container-color : #bacada;
+  --secondary-color : #6c757d;
 }
 body{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 #viewProfileModal .card,#editProfileModal .card{
-  border: none;
+border: none;
 }
 .autocomplete {
-  /*the container must be positioned relative:*/
-  position: relative;
-  display: inline-block;
+position: relative;
+display: inline-block;
 }
 .autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  top: 100%;
-  left: 0;
-  right: 0;
+position: absolute;
+border: 1px solid #d4d4d4;
+border-bottom: none;
+border-top: none;
+z-index: 99;
+top: 100%;
+left: 0;
+right: 0;
 }
 .autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
+padding: 10px;
+cursor: pointer;
+background-color: #fff;
+border-bottom: 1px solid #d4d4d4;
 }
 .autocomplete-items div:hover {
-  background-color: #e9e9e9;
+background-color: #e9e9e9;
 }
 .autocomplete-active {
-  background-color: DodgerBlue !important;
-  color: #ffffff;
+background-color: DodgerBlue !important;
+color: #ffffff;
 }
 .selected-skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .selected-skill-item {
-    margin: 3px;
-    padding: 5px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+  margin: 3px;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 .alert {
-    color: red;
-    font-size: small;
-    margin-top: 0.2rem;
-    display: none;
-    margin-bottom: auto;
-    padding-top: 0px;
-    padding-left: 0px;
-   
+  color: red;
+  font-size: small;
+  margin-top: 0.2rem;
+  display: none;
+  margin-bottom: auto;
+  padding-top: 0px;
+  padding-left: 0px;
+ 
 }
 .iti{
-    width: 100%;
+  width: 100%;
 }
 .container-view{
-    width: 50%;
+  width: 50%;
 }
 .btn-primary{
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 .btn-primary:hover{
-    background-color: var(--primary-color-hover);
+  background-color: var(--primary-color-hover);
 }
 .btn-view-edit{
-    background-color: var(--primary-color);
-    width: 100%;
+  background-color: var(--primary-color);
+  width: 100%;
 }
 .closebtn,.savebtn{
-  width: 7rem;
+width: 7rem;
 }
-/* toast */
 
 #toast-container {
-  position: fixed;
-  top: 3rem; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center horizontally and vertically */
-  z-index: 3000;
+position: fixed;
+top: 3rem;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 3000;
 }
 
 #toast {
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s ease-in-out;
+padding: 15px;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+transition: opacity 0.3s ease-in-out;
 }
 
 #toast.hidden {
-  opacity: 0;
-  pointer-events: none;
+opacity: 0;
+pointer-events: none;
 }
 
 #toast.success {
-  background-color: #4CAF50;
-  color: #fff;
+background-color: #4CAF50;
+color: #fff;
 }
 
 #toast.error {
-  background-color: #D32F2F;
-  color: #fff;
+background-color: #D32F2F;
+color: #fff;
 }

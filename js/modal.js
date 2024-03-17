@@ -3,7 +3,7 @@ if(localStorage.getItem("currentuser")===null){
     logout()
 }
 
-// logout
+// logout function
 function logout() {
     localStorage.removeItem("currentuser");
     window.history.pushState(null, null, "login.html");
@@ -77,6 +77,7 @@ let phoneNumber,phoneCountryCode,phoneNumberAlter,phonealterCountryCode,index1,i
 setViewData();
 setEditData();
 
+// function for set data for view data in model
 function setViewData(){
     usersData = JSON.parse(localStorage.getItem("usersData"));
     currentuser = JSON.parse(localStorage.getItem("currentuser"));
@@ -107,7 +108,6 @@ function setViewData(){
     else viewaddress.innerText = "Yet not set"
     skillListStorage = currentuser.programmingSkills;
     skillFull = "";
-    console.log(skillListStorage);
     skillListStorage.forEach((skill,index) => {
         skillFull = skillFull + "&#8226; " + skill +" ";
     });
@@ -143,9 +143,9 @@ function setViewData(){
         if(roles.user.includes('execute')) viewupdate.style.display = 'block';
         else viewupdate.style.display = 'none';
     }
-    console.log("geteee");
 }
 
+// function for set data in view mode in model
 function setEditData(){
     email.value = currentuser.email;
     firstname.value = currentuser.firstname;
@@ -178,7 +178,7 @@ function closeModal() {
     }
 }
 
-// update data after user click on save button
+// function update data after user click on save button
 function updateUser(event){
     event.preventDefault();
 
@@ -193,8 +193,7 @@ function updateUser(event){
         genderVal = 'Male';
     }
     let addressVal = address.value;
-    let languageVal = language.options[language.selectedIndex].value;
-
+    let languageVal = language.options[language.selectedIndex].value;    
     let valid  = false;
     valid = isValidEmail(emailVal);
     valid = isValidFirstname(firstnameVal) && valid;
@@ -203,7 +202,6 @@ function updateUser(event){
     valid = isValidTelalter(telalterVal) && valid;
     valid = isValidDob(dobVal) && valid;
     valid = isValidSkills(skillList) && valid;
-    console.log(skillList+" "+valid);
     if(!valid){
         return;
     }
@@ -234,6 +232,7 @@ function updateUser(event){
     }, 1000);
     
 }
+
 // This is main fuction for changing error msg and updating input box
 function updateTextError(element,msg,state){
     if(state){  
@@ -245,6 +244,8 @@ function updateTextError(element,msg,state){
 }
 
 // All function for validations
+
+// validation for email
 function isValidEmail(emailVal) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -259,9 +260,10 @@ function isValidEmail(emailVal) {
     }
 
     email.style.border = "1px solid red";
-    return true;
+    return false;
 }
 
+// validation for username
 function isValidFirstname(firstnameVal){
     const regex = /^[a-zA-Z]+$/;
     firstnameVal.trim();
@@ -276,6 +278,7 @@ function isValidFirstname(firstnameVal){
     firstname.style.border = "1px solid red";
     return false;
 }
+// validation for lastname
 function isValidLastname(lastnameVal){
     const regex = /^[a-zA-Z]+$/;
     lastnameVal.trim();
@@ -290,6 +293,7 @@ function isValidLastname(lastnameVal){
     lastname.style.border = "1px solid red";
     return false;
 }
+// validation for phone number
 function isValidTel(telVal){
     telVal = telVal.trim();
     if(telVal.length==0) updateTextError(phoneAlert,"Phone number is required",true);
@@ -305,6 +309,7 @@ function isValidTel(telVal){
     return false;
 }
 
+// validation for phone alter
 function isValidTelalter(telalterVal){
     telalterVal = telalterVal.trim();
     if(telalterVal.length==0) return true;
@@ -320,6 +325,7 @@ function isValidTelalter(telalterVal){
     return false;
 }
 
+// validation for date of birth
 function isValidDob(dobVal) {
     dobVal = dobVal.trim();
     const selectedDate = new Date(dobVal);
@@ -341,6 +347,7 @@ function isValidDob(dobVal) {
     return true;
 }
 
+// validation for role
 function isValidRole(){
     if(admin.checked || admin.indeterminate || user.checked || user.indeterminate){
         updateTextError(rolAlert, "", false);
@@ -350,7 +357,7 @@ function isValidRole(){
     return false;
 }
 
-
+// validation for skills
 function isValidSkills(skillsList){
     if(skillsList.length===0) updateTextError(skillsAlert, "Select minimum one skill", true);
     else {
@@ -361,35 +368,50 @@ function isValidSkills(skillsList){
     skills.style.border = "1px solid red";
     return false;
 }
-function isValidLanguage(languageVal){
-    if(languageVal.length===0) updateTextError(languageAlert, "Select laguage", true);
-    else {
-        updateTextError(languageAlert, "", false);
-        return true;
-    }
-    return false;
-}
 
-// it changes from home-profile-about using navbar
-function showSection(sectionId) {
-    var navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(function(item) {
-        item.classList.remove('active-nav-item');
-    });
+$('body').click(function(){
+    let emailVal =  email.value;
+    console.log("clicked");
+    let firstnameVal = firstname.value;
+    let lastnameVal = lastname.value;
+    let telVal = phone.value;
+    let telalterVal = phonealter.value;
     
-    var clickedNavItem = document.querySelector('[onclick="showSection(\'' + sectionId + '\')"]');
-    if (clickedNavItem) {
-        clickedNavItem.parentElement.classList.add('active-nav-item');
+    let valid = false;
+    updateTextError(dobAlert, "", false);
+    dob.style.border = "0px solid red";
+    updateTextError(skillsAlert,"",false);
+
+    if(emailVal.length!==0) valid = isValidEmail(emailVal);
+    else {
+        updateTextError(emailAlert, "", false);
+        email.style.border = "0px solid red";
     }
-    var sections = document.querySelectorAll('.section');
-    sections.forEach(function(section) {
-        section.classList.remove('active');
-    });
-    var selectedSection = document.getElementById(sectionId);
-    if (selectedSection) {
-        selectedSection.classList.add('active');
+
+    if(firstnameVal.length!==0) valid = isValidFirstname(firstnameVal)
+    else {
+        updateTextError(firstnameAlert, "", false);
+        firstname.style.border = "0px solid red";
     }
-}
+    if(lastnameVal.length!==0) valid = isValidLastname(lastnameVal) 
+    else {
+        updateTextError(lastnameAlert, "", false);
+        lastname.style.border = "0px solid red";
+    }
+
+    if(telVal.length!==0) valid = isValidTel(telVal)
+    else {
+        updateTextError(phoneAlert, "", false);
+        phone.style.border = "0px solid red";
+    }
+
+    if(telalterVal.length!==0) valid = isValidTelalter(telalterVal)
+    else {
+        updateTextError(phonealterAlert, "", false);
+        phonealter.style.border = "0px solid red";
+    }
+});
+
 // it is for autocomplete skills
 const selectedSkillsContainer = document.getElementById("selectedSkillsContainer");
 programmingSkills = [
@@ -412,15 +434,12 @@ programmingSkills = [
 ];
 var selectedSkills = currentuser.programmingSkills;
 var skillList = selectedSkills.slice();
- // Initialize skillList with the selected skills
+ // initialize skillList with the selected skills
 autocomplete(document.getElementById("userSkills"), programmingSkills, "selectedSkillsContainer");
 
+// function for aut complete for skills
 function autocomplete(inp, arr, containerId) {
-    var currentFocus;
-
-    
-    console.log(arr,inp);
-    
+    var currentFocus;    
     inp.addEventListener("input", function(e) {
         var val = this.value;
         closeAllLists();

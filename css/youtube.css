@@ -1,9 +1,14 @@
-:root{
-    /* --btn-bg-light-color : #f8f8f8;
-    --btn-active-light-bg-color : #f2f2f2;
-    --btn-bg-color : #F2F2F2;
-    --btn-active-bg-color : #D9D9D9; */
+/* Root variable definitions for color schemes */
+/* Global styles for the body */
+/* Styles for navigation menu */
+/* Styles for search input and buttons */
+/* Styles for profile buttons */
+/* Styles for guide buttons */
+/* Styles for active suggestions */
+/* Styles for the suggest buttons */
+/* Media queries for responsive design */
 
+:root{
     --btn-bg-light-color : #f8f8f8;
     --btn-active-light-bg-color : #f2f2f2;
     --btn-bg-color : #F2F2F2;
@@ -20,9 +25,6 @@
 .modal-content,.list-group-item,.card-row{
     background-color: var(--container-color) !important;
 }
-/* nav bar */
-    /* icon and menu */
-
 
 body{
     animation: none;
@@ -40,7 +42,6 @@ body{
     background-color: var(--btn-active-bg-color);
 }
 
-    /*search and record*/
 .input-search-left{
     width: 550px;
     border-radius: 180px 0px 0px 180px;
@@ -87,7 +88,6 @@ body{
     box-shadow: none;
 }
 
-/* sidebar canvas */
 .btn-profile i{
     font-size: 1.2rem;
 }
@@ -99,8 +99,6 @@ body{
     animation: none;
 }
 #mainLargeGuide{
-    /* display: none; */
-    /* width: min-content; */
     width: 15rem;
     justify-content: center;
     padding: 15px;
@@ -124,22 +122,16 @@ body{
     text-overflow: ellipsis;
 }
 .btn-guide:hover{
-    /* background-color: var(--btn-bg-color); */
     background-color: var(--btn-active-bg-color);
 }
 
-/* subscription */
 .img-guide{
     width: 20px;
     height: 20px;
 }
-/* scrollbar */
-/* main guide */
 .main-guide div button span{
     font-size: 10px;
 }
-/* .main-guide{
-} */
 .main-guide div button{
     width: 4rem;
     height: 4.3rem;
@@ -156,9 +148,7 @@ body{
     background-color: var(--btn-active-bg-color);
     font-weight: bold;
 }
-/* suggest */
 .btn-suggest{
-    /* background-color: var(--btn-bg-color); */
     background-color: var(--btn-active-bg-color);
     
     font-size: small;
@@ -171,7 +161,6 @@ body{
     font-weight: bolder;
 }
 .btn-active-suggest:focus, .btn-active-suggest:active{
-    /* background-color: black; */
     background-color: #645fe3;
     color: white;
     font-weight: bolder;
@@ -181,23 +170,11 @@ body{
 }
 
 .btn-active-suggest{
-    /* background-color: black; */
     background-color: #645fe3;
     color: white;
     font-weight: bolder;
 }
 
-/* scrollbar */
-.container-suggest-wrapper {
-    /* overflow: hidden; */
-}
-
-.container-suggest {
-    /* width: 200%;
-    white-space: nowrap; */
-}
-
-/* suggest */
 .card-box{
     width: 20rem;
 }
@@ -211,9 +188,7 @@ body{
 }
 
 .channel-subtitle{
-    /* display: block; */
     overflow: hidden;
-    /* white-space: nowrap; */
     height: 10%;
     text-overflow: ellipsis;
 }
@@ -222,61 +197,47 @@ body{
 }
 .box-videos{
     overflow-y: auto;
-    /* max-height: 500px; */
 }
 [class*=" bi-"]::before {
     line-height: unset;
     vertical-align: middle;
 }
 
-.nav-suggest {
-    /* overflow-x: hidden;
-    width: calc(100% - 16px); */
-}
-
 .navbar {
-    margin-right: 0; /* Remove margin for navbar */
-}
-
-.container-suggest {
-    /* max-width: 100%; 
-    justify-content: flex-start;  */
+    margin-right: 0; 
 }
 
 .btn-suggest {
-    margin-bottom: 5px; /* Add some space between buttons */
-    max-width: calc(25% - 10px); /* Set max width for each button to 25% */
+    margin-bottom: 5px; 
+    max-width: calc(25% - 10px);
 }
 
 @media (max-width: 992px) {
     .btn-suggest {
-        max-width: calc(33.33% - 10px); /* Set max width for each button to 33.33% for medium screens */
+        max-width: calc(33.33% - 10px);
     }
 }
 
 @media (max-width: 768px) {
     .btn-suggest {
-        max-width: calc(50% - 10px); /* Set max width for each button to 50% for small screens */
+        max-width: calc(50% - 10px); 
     }
 }
 
 @media (max-width: 576px) {
     .btn-suggest {
-        max-width: 100%; /* Set max width for each button to 100% for extra small screens */
+        max-width: 100%;
     }
 }
 .nav-suggest {
     overflow: hidden;
     width: 100%; 
-    /* height: 2.8rem; */
-    /* display: nowrap; */
 }
-/* Adjust video box size for different screen sizes */
 
 @media (max-width: 320px) {
     .box-videos .card-box {
-        flex: 1 0 calc(100% - 20px); /* Each video box takes full width on smaller screens with reduced gap */
-        margin-right: 0; /* No margin on smaller screens */
+        flex: 1 0 calc(100% - 20px); 
+        margin-right: 0; 
     }
 }
 @media (max-width: 380px) {
@@ -303,9 +264,9 @@ body{
         display: none;   
     }
     .btn-search-right,.btn-profile-user {
-        border-radius: 50%; /* Make it a circle */
-        padding: 0px; /* Remove padding */
-        width: 40px; /* Set width and height to make it a circle */
+        border-radius: 50%; 
+        padding: 0px;
+        width: 40px; 
         height: 40px;
         margin-left: 80px;
     }
@@ -319,8 +280,8 @@ body{
 
 @media (min-width: 321px) and (max-width: 576px) {
     .box-videos .card-box {
-        flex: 1 0 calc(100% - 20px); /* Each video box takes full width on smaller screens with reduced gap */
-        margin-right: 0; /* No margin on smaller screens */
+        flex: 1 0 calc(100% - 20px); 
+        margin-right: 0; 
     }
     .input-search-left{
         width: 80px;
@@ -336,8 +297,8 @@ body{
 
 @media (min-width: 577px) and (max-width: 992px) {
     .box-videos .card-box {
-        flex: 1 0 calc(50% - 10px); /* Each video box takes 50% width with a small gap */
-        margin-right: 10px; /* Add small gap between video boxes */
+        flex: 1 0 calc(50% - 10px); 
+        margin-right: 10px; 
         
     }
     .input-search-left{
@@ -353,8 +314,8 @@ body{
 
 @media (min-width: 993px) and (max-width: 1000px) {
     .box-videos .card-box {
-        flex: 1 0 calc(33.333% - 10px); /* Each video box takes 33.333% width with a small gap */
-        margin-right: 10px; /* Add small gap between video boxes */
+        flex: 1 0 calc(33.333% - 10px); 
+        margin-right: 10px; 
     }
     .input-search-left{
         width: 480px;
@@ -362,21 +323,18 @@ body{
 }
 @media (min-width: 1001px) {
     .box-videos .card-box {
-        flex: 1 0 calc(25% - 10px); /* Each video box takes 33.333% width with a small gap */
-        margin-right: 10px; /* Add small gap between video boxes */
+        flex: 1 0 calc(25% - 10px); 
+        margin-right: 10px; 
     }
     .input-search-left{
         width: 550px;
     }
 }
-/* main section padding  */
-
-/* Styling for the sticky section */
 .box-videos {
     position: sticky;
     top: 0;
-    height: calc(100vh - 56px); /* Adjust the height as needed */
-    overflow-y: auto; /* Enable vertical scrollbar */
+    height: calc(100vh - 56px); 
+    overflow-y: auto; 
 }
 .ms-2 .nav-suggest {
     overflow-x: auto;
@@ -389,5 +347,5 @@ body{
     display: flex;
     flex-wrap: nowrap;
     height: 3.00rem;
-    min-width: 200%; /* Ensure the container takes up the full width */
+    min-width: 200%; 
 }
