@@ -392,3 +392,15 @@ select{
     background-color: #D32F2F;
     color: #fff;
 }
+hr{
+    color: #ffffff;
+    height: 1px;
+    background-color: white;
+    padding: 0px;
+    margin: 0px;
+    border: white;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

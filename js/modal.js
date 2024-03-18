@@ -242,8 +242,9 @@ function updateTextError(element,msg,state){
         element.style.display = 'none';
     }
 }
-
-// All function for validations
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////// All function for validations  ////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 // validation for email
 function isValidEmail(emailVal) {
@@ -371,7 +372,6 @@ function isValidSkills(skillsList){
 
 $('body').click(function(){
     let emailVal =  email.value;
-    console.log("clicked");
     let firstnameVal = firstname.value;
     let lastnameVal = lastname.value;
     let telVal = phone.value;

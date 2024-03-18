@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh;  
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #ffffff;
@@ -31,9 +31,13 @@ body {
 hr{
     color: #ffffff;
     height: 1px;
+    background-color: white;
     padding: 0px;
     margin: 0px;
+    border: white;
+    text-decoration: none;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 #emailAlert, #passwordAlert{
