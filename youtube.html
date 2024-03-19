@@ -24,7 +24,7 @@
     <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/utils.js"></script>    
 
     <!-- Youtube and model css files -->
-    <link rel="stylesheet" href="css/youtube.css">
+    <link id="themeStylesheet" rel="stylesheet" href="css/youtube.css">
     <link rel="stylesheet" href="css/modal.css">
 
 </head>
@@ -44,14 +44,14 @@
                     <button class="btn rounded-circle nav-menu me-2" onclick="openSideGuide()">
                         <i class="fa-solid fa-bars"></i>
                     </button>
-                        <img src="assets/images/youtubeLogo.png" alt="youtube" width="90" height="20">
+                        <img src="assets/images/youtubeLogo.png" alt="youtube" id="youtubelogo" width="90" height="20">
                     </button>
                 </div>
             </div>
             <!-- youtube search and mic nav-->
             <div class="col-8">
                 <div class="d-flex justify-content-center align-items-center">
-                    <input class="border border-dark-subtle p-2 ps-3 input-search-left" placeholder="Search" type="text">
+                    <input class="border p-2 ps-3 input-search-left" placeholder="Search" type="text">
                     <button class="btn rounded-end-circle border border-dark-subtle p-2 btn-search-right"><i class="bi bi-search"></i></button>
                     <div class="ms-3">
                         <button class="btn rounded-circle btn-mic">
@@ -76,7 +76,15 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end">
                             <li><button class="dropdown-item li-profile" id="viewProfile" type="button" data-bs-toggle="modal" data-bs-target="#viewProfileModal">View Profile</button></li>
                             <li><button class="dropdown-item li-profile" id="viewProfile" type="button" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button></li>
-                            <li><button class="dropdown-item " id="signOut" type="button" onclick="signOut()">Sign out</button></li>
+                            <li>
+                                <div class="dropdown-item d-flex">
+                                    <label class="form-check-label me-1" for="apprence">Apprence</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="apprence">
+                                    </div>
+                                </div>
+                            </li>
+                            <li><button class="dropdown-item" id="signOut" type="button" onclick="signOut()">Sign out</button></li>
                         </ul>
                     </div>
                 </div>

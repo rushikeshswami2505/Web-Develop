@@ -71,3 +71,13 @@ function openSideGuide(){
     $("#mainLargeGuide").toggle();
     $("#mainSmallGuide").toggle();
 }
+
+// For youtube theme change
+let apprence = document.getElementById("apprence");
+apprence.addEventListener('change',function(){
+    let themeStylesheet = document.getElementById("themeStylesheet");
+    let themeName = this.checked ? "css/youtubeDarkTheme.css" : "css/youtube.css"; 
+    themeStylesheet.href = themeName;
+    let youtubelogo = document.getElementById("youtubelogo");
+    youtubelogo.src = this.checked ? "assets/images/youtubedark.png" : "assets/images/youtubeLogo.png";
+});

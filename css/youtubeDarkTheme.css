@@ -8,68 +8,92 @@
 /* Styles for the suggest buttons */
 /* Media queries for responsive design */
 
-:root{
-    --btn-bg-light-color : #f8f8f8;
-    --btn-active-light-bg-color : #f2f2f2;
-    --btn-bg-color : #F2F2F2;
-    --btn-active-bg-color : #bacada;
-    --btn-bg-hover-color : #322be6;
+:root {
+    --btn-bg-light-color: #333333;
+    --btn-active-light-bg-color: #2c2c2c;
+    --btn-bg-color: #3a3a3a;
+    --btn-active-bg-color: #645fe3;
+    --btn-bg-hover-color: #645fe3;
 
-    --primary-color : #645fe3;      
-    --primary-color-hover : #322be6;
-    --primary-color-extra-hover : #0600be;
-    --error-color : #872e36;
-    --container-color : #bacada;
-    
+    --primary-color: #645fe3;
+    --primary-color-hover: #322be6;
+    --primary-color-extra-hover: #0600be;
+    --error-color: #ff6b6b;
+    --container-color: #1a1a1a;
 }
-.modal-content,.list-group-item,.card-row{
+
+.modal-content, .list-group-item, .card-row {
     background-color: var(--container-color) !important;
 }
 
-body{
+body {
+    background-color: black !important;
+    color: #ffffff !important;
     animation: none;
     transition: none;
     scrollbar-width: thin;
     overflow: hidden;
 }
-.dark-mode {
+
+button i{
+    color: white;
+}
+span{
+    color: white;
+}
+.nav-menu, .btn-profile{
+    color: white !important;
+}
+.navbar {
+    background-color: black;
+}
+ul{
     background-color: black !important;
     color: white !important;
 }
-.navbar{
-    background-color: white;
+li button, li div{
+    background-color: black !important;
+    color: white !important;
 }
-.nav-menu{
+.nav-menu {
     width: 2.5rem;
 }
-.nav-menu:hover{
+
+.nav-menu:hover {
     background-color: var(--btn-active-bg-color);
 }
 
-.input-search-left{
+.input-search-left {
     width: 550px;
     border-radius: 180px 0px 0px 180px;
+    background-color: black;
+    color: white;
+    border: 1px solid #2c2c2c !important;
 }
 
-.btn-search-right{
+.btn-search-right {
     border-radius: 0px 180px 180px 0px;
-    width: 4rem;    
+    width: 4rem;
     height: 2.6rem;
-    background-color: var(--btn-bg-light-color);
+    background-color: #2c2c2c;
+    border: 1px solid #2c2c2c !important;
 }
-.btn-search-right:hover{
+
+.btn-search-right:hover {
     background-color: var(--btn-active-light-bg-color);
 }
-.btn-mic{
-    background-color: var(--btn-bg-color);
+
+.btn-mic {
+    background-color: #2c2c2c;
     width: fit-content;
     height: fit-content;
 }
 
-.btn-mic:hover{
+.btn-mic:hover {
     background-color: var(--btn-active-bg-color);
 }
-.btn-profile{
+
+.btn-profile {
     width: 3.0rem;
     height: 3.0rem;
     border-radius: 180px 180px 180px 180px;
@@ -79,30 +103,36 @@ body{
     text-align: center;
     align-self: center;
 }
-.li-profile:hover{
+
+.li-profile:hover {
     background-color: #645fe3;
     color: white;
-    font-weight: bolder;
+    font-weight: bold;
 }
-.btn-profile:hover{
+
+.btn-profile:hover {
     background-color: var(--btn-active-bg-color);
 }
-.btn-profile-user:focus{
+
+.btn-profile-user:focus {
     outline: none;
     box-shadow: none;
 }
 
-.btn-profile i{
+.btn-profile i {
     font-size: 1.2rem;
 }
-.btn{
+
+.btn {
     border: none;
 }
-.btn:focus{
+
+.btn:focus {
     background-color: var(--btn-active-bg-color);
     animation: none;
 }
-#mainLargeGuide{
+
+#mainLargeGuide {
     width: 15rem;
     justify-content: center;
     padding: 15px;
@@ -110,109 +140,134 @@ body{
     overflow: hidden;
     height: 100vh;
 }
-#mainLargeGuide:hover{
+#mainLargeGuide div button{
+    color: white !important;
+}
+
+#mainLargeGuide:hover {
     overflow-y: scroll;
     scrollbar-width: thin;
 }
-#mainSmallGuide{
+
+#mainSmallGuide {
     display: none;
 }
-
-.btn-guide{
+#mainSmallGuide div button{
+    background-color: black !important;
+    color: white !important;
+}
+.btn-guide {
     width: 100%;
     height: 2.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.btn-guide:hover{
+
+.btn-guide:hover {
     background-color: var(--btn-active-bg-color);
 }
 
-.img-guide{
+.img-guide {
     width: 20px;
     height: 20px;
 }
-.main-guide div button span{
+
+.main-guide div button span {
     font-size: 10px;
 }
-.main-guide div button{
+
+.main-guide div button {
     width: 4rem;
     height: 4.3rem;
-    
 }
-.btn-main-guide{
+
+.btn-main-guide {
     background-color: unset;
 }
-.btn-main-guide:hover{
+
+.btn-main-guide:hover {
     background-color: var(--btn-active-bg-color);
 }
 
-.btn-active-guide{
+.btn-active-guide {
     background-color: var(--btn-active-bg-color);
     font-weight: bold;
 }
-.btn-suggest{
+
+.btn-suggest {
     background-color: var(--btn-active-bg-color);
-    
     font-size: small;
     height: 2rem;
     font-weight: bold;
 }
-.btn-suggest:hover{
+
+.btn-suggest:hover {
     background-color: #645fe3;
     color: white;
-    font-weight: bolder;
+    font-weight: bold;
 }
-.btn-active-suggest:focus, .btn-active-suggest:active{
+
+.btn-active-suggest:focus,
+.btn-active-suggest:active {
     background-color: #645fe3;
     color: white;
-    font-weight: bolder;
+    font-weight: bold;
 }
-.btn-main-guide:focus{
+
+.btn-main-guide:focus {
     background-color: white;
 }
 
-.btn-active-suggest{
+.btn-active-suggest {
     background-color: #645fe3;
     color: white;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
-.card-box{
+.card-box {
     width: 20rem;
 }
-.col-2 div .btn-group{
+.card-box div{
+    background-color: black;
+    color: white;
+}
+
+.col-2 div .btn-group {
     width: 3.0rem;
     height: 3.0rem;
 }
-.channel-icon{
+
+.channel-icon {
     width: 30px;
     height: 30px;
 }
 
-.channel-subtitle{
+.channel-subtitle {
     overflow: hidden;
     height: 10%;
     text-overflow: ellipsis;
 }
-.check{
+
+.check {
     font-size: 0.80rem;
 }
-.box-videos{
+
+.box-videos {
     overflow-y: auto;
 }
+
 [class*=" bi-"]::before {
     line-height: unset;
     vertical-align: middle;
 }
 
 .navbar {
-    margin-right: 0; 
+    margin-right: 0;
 }
 
 .btn-suggest {
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
     max-width: calc(25% - 10px);
 }
 
@@ -224,7 +279,7 @@ body{
 
 @media (max-width: 768px) {
     .btn-suggest {
-        max-width: calc(50% - 10px); 
+        max-width: calc(50% - 10px);
     }
 }
 
@@ -233,136 +288,166 @@ body{
         max-width: 100%;
     }
 }
+
 .nav-suggest {
     overflow: hidden;
-    width: 100%; 
+    width: 100%;
 }
 
 @media (max-width: 320px) {
     .box-videos .card-box {
-        flex: 1 0 calc(100% - 20px); 
-        margin-right: 0; 
+        flex: 1 0 calc(100% - 20px);
+        margin-right: 0;
     }
-    #mainLargeGuide{
+
+    #mainLargeGuide {
         display: none;
     }
-    #mainSmallGuide{
+
+    #mainSmallGuide {
         display: none;
     }
 }
+
 @media (max-width: 380px) {
-    .input-search-left, .btn-profile-camera, .btn-profile-bell, .btn-mic {
-        display: none;   
+    .input-search-left,
+    .btn-profile-camera,
+    .btn-profile-bell,
+    .btn-mic {
+        display: none;
     }
-    .btn-search-right,.btn-profile-user {
+
+    .btn-search-right,
+    .btn-profile-user {
         border-radius: 50%;
-        padding: 0px;         
+        padding: 0px;
         width: 40px;
         height: 40px;
         margin-left: 80px;
     }
-    #mainLargeGuide{
+
+    #mainLargeGuide {
         display: none;
     }
-    #mainSmallGuide{
+
+    #mainSmallGuide {
         display: block;
     }
 }
 
 @media (min-width: 381px) and (max-width: 500px) {
-    .btn-profile-camera,.btn-profile-bell,.btn-mic,.input-search-left{
-        display: none;   
+    .btn-profile-camera,
+    .btn-profile-bell,
+    .btn-mic,
+    .input-search-left {
+        display: none;
     }
-    .btn-search-right,.btn-profile-user {
-        border-radius: 50%; 
+
+    .btn-search-right,
+    .btn-profile-user {
+        border-radius: 50%;
         padding: 0px;
-        width: 40px; 
+        width: 40px;
         height: 40px;
         margin-left: 80px;
     }
-    #mainLargeGuide{
+
+    #mainLargeGuide {
         display: none;
     }
-    #mainSmallGuide{
+
+    #mainSmallGuide {
         display: block;
     }
 }
 
 @media (min-width: 321px) and (max-width: 560px) {
     .box-videos .card-box {
-        flex: 1 0 calc(100% - 20px); 
-        margin-right: 0; 
+        flex: 1 0 calc(100% - 20px);
+        margin-right: 0;
     }
-    .input-search-left{
+
+    .input-search-left {
         width: 80px;
     }
-    #mainLargeGuide{
+
+    #mainLargeGuide {
         display: none;
     }
-    #mainSmallGuide{
+
+    #mainSmallGuide {
         display: block;
     }
-    
 }
 
 @media (min-width: 561px) and (max-width: 720px) {
-    .box-videos .card-box { 
+    .box-videos .card-box {
         width: 467px;
-        height:363px; 
-        margin-right: 10px; 
+        height: 363px;
+        margin-right: 10px;
     }
-    .input-search-left{
+
+    .input-search-left {
         width: 180px;
     }
-    #mainLargeGuide{
+
+    #mainLargeGuide {
         display: none;
     }
-    #mainSmallGuide{
+
+    #mainSmallGuide {
         display: block;
     }
 }
 
 @media (min-width: 721px) and (max-width: 992px) {
     .box-videos .card-box {
-        flex: 1 0 calc(50% - 10px); 
-        margin-right: 10px; 
+        flex: 1 0 calc(50% - 10px);
+        margin-right: 10px;
     }
-    .input-search-left{
+
+    .input-search-left {
         width: 180px;
     }
-    #mainLargeGuide{
+
+    #mainLargeGuide {
         display: none;
     }
-    #mainSmallGuide{
+
+    #mainSmallGuide {
         display: block;
     }
 }
 
-
 @media (min-width: 993px) and (max-width: 1000px) {
     .box-videos .card-box {
-        flex: 1 0 calc(33.333% - 10px); 
-        margin-right: 10px; 
+        flex: 1 0 calc(33.333% - 10px);
+        margin-right: 10px;
     }
-    .input-search-left{
+
+    .input-search-left {
         width: 480px;
     }
 }
+
 @media (min-width: 1001px) {
     .box-videos .card-box {
-        flex: 1 0 calc(25% - 10px); 
-        margin-right: 10px; 
+        flex: 1 0 calc(25% - 10px);
+        margin-right: 10px;
     }
-    .input-search-left{
+
+    .input-search-left {
         width: 550px;
     }
 }
+
 .box-videos {
     position: sticky;
     top: 0;
-    height: calc(100vh - 56px); 
-    overflow-y: auto; 
+    height: calc(100vh - 56px);
+    overflow-y: auto;
 }
+
 .ms-2 .nav-suggest {
     overflow-x: auto;
     white-space: nowrap;
@@ -374,9 +459,5 @@ body{
     display: flex;
     flex-wrap: nowrap;
     height: 3.00rem;
-    min-width: 200%; 
-}
-a, a:hover, a:focus, a:active {
-    text-decoration: none;
-    color: inherit;
+    min-width: 200%;
 }
