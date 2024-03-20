@@ -27,6 +27,22 @@ for(let i=0;i<btnGuideList.length;i++){
         currentBtnGuide = i;
     });    
 }
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("btnHistory").addEventListener('click', function() {
+        document.getElementById("youtubeHistory").classList.add("active");
+        document.getElementById("youtubeVideos").classList.remove("active");
+        document.getElementById("historyTop").classList.add("active");
+    });
+
+    document.getElementById("btnHome").addEventListener('click',function(){
+        document.getElementById("youtubeHistory").classList.remove("active");
+        document.getElementById("youtubeVideos").classList.add("active");
+        document.getElementById("historyTop").classList.remove("active");   
+    });
+
+});
+
+
 
 // icon for left large navbar
 const beforeClickMainGuide = ['bi-house-door', 'bi-file-play', 'bi-collection-play', 'bi-play-btn'];
@@ -79,5 +95,5 @@ apprence.addEventListener('change',function(){
     let themeName = this.checked ? "css/youtubeDarkTheme.css" : "css/youtube.css"; 
     themeStylesheet.href = themeName;
     let youtubelogo = document.getElementById("youtubelogo");
-    youtubelogo.src = this.checked ? "assets/images/youtubedark.png" : "assets/images/youtubeLogo.png";
+    youtubelogo.src = this.checked ? "assets/images/youtube-logo-dark.png" : "assets/images/youtubeLogo.png";
 });

@@ -33,6 +33,9 @@ body {
     transition: none;
     scrollbar-width: thin;
     overflow: hidden;
+    scrollbar-color: black;
+    scrollbar-base-color: black;
+    scrollbar-track-color: black;
 }
 
 button i{
@@ -139,6 +142,7 @@ li button, li div{
     padding-top: 5px;
     overflow: hidden;
     height: 100vh;
+    scrollbar-color: dark;
 }
 #mainLargeGuide div button{
     color: white !important;
@@ -147,6 +151,7 @@ li button, li div{
 #mainLargeGuide:hover {
     overflow-y: scroll;
     scrollbar-width: thin;
+    scrollbar-color: black !important;
 }
 
 #mainSmallGuide {
@@ -460,4 +465,56 @@ li button, li div{
     flex-wrap: nowrap;
     height: 3.00rem;
     min-width: 200%;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 107px;
+    right: 8px;
+    font-weight: 600;
+    font-size: small;
+    color: white;
+    border-radius: 0.25rem;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: black;
+}
+
+.history-box{
+    height: 8rem;
+}
+.long-small{
+    font-size: small;
+}
+.youtube-history {
+    overflow-y: scroll; /* Enable vertical scrollbar */
+    height: 100vh;
+    width: 100%;
+}
+.history-content{
+    background-color: black;
+    color: white;
+}
+.history-menu{
+    width: 20%;
+    position: fixed;
+    left: 68rem;
+    z-index: 100;
+    top : 9rem;
+}
+.input-search-history{
+    border: 0px;
+    outline: none;
+    background-color: black;
+    color: white;
+}
+.history-setting:hover{
+    background-color: rgb(67, 66, 66);
+    border-radius: 180px 180px 180px 180px;
+}
+.youtube-videos,.youtube-history,.history-top{
+    display: none;
+}
+.active{
+    display: block;
 }
