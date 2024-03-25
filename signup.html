@@ -15,8 +15,7 @@
     
     <!-- signup css -->
     <link id="themeStylesheet" rel="stylesheet" href="css/signup.css">
-    
-
+    <link rel="stylesheet" href="css/common.css">
 </head>
 <body class="bg-light">
 
@@ -100,11 +99,11 @@
                                     <div class="gender">
                                         <div class="gender-item">
                                             <input type="radio" id="male" name="gender" value="Male">
-                                            <label for="gender" class="form-label">Male</label>
+                                            <label for="male" class="form-label">Male</label>
                                         </div>
                                         <div class="gender-item">
                                             <input type="radio" id="female" name="gender" value="Female">
-                                            <label for="gender" class="form-label">Female</label>
+                                            <label for="female" class="form-label">Female</label>
                                         </div>
                                     </div>
                                 </div>
@@ -179,8 +178,9 @@
                             </div>
                             <!-- signup preferred role -->
                             <div class="mb-3 card-item">
-                                <label for="textarea" class="form-label">Address</label>
-                                <textarea id="fixedTextarea" name="fixedTextarea" rows="3" cols="60" wrap="hard" placeholder="A 40, Near ABC road..." autocomplete="none"></textarea>
+                                <label for="address" class="form-label">Address</label>
+                                <textarea id="address" name="address" rows="3" cols="60" wrap="hard" placeholder="A 40, Near ABC road..." autocomplete="none"></textarea>
+                                <p id="addressalert" class="alert"></p>
                             </div>
                         </div>
                     </div>      
@@ -212,6 +212,7 @@
 
     <!-- signup js -->
     <script src="js/signup.js"></script>
+    <script src="js/common.js"></script>
     <!-- conuntry code js -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/intlTelInput.min.js"></script>
 </body>

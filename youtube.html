@@ -26,7 +26,7 @@
     <!-- Youtube and model css files -->
     <link id="themeStylesheet" rel="stylesheet" href="css/youtube.css">
     <link rel="stylesheet" href="css/modal.css">
-
+    <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
 
@@ -369,10 +369,12 @@
                                         <div class="card-item col-5">
                                             <span class="form-label fw-bold fw-bold">Gender</span>
                                             <p id="viewgender"></p>
+                                            <p id="genderalert" class="alert"></p>
                                         </div>
                                         <div class="card-item col-5">
                                             <span class="form-label fw-bold">Language</span>
                                             <p id="viewlanguage"></p>
+                                            <p id="languagealert" class="alert"></p>
                                         </div>
                                     </div>  
                                     <div class="card-row d-flex justify-content-around">
@@ -449,43 +451,43 @@
                             <div class="col-lg-9 p-1 card-full-data">
                                 <div class="card">
                                     <div class="card-row d-flex justify-content-around">
-                                        <div class="card-item col-5">
+                                        <div class="card-item col-5 mb-1">
                                             <label for="firstname" class="form-label">First Name</label>
                                             <input id="firstname" type="text" class="form-control">
                                             <p id="firstnamealert" class="alert"></p>
                                         </div>
-                                        <div class="card-item col-5">
+                                        <div class="card-item col-5 mb-1">
                                             <label for="lastname" class="form-label">Last Name</label>
                                             <input id="lastname" type="text" class="form-control">
                                             <p id="lastnamealert" class="alert"></p>
                                         </div>
                                     </div>
                                     <div class="card-row d-flex justify-content-around">
-                                        <div class="card-item col-5">
+                                        <div class="card-item col-5 mb-1">
                                             <label for="email" class="form-label">Email</label>
                                             <input id="email" type="text" class="form-control">
                                             <p id="emailalert" class="alert"></p>
                                         </div>
-                                        <div class="card-item col-5">
+                                        <div class="card-item col-5 mb-1">
                                             <label for="dob" class="form-label">Date of birth</label>
                                             <input id="dob" type="date" class="form-control">
                                             <p id="dobalert" class="alert"></p>
                                         </div>
                                     </div>
                                     <div class="card-row d-flex justify-content-around">
-                                        <div class="card-item col-5">
-                                            <label for="phone" class="form-label">Phone</label>
-                                            <input id="phone" type="text" class="form-control">
-                                            <p id="phonealert" class="alert"></p>
+                                        <div class="card-item col-5 mb-1">
+                                            <label for="tel" class="form-label">Phone</label>
+                                            <input id="tel" type="tel" class="form-control">
+                                            <p id="telalert" class="alert"></p>
                                         </div>
-                                        <div class="card-item col-5">
-                                            <label for="phonealter" class="form-label">Phone alternative</label>
-                                            <input id="phonealter" type="text" class="form-control">
-                                            <p id="phonealteralert" class="alert"></p>
+                                        <div class="card-item col-5 mb-1">
+                                            <label for="telalter" class="form-label">Phone alternative</label>
+                                            <input id="telalter" type="tel" class="form-control">
+                                            <p id="telalteralert" class="alert"></p>
                                         </div>
                                     </div>
                                     <div class="card-row d-flex justify-content-around">
-                                        <div class="card-item col-5">
+                                        <div class="card-item col-5 mb-1">
                                             <label for="language" class="form-label">Language</label>
                                             <select name="language" id="language" class="form-control">
                                                 <option value="" selected disabled>Select Language</option>
@@ -497,16 +499,17 @@
                                                 <option value="tamil">Tamil</option>
                                                 <option value="urdu">Urdu</option>
                                             </select>
+                                            <p id="languagealert" class="alert"></p>
                                         </div>
                                         <div class="card-item col-md-5">
                                             <label class="form-label">Gender</label>
                                             <div class="d-flex ps-5">
                                                 <div class="col-3">
-                                                    <input type="radio" id="male" value="male" name="gender">
+                                                    <input type="radio" id="male" value="Male" name="gender">
                                                     <label for="male" class="form-label">Male</label>
                                                 </div>
                                                 <div class="col-3">
-                                                    <input type="radio" id="female" value="female" name="gender">
+                                                    <input type="radio" id="female" value="Female" name="gender">
                                                     <label for="female" class="form-label">Female</label>
                                                 </div>
                                             </div>
@@ -545,6 +548,8 @@
     </div>
     <!-- end edit model for user data -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/intlTelInput.min.js"></script>
+    <script src="js/countrymap.js"></script>
+    <script src="js/common.js"></script>
     <script src="js/youtube.js"></script>
     <script src="js/modal.js"></script>
 </body>

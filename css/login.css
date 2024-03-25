@@ -8,14 +8,6 @@
 /* Define styles for buttons and button containers */
 /* Define styles for forgot password modal */
 /* Define styles for alert messages */
-
-:root{
-    --primary-color : #645fe3;      
-    --primary-color-hover : #322be6;
-    --primary-color-extra-hover : #0600be;
-    --error-color : #872e36;
-    --container-color : #bacada;
-}
 body {
     display: flex;
     justify-content: center;
