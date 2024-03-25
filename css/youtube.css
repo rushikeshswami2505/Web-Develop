@@ -373,7 +373,7 @@ body{
 .container-suggest-wrapper {
     display: flex;
     flex-wrap: nowrap;
-    height: 3.00rem;
+    height: 2.70rem;
     min-width: 200%; 
 }
 a, a:hover, a:focus, a:active {
